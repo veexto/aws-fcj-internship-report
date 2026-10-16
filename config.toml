@@ -1,0 +1,49 @@
+baseURL = "https://nvtruongops.github.io/fcj-internship-report/"
+relativeURLs = true
+canonifyURLs = true
+
+theme = "hugo-theme-learn"
+
+languageCode = "en"
+defaultContentLanguageInSubdir = false
+defaultContentLanguage = "en"
+hasCJKLanguage = true
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[params]
+  themeVariant = "workshop"
+  description = "Internship Report documenting the journey of an FCJ Cloud Intern at Amazon Web Services Vietnam. This portfolio showcases hands-on experience with AWS cloud technologies, translated technical blogs, workshop contributions, and professional development in Cloud Computing and Cyber Security."
+  author = "truongnvse182034@fpt.edu.vn"
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+
+[languages]
+  [languages.en]
+  title = "Internship Report"
+  weight = 1
+  languageName = "English"
+
+  [[languages.en.menu.shortcuts]]
+  name = "<i class='fab fa-facebook'></i> AWS Study Group"
+  identifier = "AWS Study Group FB"
+  url = "https://www.facebook.com/groups/awsstudygroupfcj/"
+  weight = 20
+
+  [languages.vi]
+  title = "Báo cáo thực tập"
+  weight = 2
+  languageName = "Tiếng Việt"
+
+  [[languages.vi.menu.shortcuts]]
+  name = "<i class='fab fa-facebook'></i> AWS Study Group"
+  identifier = "AWS Study Group FB"
+  url = "https://www.facebook.com/groups/awsstudygroupfcj/"
+  weight = 20
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
