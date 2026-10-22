@@ -6,17 +6,6 @@ defaultContentLanguage = "en"
 # Change the default theme to be use when building the site with Hugo
 theme: 'hugo-book'
 
-# Book theme navigation settings
-params:
-  # Enable menu file rendering
-  BookMenuBundle: '/menu'
-  # Show section collapsible menus in sidebar
-  BookSection: '*'
-
-# Render relative links correctly across subpaths
-relativeURLs: true
-canonifyURLs: false
-# For search functionality
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
 
