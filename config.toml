@@ -3,11 +3,12 @@ relativeURLs = false
 canonifyURLs = false
 defaultContentLanguage = "en"
 
-# Change the default theme to be use when building the site with Hugo
-theme: 'hugo-theme-learn'
+theme = "hugo-theme-learn"
 
-[outputs]
-home = [ "HTML", "RSS", "JSON"]
+languageCode = "en"
+defaultContentLanguageInSubdir = false
+defaultContentLanguage = "en"
+hasCJKLanguage = true
 
 [params]
   # Change default color scheme with a variant one. Can be "red", "blue", "green".
