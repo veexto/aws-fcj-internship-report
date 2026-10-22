@@ -8,23 +8,21 @@ chapter: false
 
 ### Student Information:
 
-&emsp; **Full Name:** Nguyễn Văn Trường
+&emsp; **Full Name:** Nguyễn Nguyên Vũ
 
-&emsp; **Phone Number:** 0764648648
+&emsp; **Phone Number:** 0796545535
 
-&emsp; **Email:** truongnvse182034@fpt.edu.vn
+&emsp; **Email:** nguyenvux20062006@gmail.com
 
 &emsp; **University:** FPT University Ho Chi Minh
 
 &emsp; **Major:** Cyber Security
 
-&emsp; **Class:** AWS092025
-
 &emsp; **Internship Company:** Amazon Web Services Vietnam Co., Ltd.
 
 &emsp; **Internship Position:** FCJ Cloud Intern
 
-&emsp; **Internship Duration:** From 8/9/2025 to 12/11/2025
+&emsp; **Internship Duration:** From 8/9/2026 to 12/11/2026
 
 ![Your profile picture](/images/avatar.jpg)
 
