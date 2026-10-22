@@ -1,12 +1,7 @@
 # FCJ Cloud Intern - Internship Report
-
-[![Hugo](https://img.shields.io/badge/Hugo-FF4088?style=for-the-badge&logo=hugo&logoColor=white)](https://gohugo.io/)
-[![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=github-pages&logoColor=white)](https://pages.github.com/)
-
 > Internship Report documenting the journey of an FCJ Cloud Intern at Amazon Web Services Vietnam. This portfolio showcases hands-on experience with AWS cloud technologies, translated technical blogs, workshop contributions, and professional development in Cloud Computing.
 
-**Live Demo:** [https://nvtruongops.github.io/fcj-internship-report/](https://nvtruongops.github.io/fcj-internship-report/)
+**Live Demo:** [https://veexto.github.io/aws-fcj-internship-report/](https://veexto.github.io/aws-fcj-internship-report/)
 
 ---
 
@@ -14,14 +9,13 @@
 
 | Field | Information |
 |-------|-------------|
-| **Full Name** | Nguyễn Văn Trường |
-| **Email** | truongnvse182034@fpt.edu.vn |
+| **Full Name** | Nguyễn Nguyên Vũ |
+| **Email** | nguyenvux20062006@gmail.com |
 | **University** | FPT University Ho Chi Minh |
 | **Major** | Cyber Security |
-| **Class** | AWS092025 |
 | **Company** | Amazon Web Services Vietnam Co., Ltd. |
 | **Position** | FCJ Cloud Intern |
-| **Duration** | September 2025 - November 2025 |
+| **Duration** | September 2026 - November 2025 |
 
 ---
 
