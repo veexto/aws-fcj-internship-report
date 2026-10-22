@@ -1,0 +1,4 @@
+[submodule "public"]
+	path = public
+	url = https://github.com/veexto/aws-fcj-internship-report.git
+	branch = gh-pages
