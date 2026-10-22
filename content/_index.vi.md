@@ -8,23 +8,21 @@ chapter: false
 
 ### Thông tin sinh viên:
 
-&emsp; **Họ và tên:** Nguyễn Văn Trường
+&emsp; **Họ và tên:** Nguyễn Nguyên Vũ
 
-&emsp; **Số điện thoại:** 0764648648
+&emsp; **Số điện thoại:** 0796545535
 
-&emsp; **Email:** truongnvse182034@fpt.edu.vn
+&emsp; **Email:** nguyenvux20062006@gmail.com
 
 &emsp; **Trường:** Trường đại học FPT Hồ Chí Minh
 
-&emsp; **Ngành:** An toàn thông tin
-
-&emsp; **Lớp:** AWS092025
+&emsp; **Ngành:** Trí tuệ nhân tạo
 
 &emsp; **Công ty thực tập:** Công ty TNHH Amazon Web Services Vietnam
 
 &emsp; **Vị trí thực tập:** FCJ Cloud Intern
 
-&emsp; **Thời gian thực tập:** Từ ngày 12/08/2025 đến ngày 12/11/2025
+&emsp; **Thời gian thực tập:** Từ ngày 8/09/2026 đến ngày 12/11/2026
 
 ![Ảnh đại diện của bạn](/images/avatar.jpg)
 
