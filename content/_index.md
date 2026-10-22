@@ -1,6 +1,6 @@
 ---
 title: "Internship Report"
-date: 2025-09-08
+date: 2026-09-08
 weight: 1
 chapter: false
 ---
@@ -16,7 +16,7 @@ chapter: false
 
 &emsp; **University:** FPT University Ho Chi Minh
 
-&emsp; **Major:** Cyber Security
+&emsp; **Major:** AI Engineer
 
 &emsp; **Internship Company:** Amazon Web Services Vietnam Co., Ltd.
 
@@ -24,7 +24,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 8/9/2026 to 12/11/2026
 
-![Your profile picture](/images/avatar.jpg)
+![Your profile picture](static/images/avatar.jpg)
 
 ### Report Content
 
