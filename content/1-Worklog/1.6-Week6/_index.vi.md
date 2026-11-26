@@ -1,44 +1,44 @@
 ---
-title: "Báo cáo công việc Tuần 6"
-date: 2025-10-13
+title: "Nhật ký công việc Tuần 6"
+date: 2026-10-19
 weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
 ### Mục tiêu Tuần 6:
 
-* **Quản lý Danh tính & Truy cập (IAM):** Triển khai kiểm soát danh tính mạnh mẽ bằng **IAM Identity Center (SSO)**, giới hạn đặc quyền với **Permission Boundaries**, và bảo mật việc giả lập vai trò (role assumption) bằng các chính sách có điều kiện.
-* **Tuân thủ Bảo mật & Phòng thủ:** Tự động hóa kiểm tra bảo mật với **AWS Security Hub** và bảo vệ ứng dụng web bằng **AWS WAF**.
-* **Bảo vệ Dữ liệu:** Làm chủ mã hóa dữ liệu sử dụng **AWS KMS** (Key Management Service) và thiết lập chiến lược sao lưu toàn diện với **AWS Backup**.
-* **Mạng Nâng cao:** Triển khai kiến trúc mạng mở rộng sử dụng **VPC Peering** cho kết nối trực tiếp và **Transit Gateway** cho mô hình hub-and-spoke.
+- **Quản trị Danh tính & Truy cập Nâng cao (IAM):** Thiết lập đăng nhập tập trung với **IAM Identity Center (SSO)**, kiểm soát ngưỡng đặc quyền tối đa bằng **Permission Boundaries** và ràng buộc điều kiện chặt chẽ khi chuyển giao vai trò (IAM Role Conditions).
+- **Giám sát Tuân thủ & Bảo vệ Ứng dụng:** Tự động hóa đánh giá tiêu chuẩn bảo mật bằng **AWS Security Hub** và ngăn chặn tấn công tầng ứng dụng với **AWS WAF**.
+- **Bảo vệ & Dự phòng Dữ liệu:** Làm chủ cơ chế mã hóa khóa riêng với **AWS KMS** kết hợp kiểm toán truy vết, đồng thời chuẩn hóa chính sách sao lưu tập trung qua **AWS Backup**.
+- **Kiến trúc Mạng Quy mô lớn:** Triển khai kết nối liên mạng giữa các VPC theo mô hình điểm-nối-điểm (**VPC Peering**) và mô hình trục-nan (**AWS Transit Gateway**).
 
-### Các nhiệm vụ thực hiện trong tuần:
+### Kế hoạch công việc trong tuần:
 
-| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| Ngày | Nội dung thực hiện | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | --- | --- | --- | --- |
-| 2 | **Quản lý Danh tính Nâng cao** <br> - Thiết lập **IAM Identity Center (SSO)** để truy cập tập trung giữa các tài khoản. <br> - Tạo **Permission Boundaries** để giới hạn quyền tối đa cho IAM User/Role. <br> - Cấu hình **IAM Role Conditions** để ngăn chặn lạm dụng chuyển giao vai trò. | 13/10/2025 | 13/10/2025 | https://000012.awsstudygroup.com/ <br><br> https://000030.awsstudygroup.com/ <br><br> https://000044.awsstudygroup.com/ |
-| 3 | **Tư thế Bảo mật & Phòng thủ Ứng dụng** <br> - Bật **AWS Security Hub** để kiểm tra tuân thủ (theo chuẩn CIS). <br> - Triển khai **AWS WAF** (Tường lửa ứng dụng web): <br>&emsp; + Tạo Web ACLs với các Managed Rules. <br>&emsp; + Chặn tấn công SQL Injection/XSS trên ALB. | 14/10/2025 | 14/10/2025 | https://000018.awsstudygroup.com/ <br><br> https://000026.awsstudygroup.com/ |
-| 4 | **Bảo vệ Dữ liệu (Mã hóa & Sao lưu)** <br> - Tạo Customer Managed Keys (CMK) trong **AWS KMS**. <br> - Mã hóa S3 bucket và kiểm tra việc sử dụng qua **CloudTrail** & **Athena**. <br> - Cấu hình **AWS Backup**: <br>&emsp; + Tạo Backup Vault và Backup Plan. <br>&emsp; + Thực hiện sao lưu và khôi phục tài nguyên theo yêu cầu. | 15/10/2025 | 15/10/2025 | https://000033.awsstudygroup.com/ <br><br> https://000013.awsstudygroup.com/ |
-| 5 | **Độ tin cậy Mạng (Peering & Transit)** <br> - **VPC Peering:** Kết nối hai VPC cô lập và cấu hình Route Tables/DNS. <br> - **Transit Gateway (TGW):** Xây dựng hub trung tâm để kết nối nhiều VPC. <br> - Cấu hình TGW Route Tables để phân tách lưu lượng mạng. | 16/10/2025 | 16/10/2025 | https://000019.awsstudygroup.com/ <br><br> https://000020.awsstudygroup.com/ |
-| 6 | **Rà soát & Dọn dẹp** <br> - Rà soát lại tất cả các cấu hình bảo mật. <br> - **Quan trọng:** Xóa Transit Gateway, NAT Gateways, và tắt Security Hub/Config để tránh chi phí cao. <br> - Xác nhận việc xóa các KMS keys (lên lịch xóa). | 17/10/2025 | 17/10/2025 | _Tất cả các phần Dọn dẹp_ |
+| 2 | **Quản trị Danh tính & Phân quyền Nâng cao** <br> - Triển khai **IAM Identity Center (SSO)** để quản lý truy cập tập trung xuyên suốt nhiều tài khoản AWS <br> - Thiết lập **Permission Boundaries** nhằm giới hạn trần quyền hạn tối đa cho IAM User/Role <br> - Bổ sung **IAM Role Conditions** (như `iam:PassedToService`) để ngăn chặn hành vi lạm dụng chuyển tiếp vai trò | 19/10/2026 | 19/10/2026 | https://000012.awsstudygroup.com/ <br><br> https://000030.awsstudygroup.com/ <br><br> https://000044.awsstudygroup.com/ |
+| 3 | **Đánh giá Tuân thủ & Tường lửa Ứng dụng Web** <br> - Kích hoạt **AWS Security Hub** để quét và chấm điểm mức độ tuân thủ theo bộ tiêu chuẩn CIS <br> - Triển khai **AWS WAF** bảo vệ tầng biên ứng dụng: <br>&emsp; + Khởi tạo Web ACL tích hợp các bộ quy tắc quản lý sẵn (Managed Rule Groups) <br>&emsp; + Cấu hình chặn các cuộc tấn công SQL Injection và XSS trước khi đi vào Application Load Balancer | 20/10/2026 | 20/10/2026 | https://000018.awsstudygroup.com/ <br><br> https://000026.awsstudygroup.com/ |
+| 4 | **Mã hóa Dữ liệu & Sao lưu Tập trung (KMS & AWS Backup)** <br> - Khởi tạo Customer Managed Keys (CMK) trên **AWS KMS** để tự chủ quản lý vòng đời khóa mã hóa <br> - Áp dụng mã hóa phía máy chủ cho S3 Bucket và truy vết lịch sử gọi khóa qua **CloudTrail** kết hợp **Amazon Athena** <br> - Thiết lập chính sách dự phòng với **AWS Backup**: <br>&emsp; + Tạo Backup Vault lưu trữ an toàn và xây dựng Backup Plan định kỳ <br>&emsp; + Thực hành sao lưu theo yêu cầu (On-demand) và diễn tập khôi phục dữ liệu | 21/10/2026 | 21/10/2026 | https://000033.awsstudygroup.com/ <br><br> https://000013.awsstudygroup.com/ |
+| 5 | **Kết nối Mạng Liên vùng & Mô hình Hub-and-Spoke** <br> - **VPC Peering:** Thiết lập kênh kết nối riêng tư trực tiếp giữa hai VPC độc lập, cập nhật Route Tables và tùy chọn phân giải DNS nội bộ <br> - **AWS Transit Gateway (TGW):** Xây dựng bộ định tuyến trung tâm kết nối đồng thời nhiều VPC <br> - Cấu hình phân tách **TGW Route Tables** để cô lập luồng lưu lượng giữa các môi trường mạng | 22/10/2026 | 22/10/2026 | https://000019.awsstudygroup.com/ <br><br> https://000020.awsstudygroup.com/ |
+| 6 | **Kiểm tra Bảo mật & Thu hồi Tài nguyên** <br> - Rà soát tổng thể các thiết lập phân quyền, tường lửa và mã hóa đã triển khai <br> - **Dọn dẹp tài nguyên:** Gỡ bỏ Transit Gateway, NAT Gateways và vô hiệu hóa Security Hub / AWS Config để tránh phát sinh chi phí duy trì <br> - Đặt lịch hủy (Schedule Deletion) cho các khóa CMK trên AWS KMS | 23/10/2026 | 23/10/2026 | _Tổng hợp các mục Dọn dẹp tài nguyên cuối bài lab_ |
 
-# Thành tựu Tuần 6
+# Kết quả đạt được trong Tuần 6
 
-## Quản lý Danh tính & Truy cập (IAM)
-- Đã triển khai thành công **IAM Identity Center** để quản lý người dùng tập trung và đơn giản hóa việc đăng nhập truy cập trên toàn tổ chức.
-- Áp dụng **Permission Boundaries** để ngăn chặn leo thang đặc quyền, đảm bảo người dùng không thể tự cấp quyền vượt quá mức cho phép.
-- Tăng cường bảo mật bằng cách thêm **Conditions (Điều kiện)** vào IAM Roles, giới hạn cách thức và nơi vai trò có thể được đảm nhận hoặc chuyển giao (ví dụ: giới hạn việc chuyển role cho các dịch vụ cụ thể).
+## Quản trị Danh tính & Kiểm soát Đặc quyền (IAM)
+- Vận hành thành công **IAM Identity Center**, đơn giản hóa trải nghiệm đăng nhập một lần (SSO) và quản lý tập trung danh tính người dùng.
+- Ngăn ngừa hiệu quả rủi ro leo thang đặc quyền nhờ áp dụng **Permission Boundaries**, đảm bảo tài khoản được ủy quyền không thể tự mở rộng quyền vượt ngưỡng cho phép.
+- Siết chặt an toàn vận hành bằng việc gắn **Conditions** vào IAM Roles, kiểm soát chặt chẽ bối cảnh và dịch vụ đích được phép tiếp nhận vai trò.
 
-## Tuân thủ Bảo mật & Phòng thủ Ứng dụng
-- Kích hoạt **AWS Security Hub** để có cái nhìn toàn diện về trạng thái bảo mật và tự động kiểm tra theo tiêu chuẩn CIS AWS Foundations Benchmark.
-- Bảo vệ các ứng dụng web bằng cách triển khai **AWS WAF**, tạo thành công các quy tắc chặn các mối đe dọa phổ biến như SQL Injection và các địa chỉ IP độc hại trước khi chúng tiếp cận Application Load Balancer.
+## Tuân thủ Bảo mật & Phòng thủ Tầng Ứng dụng
+- Kích hoạt **AWS Security Hub** để giám sát tập trung trạng thái an toàn thông tin và tự động đối chiếu hạ tầng với chuẩn **CIS AWS Foundations Benchmark**.
+- Gia cố lớp phòng vệ biên cho ứng dụng web bằng **AWS WAF**, lọc và loại bỏ thành công lưu lượng độc hại (SQL Injection, XSS, IP xấu) ngay trước ngưỡng cửa Application Load Balancer.
 
-## Chiến lược Mã hóa & Sao lưu Dữ liệu
-- Quản lý bảo mật dữ liệu sử dụng **AWS KMS**, tạo Customer Managed Keys để mã hóa dữ liệu nhạy cảm trong S3.
-- Kiểm toán việc sử dụng khóa và truy cập dữ liệu bằng cách tích hợp nhật ký KMS với **CloudTrail** và truy vấn thông qua **Amazon Athena**.
-- Thiết lập kế hoạch Khôi phục Thảm họa (DR) mạnh mẽ bằng **AWS Backup**, tự động hóa lịch trình sao lưu cho các EBS volume và kiểm thử thành công việc khôi phục dữ liệu từ điểm sao lưu.
+## Mã hóa Dữ liệu & Chiến lược Phục hồi Thảm họa
+- Làm chủ quy trình bảo vệ dữ liệu nhạy cảm trên S3 thông qua **Customer Managed Keys (CMK)** của **AWS KMS**.
+- Xây dựng luồng kiểm toán minh bạch bằng cách đẩy nhật ký sử dụng khóa KMS sang **AWS CloudTrail** và dùng **Amazon Athena** để truy vấn phân tích.
+- Thiết lập cơ chế sao lưu tự động và phục hồi thảm họa (DR) đồng bộ thông qua **AWS Backup**, kiểm thử thành công việc khôi phục nguyên trạng EBS Volume từ điểm sao lưu.
 
-## Kết nối & Mạng Nâng cao
-- Kết nối các môi trường mạng cô lập sử dụng **VPC Peering**, cho phép giao tiếp riêng tư giữa các VPC mà không cần đi qua internet công cộng.
-- Giải quyết sự phức tạp của mạng lưới dạng lưới (mesh) bằng cách triển khai **AWS Transit Gateway**, tạo kiến trúc mạng mô hình hub-and-spoke có khả năng mở rộng để kết nối nhiều VPC một cách hiệu quả.
-- Cấu hình các **Route Table** phức tạp cho cả Peering và Transit Gateway để đảm bảo luồng lưu lượng chính xác và sự cô lập mạng.
+## Thiết kế Hạ tầng Mạng Mở rộng
+- Triển khai kết nối mạng riêng tư tốc độ cao giữa hai VPC tách biệt qua **VPC Peering**, loại bỏ hoàn toàn việc truyền tải dữ liệu nội bộ qua Internet công cộng.
+- Giải quyết bài toán kết nối chằng chịt (full-mesh) khi mở rộng nhiều VPC bằng kiến trúc hub-and-spoke sử dụng **AWS Transit Gateway**.
+- Tinh chỉnh thành thạo hệ thống **Route Tables** trên cả VPC và Transit Gateway để điều hướng chính xác và đảm bảo phân tách lưu lượng giữa các phân vùng mạng.
