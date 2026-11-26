@@ -1,49 +1,49 @@
 ---
 title: "Week 7 Worklog"
-date: 2025-10-20
+date: 2026-10-26
 weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
 ### Week 7 Objectives:
 
-* **Containerization:** Master the containerization of applications using **Docker** and deployment on EC2.
-* **Container Orchestration:** Deploy and manage scalable containerized applications using **Amazon ECS (Elastic Container Service)**.
-* **DevOps & Automation:** Implement **CI/CD Pipelines** (AWS CodePipeline, CodeBuild) for automated deployments to EC2 and ECS.
-* **Storage Solutions:** Integrate on-premises environments with cloud storage using **File Storage Gateway** and **FSx for Windows**.
-* **Advanced Database Architecture:** Deep dive into **Amazon DynamoDB** design patterns, indexing strategies, and data modeling for high-performance applications.
+- **Application Containerization:** Master packaging workloads with **Docker** and managing container images centrally in Amazon ECR.
+- **Container Orchestration:** Deploy and operate scalable containerized services on **Amazon ECS (Elastic Container Service)**.
+- **DevOps & CI/CD Automation:** Build automated **CI/CD Pipelines** (AWS CodePipeline, CodeBuild, CodeDeploy) for streamlined deployments across EC2 and ECS.
+- **Hybrid Storage Integration:** Bridge on-premises storage protocols with AWS cloud storage using **AWS Storage Gateway (File Gateway)** and **Amazon FSx for Windows File Server**.
+- **Advanced NoSQL Architecture:** Deep dive into **Amazon DynamoDB** data modeling patterns, indexing strategies, and throughput tuning for high-performance workloads.
 
-### Tasks to be carried out this week:
+### Weekly Action Plan:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 2 | **Application Containerization (Docker)** <br> - Install Docker on EC2 & Local Machine. <br> - Build Docker images for a sample application (Frontend/Backend). <br> - Use **Docker Compose** for multi-container orchestration. <br> - Push images to **Amazon ECR** (Elastic Container Registry). | 20/10/2025 | 20/10/2025 | https://000015.awsstudygroup.com/ |
-| 3 | **Container Orchestration (Amazon ECS)** <br> - Create **ECS Cluster** (Fargate/EC2 Launch Type). <br> - Define **Task Definitions** and Services. <br> - Configure **Application Load Balancer (ALB)** for traffic distribution. <br> - Implement Service Discovery with **AWS Cloud Map**. | 21/10/2025 | 21/10/2025 | https://000016.awsstudygroup.com/ |
-| 4 | **CI/CD for Containers** <br> - Setup **AWS CodePipeline** triggering from GitHub/GitLab. <br> - Configure **AWS CodeBuild** to build and push Docker images. <br> - Automate deployment to ECS Clusters. <br> - Implement Monitoring with **Container Insights** and Logging with **FireLens**. | 22/10/2025 | 22/10/2025 | https://000017.awsstudygroup.com/ |
-| 5 | **CI/CD for EC2 & Hybrid Storage** <br> - **CodePipeline for EC2:** Automate deployments using CodeDeploy agent. <br> - **Storage Gateway:** Configure File Gateway to mount S3 buckets as NFS shares. <br> - **Amazon FSx:** Deploy fully managed Windows File Server and mount via SMB. | 23/10/2025 | 23/10/2025 | https://000023.awsstudygroup.com/ <br><br> _Self-Study on FSx/Storage Gateway_ |
-| 6 | **Advanced DynamoDB Architecture** <br> - **Data Modeling:** Design Single Table Design patterns. <br> - **Performance Tuning:** Work with Partition Keys, Sort Keys, and Capacity Units (RCU/WCU). <br> - **Advanced Features:** Implement Global Secondary Indexes (GSI), DynamoDB Streams, and Global Tables. | 24/10/2025 | 24/10/2025 | https://000039.awsstudygroup.com/ |
+| 2 | **Application Containerization (Docker & ECR)** <br> - Install Docker Engine on local workstations and Amazon EC2 <br> - Author Dockerfiles to containerize sample Frontend and Backend services <br> - Use **Docker Compose** to orchestrate multi-container local stacks <br> - Tag and push container images to **Amazon ECR** (Elastic Container Registry) | 26/10/2026 | 26/10/2026 | https://000015.awsstudygroup.com/ |
+| 3 | **Container Orchestration (Amazon ECS)** <br> - Provision an **ECS Cluster** supporting both Fargate and EC2 launch types <br> - Author **Task Definitions** and configure ECS Services for desired task counts <br> - Attach an **Application Load Balancer (ALB)** for dynamic traffic routing <br> - Configure internal **Service Discovery** via **AWS Cloud Map** | 27/10/2026 | 27/10/2026 | https://000016.awsstudygroup.com/ |
+| 4 | **CI/CD Pipelines for Containers** <br> - Configure **AWS CodePipeline** triggered automatically by GitHub/GitLab commits <br> - Set up **AWS CodeBuild** projects to compile, build, and push Docker images to ECR <br> - Automate zero-downtime rolling deployments to ECS Clusters <br> - Enable **CloudWatch Container Insights** for telemetry and **FireLens** for log routing | 28/10/2026 | 28/10/2026 | https://000017.awsstudygroup.com/ |
+| 5 | **CI/CD for EC2 & Hybrid Cloud Storage** <br> - **CodePipeline for EC2:** Automate application deployments via the AWS CodeDeploy agent <br> - **AWS Storage Gateway:** Configure a File Gateway to expose S3 buckets as standard NFS file shares <br> - **Amazon FSx:** Provision a fully managed **FSx for Windows File Server** and mount shares over SMB | 29/10/2026 | 29/10/2026 | https://000023.awsstudygroup.com/ <br><br> _Self-Study on FSx & Storage Gateway_ |
+| 6 | **Advanced Amazon DynamoDB Architecture** <br> - **Data Modeling:** Apply **Single Table Design** principles for relational-style access patterns <br> - **Performance Tuning:** Design balanced Partition Keys, Sort Keys, and provision RCU/WCU capacity <br> - **Advanced Capabilities:** Implement Global Secondary Indexes (GSI), DynamoDB Streams, and Global Tables | 30/10/2026 | 30/10/2026 | https://000039.awsstudygroup.com/ |
 
-# Week 7 Achievements
+# Week 7 Key Takeaways & Achievements
 
 ## Containerization & Orchestration
-- Successfully "dockerized" a monolithic application, decoupling it from the underlying infrastructure.
-- Deployed a highly available container cluster using **Amazon ECS**, utilizing Task Definitions to define resource requirements.
-- Configured **Service Discovery** to allow microservices within the cluster to communicate via logical names instead of IP addresses.
-- Implemented **Application Load Balancer** to distribute public traffic to dynamic container targets.
+- Packaged a monolithic application into portable **Docker images**, decoupling application dependencies from host OS configurations.
+- Deployed a resilient container cluster on **Amazon ECS**, enforcing compute and memory boundaries via Task Definitions.
+- Configured **Service Discovery** with AWS Cloud Map so microservices communicate reliably via logical DNS names rather than ephemeral container IPs.
+- Integrated an **Application Load Balancer** to route external HTTP traffic across dynamically scaling container tasks.
 
-## DevOps & CI/CD Automation
-- Built a robust **CI/CD Pipeline** using AWS CodePipeline and CodeBuild.
-- Achieved **Continuous Deployment**: Code changes pushed to the repository automatically trigger a build, image creation, and rolling update to the ECS service without downtime.
-- Integrated comprehensive monitoring using **CloudWatch Container Insights** to track CPU/Memory utilization of tasks.
-- Centralized container logs using **FireLens** for easier debugging and analysis.
+## DevOps & Automated CI/CD
+- Engineered an end-to-end **CI/CD Pipeline** leveraging AWS CodePipeline and CodeBuild.
+- Enabled **Continuous Deployment**, where Git repository commits automatically trigger image builds and rolling updates on ECS with zero service interruption.
+- Implemented granular container observability with **CloudWatch Container Insights** to monitor task-level CPU and memory utilization.
+- Centralized container log streams using **FireLens** to simplify debugging and log analytics.
 
-## Hybrid Storage Implementation
-- Bridged the gap between on-premises protocols and cloud storage.
-- Configured **File Storage Gateway** to allow legacy applications to write to S3 using standard NFS protocols.
-- Deployed **Amazon FSx for Windows File Server**, providing a fully managed, native Windows file system with Active Directory integration.
+## Hybrid Cloud Storage Integration
+- Bridged legacy on-premises file protocols with scalable cloud object storage.
+- Deployed **File Storage Gateway**, enabling existing applications to read and write data to Amazon S3 over standard NFS mounts.
+- Provisioned **Amazon FSx for Windows File Server**, delivering native SMB file shares backed by Active Directory integration.
 
-## High-Performance Database Design
-- Mastered NoSQL concepts with **Amazon DynamoDB**.
-- Optimized database performance by designing efficient Partition and Sort Keys.
-- Implemented **Global Secondary Indexes (GSI)** to support diverse access patterns without duplicating data tables.
-- Explored **DynamoDB Streams** for event-driven architectures (triggering Lambda functions on database changes).
+## High-Performance NoSQL Database Design
+- Strengthened NoSQL modeling proficiency with **Amazon DynamoDB**.
+- Improved query latency and partition distribution by selecting high-cardinality Partition Keys and composite Sort Keys.
+- Leveraged **Global Secondary Indexes (GSI)** to support secondary query patterns without duplicating primary table records.
+- Explored **DynamoDB Streams** to power event-driven workflows that invoke AWS Lambda functions on item mutations.
