@@ -1,51 +1,22 @@
 ---
-title: "Nhật ký Tuần 2"
-date: 2025-09-15
+title: "Nhật ký công việc Tuần 2"
+date: 2026-09-21
 weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
 ### Mục tiêu Tuần 2:
 
-* Làm chủ việc sử dụng AWS Cloud9 IDE và AWS CLI để tương tác với các dịch vụ AWS.
-* Tìm hiểu sâu về các dịch vụ Lưu trữ AWS (S3) bao gồm Lưu trữ Trang web Tĩnh, Phiên bản, Sao chép và Mạng Phân phối Nội dung (CloudFront).
-* Triển khai và quản lý Cơ sở dữ liệu Quan hệ với Amazon RDS, bao gồm các chiến lược sao lưu và phục hồi.
-* Triển khai kiến trúc Tính khả dụng cao và Khả năng mở rộng bằng cách sử dụng Mẫu Khởi chạy, Cân bằng Tải Đàn hồi (ELB) và Nhóm Tự động Mở rộng (ASG).
+- Thành thạo môi trường lập trình đám mây AWS Cloud9 và công cụ dòng lệnh AWS CLI để quản trị tài nguyên.
+- Khai thác chuyên sâu dịch vụ lưu trữ đối tượng Amazon S3 (Static Website Hosting, Versioning, Cross-Region Replication) kết hợp mạng phân phối nội dung Amazon CloudFront.
+- Triển khai, kết nối và vận hành cơ sở dữ liệu quan hệ trên Amazon RDS kèm các phương án sao lưu, phục hồi dữ liệu.
+- Thiết kế kiến trúc có tính sẵn sàng cao (High Availability) và khả năng tự động mở rộng (Scalability) với Launch Template, Application Load Balancer (ALB) và Auto Scaling Group (ASG).
 
-### Nhiệm vụ cần thực hiện trong tuần này:
+### Kế hoạch công việc trong tuần:
 
-| Ngày | Nhiệm vụ | Ngày Bắt đầu | Ngày Hoàn thành | Tài liệu Tham khảo |
+| Ngày | Nội dung thực hiện | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | --- | --- | --- | --- |
-| 2 | **Tương tác với Dịch vụ AWS (Cloud9 & CLI)** <br> - Tạo môi trường AWS Cloud9 <br> - Khám phá Tính năng Cơ bản: Sử dụng dòng lệnh, Làm việc với tệp văn bản <br> - Thực hành sử dụng **AWS CLI** để tương tác với các dịch vụ <br> - Dọn dẹp tài nguyên | 15/09/2025 | 15/09/2025 | https://000049.awsstudygroup.com/ |
-| 3 | **Lưu trữ & Phân phối Nội dung (S3 & CloudFront)** <br> - Tạo S3 Bucket & Tải lên Dữ liệu <br> - Cấu hình **Lưu trữ Trang web Tĩnh** trên S3 <br> - Quản lý Chặn Truy cập Công khai & chính sách Đối tượng Công khai <br> - Tăng tốc trang web với tích hợp **Amazon CloudFront** <br> - Triển khai **Phiên bản S3 Bucket** để bảo vệ dữ liệu <br> - Thực hành Di chuyển Đối tượng & **Sao chép Liên Vùng (CRR)** | 16/09/2025 | 16/09/2025 | https://000057.awsstudygroup.com/ |
-| 4 | **Quản lý Cơ sở dữ liệu (Amazon RDS)** <br> - Chuẩn bị Mạng: VPC, Nhóm Bảo mật cho EC2 & RDS, Nhóm Subnet DB <br> - Khởi chạy phiên bản EC2 cho ứng dụng <br> - Cung cấp phiên bản cơ sở dữ liệu **Amazon RDS** <br> - Triển khai ứng dụng và kết nối với RDS <br> - Thực hiện các thao tác **Sao lưu và Phục hồi** cho RDS | 17/09/2025 | 17/09/2025 | https://000005.awsstudygroup.com/ |
-| 5 | **Kiến trúc Tính khả dụng Cao - Phần 1** <br> - Chuẩn bị Hạ tầng: Mạng, EC2, RDS, Triển khai Máy chủ Web <br> - Tạo **Mẫu Khởi chạy** cho việc khởi chạy phiên bản tiêu chuẩn <br> - Cấu hình **Bộ Cân bằng Tải Ứng dụng (ALB)** <br>&emsp; + Tạo Nhóm Mục tiêu <br>&emsp; + Thiết lập trình lắng nghe Bộ Cân bằng Tải <br> - Kiểm tra phân phối lưu lượng Cân bằng Tải | 18/09/2025 | 18/09/2025 | https://000006.awsstudygroup.com/ |
-| 6 | **Kiến trúc Tính khả dụng Cao - Phần 2 (Tự động Mở rộng)** <br> - Tạo **Nhóm Tự động Mở rộng (ASG)** gắn với Bộ Cân bằng Tải <br> - Kiểm tra Giải pháp Mở rộng: <br>&emsp; + **Mở rộng Thủ công**: Điều chỉnh dung lượng thủ công <br>&emsp; + **Mở rộng Theo lịch**: Mở rộng dựa trên thời gian <br>&emsp; + **Mở rộng Động**: Mở rộng dựa trên các chỉ số (CPU, v.v.) <br>&emsp; + **Mở rộng Dự đoán**: Xem xét các chỉ số <br> - Dọn dẹp tất cả tài nguyên | 19/09/2025 | 19/09/2025 | https://000006.awsstudygroup.com/ |
-
-# Thành tựu Tuần 2
-
-## Công cụ Phát triển & CLI
-- Thiết lập thành công **AWS Cloud9** như một IDE dựa trên đám mây.
-- Thành thạo trong việc sử dụng **AWS CLI** để quản lý dịch vụ mà không cần Console.
-- Hiểu được quy trình chỉnh sửa, gỡ lỗi và chạy tập lệnh trực tiếp trên Cloud9.
-
-## Làm chủ Lưu trữ & CDN
-- Triển khai **Trang web Tĩnh** sử dụng Amazon S3.
-- Bảo mật và tối ưu hóa phân phối nội dung toàn cầu bằng **Amazon CloudFront**.
-- Triển khai các chiến lược bảo vệ dữ liệu bằng **Phiên bản S3**.
-- Cấu hình **Sao chép Liên Vùng (CRR)** để khôi phục thảm họa và định vị dữ liệu.
-
-## Quản lý Cơ sở dữ liệu
-- Triển khai cơ sở dữ liệu quan hệ được quản lý hoàn toàn bằng **Amazon RDS**.
-- Kết nối thành công ứng dụng web được lưu trữ trên EC2 với phiên bản RDS.
-- Thực hành các nhiệm vụ bảo trì cơ sở dữ liệu bao gồm tạo **Ảnh chụp nhanh** và thực hiện **Khôi phục Tại thời điểm**.
-- Quản lý bảo mật mạng cho cơ sở dữ liệu bằng Nhóm Bảo mật và Nhóm Subnet DB.
-
-## Tính khả dụng Cao & Khả năng Mở rộng
-- Thiết kế kiến trúc chịu lỗi bằng cách sử dụng **Cân bằng Tải Đàn hồi (ALB)** và **Nhóm Tự động Mở rộng (ASG)**.
-- Tạo **Mẫu Khởi chạy** để xác định cấu hình phiên bản cho tự động mở rộng.
-- Triển khai và kiểm tra các chính sách mở rộng khác nhau:
-    - **Mở rộng Thủ công** để kiểm soát trực tiếp.
-    - **Mở rộng Theo lịch** cho các mẫu lưu lượng có thể dự đoán.
-    - **Mở rộng Động** để phản ứng với các thay đổi tải thời gian thực.
-- Xác minh phân phối lưu lượng và tính khả dụng của ứng dụng trong các sự kiện mở rộng.  
+| 2 | **Tương tác với dịch vụ AWS qua Cloud9 & CLI** <br> - Khởi tạo môi trường phát triển AWS Cloud9 <br> - Làm quen thao tác trên terminal và quản lý tệp mã nguồn trực tiếp trên đám mây <br> - Thực hành điều khiển các dịch vụ AWS bằng **AWS CLI** <br> - Thu hồi và dọn dẹp tài nguyên sau bài lab | 21/09/2026 | 21/09/2026 | https://000049.awsstudygroup.com/ |
+| 3 | **Lưu trữ đối tượng & Phân phối nội dung (S3 & CloudFront)** <br> - Khởi tạo S3 Bucket và tải lên dữ liệu mẫu <br> - Cấu hình **Static Website Hosting** trên Amazon S3 <br> - Kiểm soát quyền truy cập công khai thông qua Block Public Access và Bucket Policy <br> - Tăng tốc độ tải trang toàn cầu bằng **Amazon CloudFront** <br> - Kích hoạt tính năng **S3 Versioning** để chống ghi đè, xóa nhầm dữ liệu <br> - Thực hành di chuyển dữ liệu và cấu hình **Cross-Region Replication (CRR)** | 22/09/2026 | 22/09/2026 | https://000057.awsstudygroup.com/ |
+| 4 | **Quản trị Cơ sở dữ liệu Quan hệ (Amazon RDS)** <br> - Chuẩn bị hạ tầng mạng: VPC, Security Group cho EC2 & RDS, và DB Subnet Group <br> - Khởi chạy máy chủ ứng dụng Amazon EC2 <br> - Triển khai cơ sở dữ liệu **Amazon RDS** trong mạng riêng <br> - Cấu hình kết nối từ ứng dụng web trên EC2 tới RDS <br> - Thực hành các kịch bản **sao lưu (Backup) và khôi phục (Restore)** dữ liệu trên RDS | 23/09/2026 | 23/09/2026 | https://000005.awsstudygroup.com/ |
+| 5 | **Kiến trúc Tính sẵn sàng cao (High Availability) - Phần 1** <br> - Dựng hạ tầng nền tảng gồm mạng VPC, EC2, RDS và máy chủ web <br> - Tạo **Launch Template** để chuẩn hóa cấu hình khởi tạo máy chủ <br> - Cấu hình **Application Load Balancer (ALB)**: <br>&emsp; + Thiết lập Target Group quản lý các máy chủ đích <br>&
