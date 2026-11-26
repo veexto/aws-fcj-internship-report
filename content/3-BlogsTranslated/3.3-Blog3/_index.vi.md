@@ -1,103 +1,109 @@
 ---
-title: "Blog 3: Quản lý Chính sách Tường lửa AWS Tập trung với AlgoSec"
-date: 2025-01-01
+title: "Blog 3: Chạy lại pipeline tuần trước mà ra số khác hẳn: Do code sửa hay do file trên S3 bị ghi đè?"
+date: 2026-11-26
 weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-# Tổng quan: Thách thức của Môi trường Hybrid
+# Tổng quan: Tái lập dữ liệu (Data Reproducibility) với Amazon S3 Versioning và SHA-256
 
-Khi các doanh nghiệp di chuyển workloads từ on-premise lên AWS, việc duy trì một chính sách bảo mật nhất quán trở thành thách thức lớn. **AWS Firewall Manager** giúp quản lý tập trung các quy tắc bảo mật trên cloud, nhưng các tổ chức thường gặp khó khăn trong việc đồng bộ hóa các quy tắc này với hạ tầng firewall truyền thống (on-premise).
+Lúc làm đồ án xử lý dữ liệu hoặc huấn luyện mô hình trên AWS, hầu như ai cũng thiết kế luồng lưu trữ khá gọn như thế này:
 
-Giải pháp mới từ **AlgoSec** (có sẵn trên AWS Marketplace) tích hợp trực tiếp với AWS Firewall Manager, mang lại khả năng hiển thị (visibility) và quản lý thống nhất cho toàn bộ môi trường Hybrid Cloud.
+- Một luồng thu thập dữ liệu (**ETL Ingestion**) hằng ngày ghi đè file mới nhất vào đúng một đường dẫn cố định trên S3, ví dụ: `s3://data-lake-bucket/clean/dataset.csv`
+- Phía sau, Lambda hoặc EC2 đọc đúng đường dẫn đó để tổng hợp báo cáo hoặc chạy mô hình
 
----
+Mọi thứ chạy rất trơn tru cho tới một ngày cần đối soát lại số liệu cũ: bạn chạy lại đúng phiên bản code của tuần trước trên đường dẫn `s3://data-lake-bucket/clean/dataset.csv` nhưng kết quả trả ra lệch hoàn toàn so với báo cáo đã nộp. Lúc này không ai biết lỗi nằm ở đoạn code mới sửa, hay do file `dataset.csv` trên S3 đã bị luồng ETL ghi đè âm thầm vào sáng hôm qua. Nếu không có cơ chế đóng băng phiên bản dữ liệu đầu vào, mọi bài toán kiểm thử, debug hay đối soát (*audit*) đều rơi vào trạng thái "đoán mò".
 
-## 1. Giới thiệu AlgoSec Horizon và ACE
-
-Giải pháp của AlgoSec bao gồm hai thành phần chính được tích hợp:
-1.  **AlgoSec Horizon:** Tập trung vào việc hiển thị, ánh xạ ứng dụng và cung cấp ngữ cảnh kinh doanh cho các luồng mạng.
-2.  **AlgoSec Cloud Enterprise (ACE):** Quản lý chính sách bảo mật, phân tích rủi ro và tự động hóa thay đổi.
-
-Lợi ích khi triển khai qua AWS Marketplace:
-* **Mua sắm đơn giản:** Tích hợp trực tiếp vào hóa đơn AWS (Unified billing).
-* **Triển khai nhanh:** Onboarding được sắp xếp hợp lý để có kết quả ngay lập tức (Time-to-value).
-* **Mở rộng:** Dễ dàng mở rộng quyền kiểm soát chính sách trên mọi môi trường.
+**Nguồn bài viết gốc:** [Xem bài đăng trên Facebook](https://www.facebook.com/share/p/151HogtQqMT/)
 
 ---
 
-## 2. Hiển thị Chính sách Firewall Hợp nhất
+## 1. Tại sao không dùng ETag của S3 để kiểm tra toàn vẹn file?
 
-Sau khi đăng nhập vào ACE console, tab **AWS Firewall Policies** sẽ hiển thị toàn bộ các tường lửa AWS đã triển khai cùng các chính sách liên quan. Người dùng có thể xem chi tiết từng firewall, bao gồm VPC, Availability Zones, và Subnets.
+Khi mới tìm hiểu cách kiểm tra file trên S3 có bị thay đổi hay không, nhiều bạn (trong đó có mình) nghĩ ngay tới trường `ETag` mà S3 trả về khi gọi API. Nhưng đây là một cái bẫy khá kinh điển:
 
-![The main account page shows the firewalls, the policy sets, and the rules](/images/3-BlogsTranslated/3.3.1.png)
+- **Chỉ đúng với Single-part Upload & SSE-S3:** S3 chỉ trả về `ETag` là mã băm **MD5** của nội dung file khi bạn upload một lần duy nhất (*single-part upload*) và dùng mã hóa mặc định `SSE-S3`
+- **Sai lệch với Multipart Upload & SSE-KMS:** Ngay khi file đủ lớn để SDK tự động chia nhỏ thành nhiều phần (**Multipart Upload**) hoặc bucket bật mã hóa bằng AWS KMS (**SSE-KMS**), giá trị `ETag` không còn là MD5 của toàn bộ file nữa (với Multipart Upload, `ETag` là MD5 của chuỗi ghép các MD5 từng mảnh kèm hậu tố số mảnh, ví dụ `"...-5"`)
 
-> [Figure 1] Trang chính hiển thị danh sách các Firewall, bộ chính sách (Policy Sets) và các quy tắc (Rules).
-
-Khả năng hiển thị ngữ cảnh là điểm mạnh của giải pháp. Khi di chuột qua tên một firewall, hệ thống sẽ hiển thị ngay ngữ cảnh VPC và các ứng dụng liên quan.
-
-![VPC context shown while hovering over the firewall name test-firewall-2](/images/3-BlogsTranslated/3.3.2.png)
-
-> [Figure 2] Ngữ cảnh VPC hiển thị khi di chuột qua tên Firewall, giúp người quản trị hiểu ngay vị trí và phạm vi ảnh hưởng.
+Vì vậy, nếu lấy mã băm tính từ file gốc đem so với `ETag` của S3, hệ thống sẽ báo lệch kể cả khi file hoàn toàn nguyên vẹn. Thay vì phụ thuộc vào `ETag`, cách làm chuẩn xác là dùng **SHA-256** (S3 hỗ trợ sẵn tham số `ChecksumAlgorithm='SHA256'` khi upload hoặc tự tính bằng thư viện chuẩn ở tầng ứng dụng) đi kèm với **S3 Versioning**.
 
 ---
 
-## 3. Phân tích Chi tiết Rule và Ứng dụng
+## 2. Cơ chế kết hợp S3 Versioning + Manifest SHA-256
 
-Các chính sách AWS Firewall thường bao gồm hai nhóm quy tắc: **Stateless** (không trạng thái) và **Stateful** (có trạng thái). AlgoSec cho phép mở rộng (expand) để xem chi tiết từng nhóm quy tắc này.
+Để bất kỳ lần chạy pipeline nào trong quá khứ cũng có thể tái lập chính xác 100% dữ liệu đầu vào tại thời điểm đó, hệ thống cần 3 mảnh ghép chính:
 
-![The expanded view of a policy set shows the existing rule groups](/images/3-BlogsTranslated/3.3.3.png)
+### 2.1. Bật S3 Versioning trên bucket lưu dữ liệu
+Mỗi lần luồng ETL ghi đè lên key `clean/dataset.csv`, S3 không xóa dữ liệu cũ mà tự động cấp cho bản ghi mới một mã `VersionId` duy nhất (ví dụ `v1`, `v2`). Các phiên bản cũ chuyển sang trạng thái *Noncurrent Version* và hoàn toàn bất biến (*immutable* — không ai sửa nội dung bên trong một `VersionId` đã tạo được).
 
-> [Figure 3] Chế độ xem mở rộng hiển thị chi tiết các nhóm quy tắc Stateless và Stateful bên trong một bộ chính sách.
+### 2.2. Lưu bảng kê (Manifest) vào Amazon DynamoDB
+Mỗi khi pipeline bắt đầu một lượt chạy (*Run ID*), ứng dụng ghi lại một bản ghi Manifest chứa: `Bucket`, `Key`, mã `VersionId` cụ thể đã đọc và chuỗi băm `SHA-256` của dữ liệu đó.
 
-Quan trọng hơn, AlgoSec Horizon liên kết các thông tin kỹ thuật này với **ngữ cảnh kinh doanh**. Người dùng có thể xem sơ đồ ứng dụng (Application Diagram), chủ sở hữu ứng dụng (Application Owners), và trạng thái kết nối từ on-premise lên cloud.
+### 2.3. Đọc theo `VersionId` cố định và kiểm tra SHA-256 trước khi xử lý
+Khi cần chạy lại lượt xử lý cũ để đối soát, pipeline không đọc đường dẫn mặc định (vốn luôn trỏ vào bản mới nhất `v2`) mà đọc Manifest từ DynamoDB, gọi API `GetObject` kèm đúng tham số `VersionId=v1`, tự tính lại SHA-256 của luồng byte tải về và đối chiếu với Manifest. Nếu khớp mới cho chạy tiếp; nếu lệch hoặc phiên bản bị thiếu, pipeline dừng ngay lập tức (**Fail Fast**) thay vì xuất ra báo cáo sai.
 
-![Application details include status, contact details, and diagram](/images/3-BlogsTranslated/3.3.4.png)
+---
 
-> [Figure 4] Chế độ xem ứng dụng (Application View) hiển thị sơ đồ kết nối, thông tin liên hệ và trạng thái tuân thủ của ứng dụng kinh doanh.
+## 3. Kiến trúc Tái Lập Dữ Liệu Pipeline
+
+![Kiến trúc tái lập dữ liệu pipeline với Amazon S3 Versioning và SHA-256](/images/blog-3-architecture.png)
+
+- **Luồng nạp dữ liệu (ETL Ingestion):** Liên tục ghi đè file mới lên Amazon S3. Nhờ bật Versioning, bản cũ `v1` vẫn được giữ nguyên song song với bản mới `v2`
+- **Bước 1 (Manifest DB):** Pipeline Runner ghi hoặc đọc thông tin định danh (`VersionId` + mã `SHA-256`) trên Amazon DynamoDB
+- **Bước 2 (`GetObjectVersion`):** Pipeline Runner tải đúng phiên bản dữ liệu đã ghim (`v1`) từ S3 thay vì tải nhầm bản mới nhất (`v2`)
+- **Bước 3 (Integrity Check):** So sánh mã `SHA-256` thực tế với Manifest. Khớp mới xử lý; lệch thì ngắt luồng ngay để bảo vệ tính chính xác của đầu ra
+- **Dọn dẹp tự động:** S3 Lifecycle Rule định kỳ dọn các phiên bản cũ quá hạn (`NoncurrentVersionExpiration`) để kiểm soát chi phí lưu trữ
+
+---
+
+## 4. Bốn "Bẫy" Kỹ Thuật Rất Dễ Dính Khi Triển Khai
+
+### 4.1. Cấp quyền `s3:GetObject` nhưng quên `s3:GetObjectVersion`
+Trong IAM Policy, quyền `s3:GetObject` chỉ cho phép đọc phiên bản mới nhất (*Current Version*). Ngay khi code của bạn truyền thêm tham số `VersionId` vào lệnh tải file để tái lập dữ liệu cũ, AWS sẽ chặn ngay với lỗi `AccessDenied` nếu IAM Role thiếu quyền `s3:GetObjectVersion`.
+
+### 4.2. Hóa đơn S3 tăng âm thầm do không dọn Noncurrent Versions
+Tại region Singapore (`ap-southeast-1`), mỗi phiên bản cũ trên S3 Standard vẫn bị tính phí lưu trữ đầy đủ như file bình thường (`0,025 USD/GB/tháng` cho 50 TB đầu tiên). Nếu một bộ dữ liệu `10 GB` bị ghi đè mỗi ngày trong suốt 30 ngày, bạn đang trả tiền cho `300 GB` (`7,50 USD/tháng` thay vì `0,25 USD/tháng`), dù trên giao diện S3 mặc định (khi chưa bật nút *Show versions*) bạn chỉ thấy đúng 1 file. Luôn cấu hình **S3 Lifecycle Rule** để chuyển các phiên bản cũ sang tầng lưu trữ rẻ hơn (`NoncurrentVersionTransition`) hoặc xóa sau số ngày quy định (`NoncurrentVersionExpiration`).
+
+### 4.3. Xóa file theo cách thông thường tưởng là giải phóng được dung lượng
+Khi bucket đã bật Versioning, nếu bạn gọi lệnh xóa `DeleteObject` mà không truyền kèm `VersionId`, S3 không hề xóa dữ liệu thật mà chỉ chèn thêm một nhãn **Delete Marker** lên trên cùng. Các phiên bản cũ bên dưới vẫn nằm nguyên trên ổ cứng và vẫn tính tiền mỗi tháng cho tới khi bạn xóa đích danh từng `VersionId`.
+
+### 4.4. Tin vào `ETag` khi file upload qua Multipart Upload hoặc SSE-KMS
+Như đã phân tích ở mục 1, hãy luôn lưu và kiểm tra bằng **SHA-256** (qua tính năng `ChecksumSHA256` tích hợp sẵn của S3 hoặc tính trực tiếp trên luồng dữ liệu) thay vì lấy `ETag` làm chữ ký toàn vẹn.
+
+---
+
+## 5. Cách Kiểm Chứng Nhanh Trong 30 Giây
+
+- **Kiểm tra trên S3 Console:** Mở bucket → bật công tắc **"Show versions"** ở góc trên danh sách file → xác nhận mỗi lần ghi đè đều tạo ra một dòng Version ID riêng biệt thay vì mất bản cũ
+- **Kiểm tra kịch bản Fail Fast:** Thử sửa tay một ký tự trong giá trị `SHA-256` lưu trên DynamoDB Manifest rồi kích hoạt chạy lại pipeline → hệ thống phải tự động từ chối xử lý và báo lỗi sai lệch toàn vẹn dữ liệu
 
 ---
 
 ## Kết luận
 
-Sự kết hợp giữa AWS Firewall Manager và AlgoSec mang lại một "tầm nhìn duy nhất" (single pane of glass) cho đội ngũ bảo mật. Thay vì quản lý rời rạc, giờ đây họ có thể:
-* Phân tích cấu hình AWS giống như firewall truyền thống.
-* Mô phỏng thay đổi (Change simulation) trước khi áp dụng để tránh gián đoạn kinh doanh.
-* Đảm bảo tuân thủ (Compliance) liên tục trên toàn bộ môi trường Hybrid.
+Để đảm bảo tính nhất quán và khả năng tái lập dữ liệu cho các hệ thống ETL hoặc AI/ML trên AWS, cần lưu ý 3 nguyên tắc cốt lõi:
+
+- **Không phụ thuộc vào đường dẫn mặc định:** Đừng chỉ đọc đường dẫn S3 mặc định nếu muốn tái lập lại kết quả của các lượt chạy pipeline trong quá khứ
+- **Khóa chặt phiên bản dữ liệu đầu vào:** Bật **S3 Versioning** kết hợp lưu Manifest gồm `VersionId` + mã băm `SHA-256` (thay vì `ETag`)
+- **Phân quyền & tối ưu chi phí:** Nhớ cấp đủ quyền `s3:GetObjectVersion` trong IAM và cài sẵn **S3 Lifecycle Rule** để tránh hóa đơn lưu trữ phình to vì các phiên bản cũ
+
+---
+
+**Tài liệu tham khảo:**  
+- Using Versioning in S3 Buckets: https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html  
+- Checking Object Integrity in Amazon S3 (SHA-256): https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html  
+- Managing Noncurrent Versions with S3 Lifecycle: https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-configuration-examples.html  
+- Amazon S3 Pricing (ap-southeast-1): https://aws.amazon.com/s3/pricing/
 
 ---
 
 ## Tác giả
 
 <div style="display: flex; align-items: flex-start; margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
-  <img src="/images/3-BlogsTranslated/JosephHallman.png" alt="Joseph Hallman" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px; border-radius: 5px;">
+  <img src="/images/avatar.png" alt="Tác giả" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px; border-radius: 5px;">
   <div>
-    <h3 style="margin-top: 0;">Joseph Hallman</h3>
-    <p>Joseph is a Product Marketing Manager at AlgoSec with over 20 years of experience in networking and data center markets. He has worked at both startups and global enterprises, bringing expertise in sales, product management, and marketing strategy.</p>
-  </div>
-</div>
-
-<div style="display: flex; align-items: flex-start; margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
-  <img src="/images/3-BlogsTranslated/AmitGaur.png" alt="Amit Gaur" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px; border-radius: 5px;">
-  <div>
-    <h3 style="margin-top: 0;">Amit Gaur</h3>
-    <p>Amit is a Cloud Infrastructure Architect at AWS, specializing in network architecture design. He helps customers build highly scalable and resilient environments on AWS.</p>
-  </div>
-</div>
-
-<div style="display: flex; align-items: flex-start; margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
-  <img src="/images/3-BlogsTranslated/SrivalsanMannoorSudhagar.png" alt="Srivalsan Mannoor Sudhagar" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px; border-radius: 5px;">
-  <div>
-    <h3 style="margin-top: 0;">Srivalsan Mannoor Sudhagar</h3>
-    <p>Srivalsan is a Sr. Cloud Infrastructure Architect at Amazon Web Services, Professional Services who brings expertise in Cloud Infrastructure and MLOps platforms.</p>
-  </div>
-</div>
-
-<div style="display: flex; align-items: flex-start; margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
-  <img src="/images/3-BlogsTranslated/SaleemMuhammad.png" alt="Saleem Muhammad" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px; border-radius: 5px;">
-  <div>
-    <h3 style="margin-top: 0;">Saleem Muhammad</h3>
-    <p>Saleem is a Senior Manager of Product Management in AWS Network & Application Protection. He is passionate about building solutions that help customers to secure mission critical workloads.</p>
+    <h3 style="margin-top: 0;">AWS First Cloud Journey Intern</h3>
+    <p>Sinh viên thực tập chương trình AWS First Cloud Journey (FCJ), đam mê kiến trúc hệ thống phân tán, tối ưu hiệu năng và chia sẻ kinh nghiệm thực hành triển khai thực tế trên nền tảng điện toán đám mây AWS.</p>
   </div>
 </div>
