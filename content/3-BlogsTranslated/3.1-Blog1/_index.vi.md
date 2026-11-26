@@ -107,3 +107,5 @@ Sau khi nâng cấp kiến trúc từ mô hình Web Scale cơ bản lên **Read-
     <p>Sinh viên thực tập chương trình AWS First Cloud Journey (FCJ), đam mê kiến trúc hệ thống phân tán, tối ưu hiệu năng và chia sẻ kinh nghiệm thực hành triển khai thực tế trên nền tảng điện toán đám mây AWS.</p>
   </div>
 </div>
+
+![Kiến trúc tối ưu luồng đọc với Amazon ElastiCache Redis và RDS Read Replicas](/images/3-Blogs/blog1-architecture.png)
