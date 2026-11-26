@@ -57,7 +57,7 @@ Với những truy vấn đọc phức tạp hơn (tìm kiếm, lọc theo đi�
 
 **Lưu ý quan trọng:** Với RDS for MySQL/PostgreSQL thông thường, mỗi Read Replica có một endpoint riêng, không có một "reader endpoint" tự cân bằng tải. Nếu tạo nhiều replica, bạn cần tự chia tải (luân phiên giữa các endpoint ở ứng dụng hoặc dùng Route 53 weighted records). Reader endpoint tự động chỉ có ở **Amazon Aurora** (và RDS Multi-AZ DB cluster).
 
-![Kiến trúc tối ưu luồng đọc với ElastiCache Redis và RDS Read Replicas](/images/blog-1-architecture.png)
+![Kiến trúc tối ưu luồng đọc với ElastiCache Redis và RDS Read Replicas](/static/images/3-BlogsTranslated/blog-1-architecture.png)
 
 ---
 
@@ -107,5 +107,3 @@ Sau khi nâng cấp kiến trúc từ mô hình Web Scale cơ bản lên **Read-
     <p>Sinh viên thực tập chương trình AWS First Cloud Journey (FCJ), đam mê kiến trúc hệ thống phân tán, tối ưu hiệu năng và chia sẻ kinh nghiệm thực hành triển khai thực tế trên nền tảng điện toán đám mây AWS.</p>
   </div>
 </div>
-
-![Kiến trúc tối ưu luồng đọc với Amazon ElastiCache Redis và RDS Read Replicas](/images/3-Blogs/blog1-architecture.png)
