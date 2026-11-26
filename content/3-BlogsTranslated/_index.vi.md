@@ -1,26 +1,109 @@
 ---
-title: "Blog Dịch Sang Tiếng Việt"
-date: 2025-01-01
+title: "Blog 3: Chạy lại pipeline tuần trước mà ra số khác hẳn: Do code sửa hay do file trên S3 bị ghi đè?"
+date: 2026-11-26
 weight: 3
 chapter: false
-pre: " <b> 3. </b> "
+pre: " <b> 3.3. </b> "
 ---
 
+# Tổng quan: Tái lập dữ liệu (Data Reproducibility) với Amazon S3 Versioning và SHA-256
 
-### [Blog 1 - AWS được vinh danh là Nhà lãnh đạo trong Báo cáo Magic Quadrant Gartner 2025 cho Dịch vụ Nền tảng Đám mây Chiến lược trong 15 năm liên tiếp](3.1-Blog1/)
-Bài viết này nhấn mạnh việc **AWS** một lần nữa được công nhận là **Nhà lãnh đạo (Leader)** trong **Báo cáo Magic Quadrant Gartner 2025 về Dịch vụ Nền tảng Đám mây Chiến lược**, đánh dấu **15 năm liên tiếp** dẫn đầu. Bài viết giải thích lý do AWS đạt được danh hiệu này nhờ **khả năng thực thi mạnh mẽ**, **tầm nhìn chiến lược toàn diện**, và **danh mục dịch vụ đám mây phong phú nhất**. Ngoài ra, bài viết cũng đề cập đến việc AWS tiếp tục đầu tư vào **AI/ML, phân tích dữ liệu, bảo mật, và hạ tầng toàn cầu** để hỗ trợ khách hàng từ doanh nghiệp khởi nghiệp đến tổ chức công xây dựng và đổi mới trên nền tảng đám mây.
+Lúc làm đồ án xử lý dữ liệu hoặc huấn luyện mô hình trên AWS, hầu như ai cũng thiết kế luồng lưu trữ khá gọn như thế này:
 
-### [Blog 2 - Mô hình Qwen hiện đã có sẵn trong Amazon Bedrock](3.2-Blog2/)
-Bài viết thông báo rằng **các mô hình Qwen**, được phát triển bởi **Alibaba Cloud**, hiện đã có sẵn trong **Amazon Bedrock**, cho phép khách hàng xây dựng và mở rộng các ứng dụng **AI sinh (Generative AI)** với khả năng **xử lý ngôn ngữ tự nhiên (NLP) nâng cao**, **hỗ trợ đa ngôn ngữ**, **lý luận mạnh mẽ**, và **tích hợp liền mạch với các dịch vụ AWS** — tất cả mà không cần quản lý hạ tầng.
+- Một luồng thu thập dữ liệu (**ETL Ingestion**) hằng ngày ghi đè file mới nhất vào đúng một đường dẫn cố định trên S3, ví dụ: `s3://data-lake-bucket/clean/dataset.csv`
+- Phía sau, Lambda hoặc EC2 đọc đúng đường dẫn đó để tổng hợp báo cáo hoặc chạy mô hình
 
-### [Blog 3 - Quản lý Chính sách Tường lửa AWS Tập trung với AlgoSec](3.3-Blog3/)
-Bài viết này giới thiệu giải pháp từ **AlgoSec** (có sẵn trên AWS Marketplace) tích hợp với **AWS Firewall Manager** để cung cấp khả năng quản lý và hiển thị thống nhất trên môi trường **Hybrid Cloud**. Giải pháp kết hợp **AlgoSec Horizon** (tập trung vào khả năng hiển thị và ánh xạ ứng dụng) và **AlgoSec Cloud Enterprise (ACE)** (quản lý chính sách bảo mật và phân tích rủi ro). Các lợi ích chính bao gồm khả năng hiển thị chính sách tường lửa tập trung trên cả AWS và hạ tầng on-premise, ánh xạ ứng dụng kinh doanh theo ngữ cảnh, phân tích chi tiết các rule groups Stateless và Stateful, và khả năng mô phỏng thay đổi trước khi áp dụng để tránh gián đoạn kinh doanh—mang đến cho đội ngũ bảo mật một "bảng điều khiển duy nhất" để quản trị tường lửa toàn diện.
+Mọi thứ chạy rất trơn tru cho tới một ngày cần đối soát lại số liệu cũ: bạn chạy lại đúng phiên bản code của tuần trước trên đường dẫn `s3://data-lake-bucket/clean/dataset.csv` nhưng kết quả trả ra lệch hoàn toàn so với báo cáo đã nộp. Lúc này không ai biết lỗi nằm ở đoạn code mới sửa, hay do file `dataset.csv` trên S3 đã bị luồng ETL ghi đè âm thầm vào sáng hôm qua. Nếu không có cơ chế đóng băng phiên bản dữ liệu đầu vào, mọi bài toán kiểm thử, debug hay đối soát (*audit*) đều rơi vào trạng thái "đoán mò".
 
-### [Blog 4 - Hướng dẫn cốt lõi về Quản trị Đám mây tại AWS re:Invent 2025](3.4-Blog4/)
-Bài viết này giới thiệu tổng quan về **chủ đề Cloud Governance** trong sự kiện **AWS re:Invent 2025**, thể hiện cách quản trị đám mây đang chuyển từ nghĩa vụ tuân thủ sang **động lực chiến lược cho đổi mới kinh doanh**. Bài viết tập trung vào bốn chủ đề chính gồm **AI sinh và quản trị thông minh**, **hiệu quả vận hành và tối ưu chi phí**, **bảo mật và tự động hóa**, và **đa đám mây cùng chủ quyền dữ liệu**. Ngoài ra, bài viết cũng giới thiệu các phiên học quan trọng về **policy-as-code**, **tự động hóa tuân thủ bằng AI**, và **chiến lược quản trị toàn cầu**, giúp tổ chức nâng cao năng lực quản trị hiện đại, mở rộng và tự động hóa trên môi trường đám mây phức tạp.
+**Nguồn bài viết gốc:** [Xem bài đăng trên Facebook](https://www.facebook.com/share/p/151HogtQqMT/)
 
-### [Blog 5 - Chiến lược Mua sắm Theo Giải pháp trên AWS Marketplace](3.5-Blog5/)
-Bài viết này công bố sự chuyển đổi chiến lược của AWS Marketplace sang **mua sắm theo giải pháp (solution-centric procurement)**, giới thiệu **Multi-product solutions** cho phép các Đối tác đóng gói phần mềm, dịch vụ và dữ liệu từ nhiều nhà cung cấp thành một gói giải pháp toàn diện. Sự chuyển đổi này giúp doanh nghiệp mua các kết quả kinh doanh hoàn chỉnh (như giải pháp Trung tâm Vận hành Bảo mật đầy đủ) thay vì phải mua từng công cụ riêng lẻ. Lợi ích chính bao gồm điểm đàm phán duy nhất, tùy chỉnh linh hoạt từng thành phần, quản trị tập trung và quy trình mua sắm đơn giản hóa. Tính năng này hỗ trợ ISV, Channel Partners và System Integrators tạo các gói sản phẩm kết hợp, trong khi tìm kiếm được tăng cường bằng Generative AI giúp khách hàng khám phá giải pháp dựa trên use case và ngành công nghiệp thay vì chỉ tên sản phẩm.
+---
 
-### [Blog 6 - 10 Công bố Hàng đầu về AWS Cloud Operations 2025](3.6-Blog6/)
-Bài viết này tổng hợp **10 công bố quan trọng nhất** về **AWS Cloud Operations** tại **re:Invent 2025**, tập trung vào việc ứng dụng **Generative AI** để cải thiện quan sát và xử lý sự cố, đồng thời đơn giản hóa quản lý dữ liệu vận hành quy mô lớn. Các tính năng nổi bật bao gồm **quan sát Generative AI trên CloudWatch**, **phân tích nguyên nhân gốc rễ tự động (5 Whys)**, **tích hợp GitHub Actions**, **tập trung hóa log và database đa tài khoản/đa vùng**, **Real User Monitoring cho Mobile**, và **CloudTrail Event Aggregation**. Những cải tiến này giúp người vận hành chuyển từ trạng thái bị động sang chủ động kiểm soát hệ thống bằng AI và tự động hóa.
+## 1. Tại sao không dùng ETag của S3 để kiểm tra toàn vẹn file?
+
+Khi mới tìm hiểu cách kiểm tra file trên S3 có bị thay đổi hay không, nhiều bạn (trong đó có mình) nghĩ ngay tới trường `ETag` mà S3 trả về khi gọi API. Nhưng đây là một cái bẫy khá kinh điển:
+
+- **Chỉ đúng với Single-part Upload & SSE-S3:** S3 chỉ trả về `ETag` là mã băm **MD5** của nội dung file khi bạn upload một lần duy nhất (*single-part upload*) và dùng mã hóa mặc định `SSE-S3`
+- **Sai lệch với Multipart Upload & SSE-KMS:** Ngay khi file đủ lớn để SDK tự động chia nhỏ thành nhiều phần (**Multipart Upload**) hoặc bucket bật mã hóa bằng AWS KMS (**SSE-KMS**), giá trị `ETag` không còn là MD5 của toàn bộ file nữa (với Multipart Upload, `ETag` là MD5 của chuỗi ghép các MD5 từng mảnh kèm hậu tố số mảnh, ví dụ `"...-5"`)
+
+Vì vậy, nếu lấy mã băm tính từ file gốc đem so với `ETag` của S3, hệ thống sẽ báo lệch kể cả khi file hoàn toàn nguyên vẹn. Thay vì phụ thuộc vào `ETag`, cách làm chuẩn xác là dùng **SHA-256** (S3 hỗ trợ sẵn tham số `ChecksumAlgorithm='SHA256'` khi upload hoặc tự tính bằng thư viện chuẩn ở tầng ứng dụng) đi kèm với **S3 Versioning**.
+
+---
+
+## 2. Cơ chế kết hợp S3 Versioning + Manifest SHA-256
+
+Để bất kỳ lần chạy pipeline nào trong quá khứ cũng có thể tái lập chính xác 100% dữ liệu đầu vào tại thời điểm đó, hệ thống cần 3 mảnh ghép chính:
+
+### 2.1. Bật S3 Versioning trên bucket lưu dữ liệu
+Mỗi lần luồng ETL ghi đè lên key `clean/dataset.csv`, S3 không xóa dữ liệu cũ mà tự động cấp cho bản ghi mới một mã `VersionId` duy nhất (ví dụ `v1`, `v2`). Các phiên bản cũ chuyển sang trạng thái *Noncurrent Version* và hoàn toàn bất biến (*immutable* — không ai sửa nội dung bên trong một `VersionId` đã tạo được).
+
+### 2.2. Lưu bảng kê (Manifest) vào Amazon DynamoDB
+Mỗi khi pipeline bắt đầu một lượt chạy (*Run ID*), ứng dụng ghi lại một bản ghi Manifest chứa: `Bucket`, `Key`, mã `VersionId` cụ thể đã đọc và chuỗi băm `SHA-256` của dữ liệu đó.
+
+### 2.3. Đọc theo `VersionId` cố định và kiểm tra SHA-256 trước khi xử lý
+Khi cần chạy lại lượt xử lý cũ để đối soát, pipeline không đọc đường dẫn mặc định (vốn luôn trỏ vào bản mới nhất `v2`) mà đọc Manifest từ DynamoDB, gọi API `GetObject` kèm đúng tham số `VersionId=v1`, tự tính lại SHA-256 của luồng byte tải về và đối chiếu với Manifest. Nếu khớp mới cho chạy tiếp; nếu lệch hoặc phiên bản bị thiếu, pipeline dừng ngay lập tức (**Fail Fast**) thay vì xuất ra báo cáo sai.
+
+---
+
+## 3. Kiến trúc Tái Lập Dữ Liệu Pipeline
+
+![Kiến trúc tái lập dữ liệu pipeline với Amazon S3 Versioning và SHA-256](/images/blog-3-architecture.png)
+
+- **Luồng nạp dữ liệu (ETL Ingestion):** Liên tục ghi đè file mới lên Amazon S3. Nhờ bật Versioning, bản cũ `v1` vẫn được giữ nguyên song song với bản mới `v2`
+- **Bước 1 (Manifest DB):** Pipeline Runner ghi hoặc đọc thông tin định danh (`VersionId` + mã `SHA-256`) trên Amazon DynamoDB
+- **Bước 2 (`GetObjectVersion`):** Pipeline Runner tải đúng phiên bản dữ liệu đã ghim (`v1`) từ S3 thay vì tải nhầm bản mới nhất (`v2`)
+- **Bước 3 (Integrity Check):** So sánh mã `SHA-256` thực tế với Manifest. Khớp mới xử lý; lệch thì ngắt luồng ngay để bảo vệ tính chính xác của đầu ra
+- **Dọn dẹp tự động:** S3 Lifecycle Rule định kỳ dọn các phiên bản cũ quá hạn (`NoncurrentVersionExpiration`) để kiểm soát chi phí lưu trữ
+
+---
+
+## 4. Bốn "Bẫy" Kỹ Thuật Rất Dễ Dính Khi Triển Khai
+
+### 4.1. Cấp quyền `s3:GetObject` nhưng quên `s3:GetObjectVersion`
+Trong IAM Policy, quyền `s3:GetObject` chỉ cho phép đọc phiên bản mới nhất (*Current Version*). Ngay khi code của bạn truyền thêm tham số `VersionId` vào lệnh tải file để tái lập dữ liệu cũ, AWS sẽ chặn ngay với lỗi `AccessDenied` nếu IAM Role thiếu quyền `s3:GetObjectVersion`.
+
+### 4.2. Hóa đơn S3 tăng âm thầm do không dọn Noncurrent Versions
+Tại region Singapore (`ap-southeast-1`), mỗi phiên bản cũ trên S3 Standard vẫn bị tính phí lưu trữ đầy đủ như file bình thường (`0,025 USD/GB/tháng` cho 50 TB đầu tiên). Nếu một bộ dữ liệu `10 GB` bị ghi đè mỗi ngày trong suốt 30 ngày, bạn đang trả tiền cho `300 GB` (`7,50 USD/tháng` thay vì `0,25 USD/tháng`), dù trên giao diện S3 mặc định (khi chưa bật nút *Show versions*) bạn chỉ thấy đúng 1 file. Luôn cấu hình **S3 Lifecycle Rule** để chuyển các phiên bản cũ sang tầng lưu trữ rẻ hơn (`NoncurrentVersionTransition`) hoặc xóa sau số ngày quy định (`NoncurrentVersionExpiration`).
+
+### 4.3. Xóa file theo cách thông thường tưởng là giải phóng được dung lượng
+Khi bucket đã bật Versioning, nếu bạn gọi lệnh xóa `DeleteObject` mà không truyền kèm `VersionId`, S3 không hề xóa dữ liệu thật mà chỉ chèn thêm một nhãn **Delete Marker** lên trên cùng. Các phiên bản cũ bên dưới vẫn nằm nguyên trên ổ cứng và vẫn tính tiền mỗi tháng cho tới khi bạn xóa đích danh từng `VersionId`.
+
+### 4.4. Tin vào `ETag` khi file upload qua Multipart Upload hoặc SSE-KMS
+Như đã phân tích ở mục 1, hãy luôn lưu và kiểm tra bằng **SHA-256** (qua tính năng `ChecksumSHA256` tích hợp sẵn của S3 hoặc tính trực tiếp trên luồng dữ liệu) thay vì lấy `ETag` làm chữ ký toàn vẹn.
+
+---
+
+## 5. Cách Kiểm Chứng Nhanh Trong 30 Giây
+
+- **Kiểm tra trên S3 Console:** Mở bucket → bật công tắc **"Show versions"** ở góc trên danh sách file → xác nhận mỗi lần ghi đè đều tạo ra một dòng Version ID riêng biệt thay vì mất bản cũ
+- **Kiểm tra kịch bản Fail Fast:** Thử sửa tay một ký tự trong giá trị `SHA-256` lưu trên DynamoDB Manifest rồi kích hoạt chạy lại pipeline → hệ thống phải tự động từ chối xử lý và báo lỗi sai lệch toàn vẹn dữ liệu
+
+---
+
+## Kết luận
+
+Để đảm bảo tính nhất quán và khả năng tái lập dữ liệu cho các hệ thống ETL hoặc AI/ML trên AWS, cần lưu ý 3 nguyên tắc cốt lõi:
+
+- **Không phụ thuộc vào đường dẫn mặc định:** Đừng chỉ đọc đường dẫn S3 mặc định nếu muốn tái lập lại kết quả của các lượt chạy pipeline trong quá khứ
+- **Khóa chặt phiên bản dữ liệu đầu vào:** Bật **S3 Versioning** kết hợp lưu Manifest gồm `VersionId` + mã băm `SHA-256` (thay vì `ETag`)
+- **Phân quyền & tối ưu chi phí:** Nhớ cấp đủ quyền `s3:GetObjectVersion` trong IAM và cài sẵn **S3 Lifecycle Rule** để tránh hóa đơn lưu trữ phình to vì các phiên bản cũ
+
+---
+
+**Tài liệu tham khảo:**  
+- Using Versioning in S3 Buckets: https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html  
+- Checking Object Integrity in Amazon S3 (SHA-256): https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html  
+- Managing Noncurrent Versions with S3 Lifecycle: https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-configuration-examples.html  
+- Amazon S3 Pricing (ap-southeast-1): https://aws.amazon.com/s3/pricing/
+
+---
+
+## Tác giả
+
+<div style="display: flex; align-items: flex-start; margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+  <img src="/images/avatar.png" alt="Tác giả" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px; border-radius: 5px;">
+  <div>
+    <h3 style="margin-top: 0;">AWS First Cloud Journey Intern</h3>
+    <p>Sinh viên thực tập chương trình AWS First Cloud Journey (FCJ), đam mê kiến trúc hệ thống phân tán, tối ưu hiệu năng và chia sẻ kinh nghiệm thực hành triển khai thực tế trên nền tảng điện toán đám mây AWS.</p>
+  </div>
+</div>
