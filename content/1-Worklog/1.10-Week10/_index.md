@@ -1,52 +1,50 @@
 ---
-title: "Week 10 Worklog "
-date: 2025-11-10
+title: "Week 10 Worklog"
+date: 2026-11-16
 weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
 
-### Week 10 Objectives
-* Deepen backend security practices and understand identity flows in cloud environments.
-* Strengthen AWS Cognito integration and apply token-based authentication.
-* Implement secure data handling with DynamoDB (validation, access patterns, indexes).
-* Practice API Gateway authorizers, throttling, and rate limiting.
-* Start connecting backend functions into a complete end-to-end workflow.
+### Week 10 Objectives:
+- Harden backend security practices and standardize cloud identity and access workflows.
+- Complete **Amazon Cognito** integration with token-based authentication and session refresh flows.
+- Enforce strict data validation, access pattern modeling, and secondary indexing on **Amazon DynamoDB**.
+- Implement custom **API Gateway** authorizers alongside request throttling and rate limiting.
+- Connect core serverless components into a cohesive end-to-end backend pipeline.
 
 ---
 
-### Tasks to be carried out this week
+### Weekly Action Plan:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 |-----|------|-------------|------------------|--------------------|
-| 2 | Study authentication/authorization flows (JWT, Access Token, ID Token). <br>- Review OWASP API security. | 10/11/2025 | 10/11/2025 | AWS Study Group |
-| 3 | Deep dive into **Cognito User Pool** and **Identity Pool**. <br>- Implement login, signup, refresh token flow. | 11/11/2025 | 11/11/2025 | AWS Study Group |
-| 4 | Implement **Lambda Authorizer** and attach it to API Gateway routes. <br>- Add permission policies. | 12/11/2025 | 12/11/2025 | AWS Study Group |
-| 5 | Strengthen DynamoDB integration: <br>- Add secondary indexes. <br>- Improve validation & error handling. | 13/11/2025 | 13/11/2025 | AWS Study Group |
-| 6 | Build end-to-end testing: <br>- Client → API Gateway → Lambda → DynamoDB → Response. | 14/11/2025 | 14/11/2025 | AWS Study Group |
+| 2 | - Analyze token-based authentication and authorization flows (JWT structure, Access Token, ID Token) <br>- Review **OWASP API Security Top 10** threat vectors and mitigations | 16/11/2026 | 16/11/2026 | AWS Study Group |
+| 3 | - Deep dive into **Cognito User Pools** vs. **Identity Pools** <br>- Implement complete user sign-up, sign-in, and refresh token lifecycle flows | 17/11/2026 | 17/11/2026 | AWS Study Group |
+| 4 | - Build a custom **Lambda Authorizer** and attach it to protected API Gateway routes <br>- Configure least-privilege IAM invocation and policy generation permissions | 18/11/2026 | 18/11/2026 | AWS Study Group |
+| 5 | - Upgrade **Amazon DynamoDB** table architecture: <br>&emsp; + Provision Global Secondary Indexes (GSIs) for multi-attribute queries <br>&emsp; + Harden input schema validation and standardized error handling | 19/11/2026 | 19/11/2026 | AWS Study Group |
+| 6 | - Execute full end-to-end integration testing: <br>&emsp; + Client → API Gateway → Lambda Authorizer / Handler → DynamoDB → Response | 20/11/2026 | 20/11/2026 | AWS Study Group |
 
 ---
 
-### Week 10 Achievements
+### Week 10 Key Takeaways & Achievements:
 
-#### 1. Gained Deeper Understanding of Authentication & Token Security
-I learned in detail how JWT tokens work, how access/ID/refresh tokens differ, and how secure authentication is implemented in serverless applications. I also studied common attack vectors in API security and how to mitigate them using best practices.
+#### **1. Deepened Understanding of Token-Based Authentication & API Security**
+Mastered JWT anatomy, signature verification, and the distinct roles of Access, ID, and Refresh tokens in serverless architectures. Applied OWASP API Security best practices to close common authentication and authorization gaps.
 
-#### 2. Successfully Implemented Cognito Authentication Flows
-This week, I configured Cognito to support signup, login, multi-factor authentication (optional), and token refreshing. I tested these flows using CLI and Postman, ensuring the backend can securely identify and authorize users.
+#### **2. Completed End-to-End Amazon Cognito Authentication Flows**
+Configured Cognito User Pools to support user registration, sign-in, optional MFA, and automated token renewal. Validated all identity flows through AWS CLI and Postman to confirm accurate user session handling.
 
-#### 3. Integrated Lambda Authorizer with API Gateway
-I created a custom Lambda Authorizer to validate tokens sent from the client. This allowed me to enforce fine-grained access control and protect backend routes from unauthorized access. This step also increased my confidence with IAM policies and API Gateway security layers.
+#### **3. Protected Routes with a Custom Lambda Authorizer**
+Built and attached a custom Lambda Authorizer to verify incoming bearer tokens and return fine-grained IAM policy documents before backend handlers execute, blocking unauthorized access at the API Gateway edge.
 
-#### 4. Enhanced DynamoDB Architecture Using Secondary Indexes
-I implemented Global Secondary Indexes (GSI) to optimize queries and reduce latency for more complex data access patterns. I also improved error handling and input validation to ensure stable and predictable database behavior.
+#### **4. Optimized DynamoDB Access Patterns with Secondary Indexes**
+Added Global Secondary Indexes (GSIs) to support flexible query patterns with low read latency while avoiding full-table scans. Reinforced payload validation and exception handling for predictable database operations.
 
-#### 5. Completed End-to-End Backend Workflow Testing
-By the end of the week, I completed full request lifecycle testing:  
-Client request → API Gateway → Lambda → DynamoDB → API response.  
-I verified that authentication, database operations, and serverless execution flow work together smoothly.
+#### **5. Validated Full End-to-End Backend Request Lifecycles**
+Completed thorough integration testing across the entire pipeline—from client request through API Gateway authorization, Lambda execution, and DynamoDB persistence—verifying seamless interoperability across services.
 
-#### 6. Improved Overall Backend Code Structure and Maintainability
-I refactored Lambda functions to follow cleaner architecture principles, separating business logic, validation, and database operations. This makes future development easier and reduces potential bugs.
+#### **6. Refactored Backend Codebase for Modularity & Maintainability**
+Restructured Lambda handlers using clean separation of concerns, isolating request validation, core business logic, and DynamoDB data-access layers to simplify testing and future feature expansion.
 
 ---
