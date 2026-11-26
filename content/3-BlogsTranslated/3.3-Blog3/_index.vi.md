@@ -47,7 +47,7 @@ Khi cần chạy lại lượt xử lý cũ để đối soát, pipeline không 
 
 ## 3. Kiến trúc Tái Lập Dữ Liệu Pipeline
 
-![Kiến trúc tái lập dữ liệu pipeline với Amazon S3 Versioning và SHA-256](/images/blog-3-architecture.png)
+![Kiến trúc tái lập dữ liệu pipeline với Amazon S3 Versioning và SHA-256](/images/blog3-architecture.png)
 
 - **Luồng nạp dữ liệu (ETL Ingestion):** Liên tục ghi đè file mới lên Amazon S3. Nhờ bật Versioning, bản cũ `v1` vẫn được giữ nguyên song song với bản mới `v2`
 - **Bước 1 (Manifest DB):** Pipeline Runner ghi hoặc đọc thông tin định danh (`VersionId` + mã `SHA-256`) trên Amazon DynamoDB
