@@ -51,7 +51,7 @@ Gateway Endpoints rely on standard **Longest Prefix Match** route selection insi
 
 ### 2.2. Routing Architecture Overview
 
-![VPC Gateway Endpoint Routing Architecture for S3 and DynamoDB](/images/blog-2-architecture.png)
+![VPC Gateway Endpoint Routing Architecture for S3 and DynamoDB](/images/blog2-architecture.png)
 
 - **Upper Path (Matched Prefix List):** Same-region traffic from EC2 to S3 and DynamoDB is intercepted by the Private Route Table and routed via the VPC Gateway Endpoint (`$0/GB`)
 - **Lower Path (Default Route `0.0.0.0/0`):** Only outbound Internet requests or cross-region S3/DynamoDB calls traverse the NAT Gateway in the Public Subnet (`$0.059/hour + $0.059/GB`). *(Note: Diagram simplified; the Internet Gateway sits between the NAT Gateway and the Internet.)*
