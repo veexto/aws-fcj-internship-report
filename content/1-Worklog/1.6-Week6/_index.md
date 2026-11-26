@@ -1,44 +1,44 @@
 ---
 title: "Week 6 Worklog"
-date: 2025-10-13
+date: 2026-10-19
 weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
 ### Week 6 Objectives:
 
-* **Identity & Access Management (IAM):** Implement robust identity controls using **IAM Identity Center (SSO)**, restrict privileges with **Permission Boundaries**, and secure role assumptions with conditional policies.
-* **Security Compliance & Defense:** Automate security checks with **AWS Security Hub** and protect web applications using **AWS WAF**.
-* **Data Protection:** Master data encryption using **AWS KMS** (Key Management Service) and establish comprehensive backup strategies with **AWS Backup**.
-* **Advanced Networking:** Implement scalable network architectures using **VPC Peering** for direct connections and **Transit Gateway** for hub-and-spoke models.
+- **Identity & Access Management (IAM):** Establish centralized authentication via **IAM Identity Center (SSO)**, cap maximum effective privileges with **Permission Boundaries**, and tighten role assumption/passing using conditional IAM policies.
+- **Security Compliance & Edge Defense:** Automate security posture assessments with **AWS Security Hub** and shield web workloads using **AWS WAF**.
+- **Data Protection & Resilience:** Control cryptographic keys with **AWS KMS** alongside CloudTrail/Athena auditing, and standardize centralized backup policies with **AWS Backup**.
+- **Enterprise Network Topologies:** Architect inter-VPC connectivity using point-to-point **VPC Peering** and scalable hub-and-spoke **AWS Transit Gateway** designs.
 
-### Tasks to be carried out this week:
+### Weekly Action Plan:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 2 | **Advanced Identity Management** <br> - Setup **IAM Identity Center (SSO)** for centralized access across accounts. <br> - Create **Permission Boundaries** to limit maximum permissions for IAM users/roles. <br> - Configure **IAM Role Conditions** to prevent role transfer abuse. | 13/10/2025 | 13/10/2025 | https://000012.awsstudygroup.com/ <br><br> https://000030.awsstudygroup.com/ <br><br> https://000044.awsstudygroup.com/ |
-| 3 | **Security Posture & Application Defense** <br> - Enable **AWS Security Hub** to check compliance (CIS Standards). <br> - Deploy **AWS WAF** (Web Application Firewall): <br>&emsp; + Create Web ACLs with Managed Rules. <br>&emsp; + Block SQL Injection/XSS attacks on ALBs. | 14/10/2025 | 14/10/2025 | https://000018.awsstudygroup.com/ <br><br> https://000026.awsstudygroup.com/ |
-| 4 | **Data Protection (Encryption & Backup)** <br> - Create Customer Managed Keys (CMK) in **AWS KMS**. <br> - Encrypt S3 buckets and audit usage via **CloudTrail** & **Athena**. <br> - Configure **AWS Backup**: <br>&emsp; + Create Backup Vault and Backup Plan. <br>&emsp; + Perform on-demand backup and restore of resources. | 15/10/2025 | 15/10/2025 | https://000033.awsstudygroup.com/ <br><br> https://000013.awsstudygroup.com/ |
-| 5 | **Network Reliability (Peering & Transit)** <br> - **VPC Peering:** Connect two isolated VPCs and configure Route Tables/DNS. <br> - **Transit Gateway (TGW):** Build a central hub to connect multiple VPCs. <br> - Configure TGW Route Tables for traffic isolation. | 16/10/2025 | 16/10/2025 | https://000019.awsstudygroup.com/ <br><br> https://000020.awsstudygroup.com/ |
-| 6 | **Review & Cleanup** <br> - Review all security configurations. <br> - **Important:** Delete Transit Gateway, NAT Gateways, and disable Security Hub/Config to avoid high costs. <br> - Verify deletion of KMS keys (schedule deletion). | 17/10/2025 | 17/10/2025 | _All Cleanup Sections_ |
+| 2 | **Advanced Identity & Privilege Governance** <br> - Configure **IAM Identity Center (SSO)** to centralize user authentication across AWS accounts <br> - Author **Permission Boundaries** to cap maximum allowable permissions for delegated IAM users and roles <br> - Enforce **IAM Role Conditions** (such as `iam:PassedToService`) to prevent unauthorized role-passing abuse | 19/10/2026 | 19/10/2026 | https://000012.awsstudygroup.com/ <br><br> https://000030.awsstudygroup.com/ <br><br> https://000044.awsstudygroup.com/ |
+| 3 | **Security Posture & Web Application Defense** <br> - Enable **AWS Security Hub** to run automated compliance checks against CIS benchmarks <br> - Deploy **AWS WAF** at the application edge: <br>&emsp; + Build Web ACLs layered with AWS Managed Rule Groups <br>&emsp; + Block SQL Injection and XSS exploit payloads ahead of the Application Load Balancer | 20/10/2026 | 20/10/2026 | https://000018.awsstudygroup.com/ <br><br> https://000026.awsstudygroup.com/ |
+| 4 | **Data Encryption & Centralized Backup (KMS & AWS Backup)** <br> - Provision Customer Managed Keys (CMK) inside **AWS KMS** for granular key lifecycle control <br> - Enforce server-side encryption on S3 buckets and audit key usage via **CloudTrail** & **Amazon Athena** <br> - Configure **AWS Backup**: <br>&emsp; + Create an encrypted Backup Vault and scheduled Backup Plan <br>&emsp; + Execute on-demand backup jobs and perform full resource recovery drills | 21/10/2026 | 21/10/2026 | https://000033.awsstudygroup.com/ <br><br> https://000013.awsstudygroup.com/ |
+| 5 | **Inter-VPC Connectivity & Hub-and-Spoke Networking** <br> - **VPC Peering:** Establish private peering connections between isolated VPCs and update Route Tables and DNS resolution <br> - **AWS Transit Gateway (TGW):** Deploy a central routing hub interconnecting multiple VPCs <br> - Segment **TGW Route Tables** to isolate traffic flows between distinct network environments | 22/10/2026 | 22/10/2026 | https://000019.awsstudygroup.com/ <br><br> https://000020.awsstudygroup.com/ |
+| 6 | **Security Audit & Resource Teardown** <br> - Audit all deployed IAM policies, WAF rules, and KMS key configurations <br> - **Cost Cleanup:** Delete Transit Gateway attachments/gateways, NAT Gateways, and disable Security Hub/AWS Config to avoid ongoing charges <br> - Schedule deletion for customer-managed KMS keys | 23/10/2026 | 23/10/2026 | _All Lab Cleanup Sections_ |
 
-# Week 6 Achievements
+# Week 6 Key Takeaways & Achievements
 
-## Identity & Access Management (IAM)
-- Successfully deployed **IAM Identity Center** to centralize user management and simplify login access across the organization.
-- Implemented **Permission Boundaries** to prevent privilege escalation, ensuring users cannot grant themselves more permissions than authorized.
-- Enhanced security by adding **Conditions** to IAM Roles, restricting how and where roles can be assumed or passed (e.g., limiting role passing to specific services).
+## Identity & Access Governance (IAM)
+- Deployed **IAM Identity Center** to streamline single sign-on (SSO) and centralize workforce access management.
+- Applied **Permission Boundaries** to mitigate privilege escalation risks, ensuring delegated administrators cannot grant permissions beyond defined guardrails.
+- Hardened role delegation by embedding **Condition keys** into IAM policies to restrict which AWS services and principals can assume or pass specific roles.
 
-## Security Compliance & Application Defense
-- Activated **AWS Security Hub** to gain a comprehensive view of the security state and automatically check against CIS AWS Foundations Benchmark.
-- Protected web applications by deploying **AWS WAF**, successfully creating rules to block common threats like SQL Injection and malicious IP addresses before they reach the application load balancer.
+## Compliance Monitoring & Application Defense
+- Activated **AWS Security Hub** to aggregate security findings and continuously evaluate infrastructure against the **CIS AWS Foundations Benchmark**.
+- Protected public-facing web endpoints with **AWS WAF**, configuring rules that filter out SQL Injection, XSS attempts, and malicious IP traffic before reaching the Application Load Balancer.
 
-## Data Encryption & Backup Strategy
-- Managed data security using **AWS KMS**, creating Customer Managed Keys to encrypt sensitive data in S3.
-- Audited key usage and data access patterns by integrating KMS logs with **CloudTrail** and querying them via **Amazon Athena**.
-- Established a robust Disaster Recovery plan using **AWS Backup**, automating the backup schedules for EBS volumes and testing the successful restoration of data from a recovery point.
+## Cryptographic Controls & Disaster Recovery
+- Secured sensitive S3 data at rest using **Customer Managed Keys (CMK)** in **AWS KMS**.
+- Built an auditable key-usage trail by capturing KMS API events in **AWS CloudTrail** and querying logs with **Amazon Athena**.
+- Standardized Disaster Recovery (DR) operations with **AWS Backup**, automating EBS volume backup schedules and verifying point-in-time restoration from recovery points.
 
-## Advanced Networking & Connectivity
-- Connected isolated network environments using **VPC Peering**, enabling private communication between VPCs without traversing the public internet.
-- Solved the complexity of mesh networking by implementing **AWS Transit Gateway**, creating a scalable hub-and-spoke network architecture to interconnect multiple VPCs efficiently.
-- Configured complex **Route Tables** for both Peering and Transit Gateway to ensure correct traffic flow and network isolation.
+## Scalable Enterprise Networking
+- Established private, low-latency communication between isolated VPCs via **VPC Peering**, keeping internal traffic off the public internet.
+- Eliminated complex full-mesh peering overhead by architecting a scalable hub-and-spoke network topology with **AWS Transit Gateway**.
+- Configured segmented **Route Tables** across both VPCs and Transit Gateway to enforce strict traffic routing and environment isolation.
