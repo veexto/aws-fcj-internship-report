@@ -1,50 +1,49 @@
 ---
 title: "Week 9 Worklog"
-date: 2025-11-03
+date: 2026-11-09
 weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
 
-### Week 9 Objectives
-* Strengthen backend fundamentals: API design, authentication, database schemas.
-* Learn core AWS backend services: **API Gateway, Lambda, DynamoDB, Cognito**.
-* Build the first version of project backend architecture.
-* Practice secure API development and proper request/response handling.
+### Week 9 Objectives:
+- Reinforce core backend engineering principles: RESTful API design, authentication flows, and NoSQL schema modeling.
+- Build hands-on proficiency with core AWS serverless services: **Amazon API Gateway, AWS Lambda, Amazon DynamoDB, and Amazon Cognito**.
+- Architect and stand up the initial v1 backend foundation for the internship project.
+- Practice secure API development with standardized request validation, error handling, and response payloads.
 
 ---
 
-### Tasks to be carried out this week
+### Weekly Action Plan:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 |-----|------|-------------|------------------|--------------------|
-| 2 | Study REST API design, HTTP methods, and backend workflow. <br>- Design initial API endpoints for the system. | 03/11/2025 | 03/11/2025 | AWS Study Group |
-| 3 | Learn **API Gateway** basics. <br>- Create routes, methods, request validation, and logging. | 04/11/2025 | 04/11/2025 | AWS Study Group |
-| 4 | Learn **AWS Lambda**. <br>- Build and deploy simple CRUD Lambda functions. <br>- Test using event triggers. | 05/11/2025 | 05/11/2025 | AWS Study Group |
-| 5 | Study **DynamoDB**. <br>- Design table schema. <br>- Perform CRUD operations. | 06/11/2025 | 06/11/2025 | AWS Study Group |
-| 6 | Learn **Cognito Authentication**. <br>- User Pool basics. <br>- Link Cognito authorization with API Gateway routes. | 07/11/2025 | 07/11/2025 | AWS Study Group |
+| 2 | - Study RESTful API conventions, HTTP semantics, and end-to-end backend request lifecycles <br>- Draft the initial set of API endpoints and resource schemas for the project | 09/11/2026 | 09/11/2026 | AWS Study Group |
+| 3 | - Configure **Amazon API Gateway** fundamentals <br>- Define REST resources, routes, HTTP methods, request validators, and CloudWatch execution logging | 10/11/2026 | 10/11/2026 | AWS Study Group |
+| 4 | - Build serverless compute handlers using **AWS Lambda** <br>- Implement and deploy core CRUD functions <br>- Validate handler execution using custom JSON test event payloads | 11/11/2026 | 11/11/2026 | AWS Study Group |
+| 5 | - Model NoSQL data structures in **Amazon DynamoDB** <br>- Design table schemas with balanced partition and sort keys <br>- Connect Lambda functions to execute DynamoDB CRUD operations | 12/11/2026 | 12/11/2026 | AWS Study Group |
+| 6 | - Implement user identity and access control with **Amazon Cognito** <br>- Provision a Cognito User Pool and configure sign-up/sign-in policies <br>- Attach a Cognito Authorizer to protect API Gateway routes | 13/11/2026 | 13/11/2026 | AWS Study Group |
 
 ---
 
-### Week 9 Achievements
+### Week 9 Key Takeaways & Achievements:
 
-#### 1. Improved Understanding of Backend Architecture
-I gained a strong foundational understanding of how backend systems are structured, including layered architecture, modular design, and how APIs communicate with databases and authentication services. This gave me a clearer picture of how to build scalable and maintainable backend systems.
+#### **1. Strengthened Serverless Backend Architecture Fundamentals**
+Developed a clear grasp of how decoupled, layered serverless backends operate—separating API routing, stateless business logic, identity verification, and persistence layers to achieve high scalability without server maintenance.
 
-#### 2. Designed and Documented Initial API Endpoints
-I successfully created the first version of the API specification, defining routes, request bodies, response formats, and error handling structures. This helped standardize communication between the backend and other system components.
+#### **2. Authored Initial API Specification Documentation**
+Produced the v1 API contract detailing endpoint paths, request schemas, standardized JSON responses, and HTTP error codes. Establishing this specification early streamlined alignment between backend and frontend development.
 
-#### 3. Implemented API Gateway Routing and Configuration
-I configured API Gateway to handle HTTP requests, apply method-level settings, enable CORS, attach logging, and prepare integrations for Lambda. This taught me how to connect external requests to internal processing logic securely and efficiently.
+#### **3. Configured Amazon API Gateway Routing & Policies**
+Set up API Gateway REST routes, configured CORS headers for browser clients, enabled CloudWatch access logging, and wired proxy integrations to AWS Lambda. This clarified how external client traffic flows securely into serverless compute handlers.
 
-#### 4. Built Serverless Functions with AWS Lambda
-Using Lambda, I implemented initial backend logic using a serverless approach. I learned how to manage cold starts, structure handler functions, and troubleshoot event inputs and outputs. This provided practical experience in running code without managing servers.
+#### **4. Built Core Business Logic on AWS Lambda**
+Developed and deployed initial CRUD functions on AWS Lambda, gaining practical experience structuring event handlers, parsing incoming payloads, and returning well-formed HTTP status responses efficiently.
 
-#### 5. Designed and Queried DynamoDB Tables
-I learned how DynamoDB organizes data using partition keys and sort keys. I practiced writing queries, scans, and item updates, gaining confidence in managing NoSQL data models within cloud environments.
+#### **5. Modeled and Queried Amazon DynamoDB Tables**
+Provisioned DynamoDB tables using purposeful partition and sort key designs, practicing targeted item queries and updates while deepening understanding of NoSQL access patterns.
 
-#### 6. Integrated Authentication Using Cognito
-This week, I set up a Cognito User Pool and integrated token-based authentication into API Gateway. I developed an understanding of how identity management and secure access control operate in serverless backend systems.
+#### **6. Secured Endpoints with Amazon Cognito Authentication**
+Created a Cognito User Pool and integrated JWT token validation directly into API Gateway via a Cognito Authorizer, ensuring protected endpoints only accept authenticated requests.
 
 ---
-
