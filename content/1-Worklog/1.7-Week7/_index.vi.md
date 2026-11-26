@@ -1,49 +1,49 @@
 ---
-title: "Báo cáo công việc Tuần 7"
-date: 2025-10-20
+title: "Nhật ký công việc Tuần 7"
+date: 2026-10-26
 weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
 ### Mục tiêu Tuần 7:
 
-* **Đóng gói ứng dụng (Containerization):** Làm chủ việc đóng gói ứng dụng sử dụng **Docker** và triển khai trên EC2.
-* **Điều phối Container (Orchestration):** Triển khai và quản lý các ứng dụng container có khả năng mở rộng sử dụng **Amazon ECS (Elastic Container Service)**.
-* **DevOps & Tự động hóa:** Triển khai **CI/CD Pipelines** (AWS CodePipeline, CodeBuild) để tự động hóa việc triển khai lên EC2 và ECS.
-* **Giải pháp Lưu trữ:** Tích hợp môi trường on-premises với lưu trữ đám mây sử dụng **File Storage Gateway** và **FSx for Windows**.
-* **Kiến trúc Cơ sở dữ liệu Nâng cao:** Tìm hiểu sâu về các mẫu thiết kế (design patterns), chiến lược đánh chỉ mục và mô hình hóa dữ liệu cho các ứng dụng hiệu năng cao với **Amazon DynamoDB**.
+- **Đóng gói Ứng dụng (Containerization):** Làm chủ quy trình đóng gói ứng dụng bằng **Docker** và quản lý image tập trung trên Amazon ECR.
+- **Điều phối Container (Orchestration):** Triển khai và vận hành các cụm container có khả năng mở rộng linh hoạt trên **Amazon ECS (Elastic Container Service)**.
+- **DevOps & Tự động hóa CI/CD:** Xây dựng đường ống **CI/CD Pipelines** (AWS CodePipeline, CodeBuild, CodeDeploy) để tự động hóa quy trình build và triển khai lên EC2 lẫn ECS.
+- **Giải pháp Lưu trữ Lai (Hybrid Storage):** Kết nối hạ tầng tại chỗ với đám mây AWS thông qua **AWS Storage Gateway (File Gateway)** và **Amazon FSx for Windows File Server**.
+- **Thiết kế Cơ sở dữ liệu NoSQL Nâng cao:** Nắm vững mô hình hóa dữ liệu, chiến lược đánh chỉ mục và tối ưu hiệu năng truy vấn trên **Amazon DynamoDB**.
 
-### Các nhiệm vụ thực hiện trong tuần:
+### Kế hoạch công việc trong tuần:
 
-| Ngày | Nhiệm vụ | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| Ngày | Nội dung thực hiện | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | --- | --- | --- | --- |
-| 2 | **Đóng gói Ứng dụng (Docker)** <br> - Cài đặt Docker trên EC2 & Máy cục bộ. <br> - Build Docker images cho ứng dụng mẫu (Frontend/Backend). <br> - Sử dụng **Docker Compose** để điều phối nhiều container. <br> - Đẩy (Push) images lên **Amazon ECR** (Elastic Container Registry). | 20/10/2025 | 20/10/2025 | https://000015.awsstudygroup.com/ |
-| 3 | **Điều phối Container (Amazon ECS)** <br> - Tạo **ECS Cluster** (Launch Type: Fargate/EC2). <br> - Định nghĩa **Task Definitions** và Services. <br> - Cấu hình **Application Load Balancer (ALB)** để phân phối lưu lượng. <br> - Triển khai Service Discovery với **AWS Cloud Map**. | 21/10/2025 | 21/10/2025 | https://000016.awsstudygroup.com/ |
-| 4 | **CI/CD cho Containers** <br> - Thiết lập **AWS CodePipeline** kích hoạt từ GitHub/GitLab. <br> - Cấu hình **AWS CodeBuild** để build và push Docker images. <br> - Tự động hóa deploy lên ECS Clusters. <br> - Triển khai Monitoring với **Container Insights** và Logging với **FireLens**. | 22/10/2025 | 22/10/2025 | https://000017.awsstudygroup.com/ |
-| 5 | **CI/CD cho EC2 & Lưu trữ Hybrid** <br> - **CodePipeline cho EC2:** Tự động hóa deploy sử dụng CodeDeploy agent. <br> - **Storage Gateway:** Cấu hình File Gateway để mount S3 buckets dưới dạng NFS shares. <br> - **Amazon FSx:** Triển khai Windows File Server được quản lý hoàn toàn và mount qua SMB. | 23/10/2025 | 23/10/2025 | https://000023.awsstudygroup.com/ <br><br> _Tự nghiên cứu về FSx/Storage Gateway_ |
-| 6 | **Kiến trúc DynamoDB Nâng cao** <br> - **Mô hình hóa dữ liệu:** Thiết kế theo mẫu Single Table Design. <br> - **Tối ưu hiệu năng:** Làm việc với Partition Keys, Sort Keys, và Capacity Units (RCU/WCU). <br> - **Tính năng nâng cao:** Triển khai Global Secondary Indexes (GSI), DynamoDB Streams, và Global Tables. | 24/10/2025 | 24/10/2025 | https://000039.awsstudygroup.com/ |
+| 2 | **Đóng gói Ứng dụng với Docker & Amazon ECR** <br> - Cài đặt môi trường Docker trên máy cục bộ và máy chủ EC2 <br> - Viết Dockerfile để đóng gói các thành phần ứng dụng mẫu (Frontend/Backend) <br> - Sử dụng **Docker Compose** để khởi chạy và điều phối đồng thời nhiều container <br> - Đẩy (Push) các Docker image lên kho lưu trữ **Amazon ECR** | 26/10/2026 | 26/10/2026 | https://000015.awsstudygroup.com/ |
+| 3 | **Điều phối Container trên Amazon ECS** <br> - Khởi tạo **ECS Cluster** (hỗ trợ cả hai mô hình Fargate và EC2) <br> - Thiết lập **Task Definitions** và cấu hình ECS Services duy trì số lượng container <br> - Tích hợp **Application Load Balancer (ALB)** để cân bằng tải lưu lượng truy cập <br> - Cấu hình cơ chế **Service Discovery** thông qua **AWS Cloud Map** | 27/10/2026 | 27/10/2026 | https://000016.awsstudygroup.com/ |
+| 4 | **Tự động hóa CI/CD cho Hệ thống Container** <br> - Thiết lập **AWS CodePipeline** tự động kích hoạt khi có commit mới từ GitHub/GitLab <br> - Cấu hình **AWS CodeBuild** để tự động đóng gói Docker image và đẩy lên ECR <br> - Triển khai cập nhật tự động (Rolling Update) lên cụm ECS Cluster <br> - Giám sát tài nguyên container với **CloudWatch Container Insights** và thu thập log bằng **FireLens** | 28/10/2026 | 28/10/2026 | https://000017.awsstudygroup.com/ |
+| 5 | **CI/CD cho EC2 & Lưu trữ Lai (Hybrid Storage)** <br> - **CodePipeline cho EC2:** Tự động hóa triển khai mã nguồn thông qua CodeDeploy Agent <br> - **AWS Storage Gateway:** Triển khai File Gateway để ánh xạ S3 bucket thành ổ đĩa chia sẻ giao thức NFS <br> - **Amazon FSx:** Khởi tạo hệ thống tệp **FSx for Windows File Server** được quản lý hoàn toàn và kết nối qua giao thức SMB | 29/10/2026 | 29/10/2026 | https://000023.awsstudygroup.com/ <br><br> _Tự nghiên cứu tài liệu FSx & Storage Gateway_ |
+| 6 | **Kiến trúc & Tối ưu Amazon DynamoDB Nâng cao** <br> - **Mô hình hóa dữ liệu:** Áp dụng tư duy thiết kế **Single Table Design** cho hệ thống NoSQL <br> - **Tối ưu hiệu năng:** Thiết kế Partition Key, Sort Key hợp lý và tính toán năng lực đọc/ghi (RCU/WCU) <br> - **Tính năng nâng cao:** Triển khai Global Secondary Indexes (GSI), DynamoDB Streams và Global Tables | 30/10/2026 | 30/10/2026 | https://000039.awsstudygroup.com/ |
 
-# Thành tựu Tuần 7
+# Kết quả đạt được trong Tuần 7
 
-## Containerization & Orchestration
-- Đã thực hiện "dockerize" thành công một ứng dụng nguyên khối (monolithic), tách biệt nó khỏi cơ sở hạ tầng bên dưới.
-- Triển khai cụm container có tính sẵn sàng cao sử dụng **Amazon ECS**, tận dụng Task Definitions để định nghĩa yêu cầu tài nguyên.
-- Cấu hình **Service Discovery** cho phép các microservices trong cụm giao tiếp qua tên logic thay vì địa chỉ IP.
-- Triển khai **Application Load Balancer** để phân phối lưu lượng public tới các container target động.
+## Đóng gói & Điều phối Container
+- Đóng gói thành công ứng dụng thành các **Docker Image** độc lập, loại bỏ sự phụ thuộc vào cấu hình môi trường hạ tầng bên dưới.
+- Triển khai cụm dịch vụ container có tính sẵn sàng cao với **Amazon ECS**, quản lý chặt chẽ tài nguyên CPU/RAM thông qua Task Definitions.
+- Cấu hình **Service Discovery** với AWS Cloud Map, giúp các dịch vụ nội bộ giao tiếp bằng tên miền logic thay vì phụ thuộc vào địa chỉ IP động.
+- Tích hợp **Application Load Balancer** để phân phối lưu lượng người dùng một cách linh hoạt tới các container đang hoạt động.
 
-## Tự động hóa DevOps & CI/CD
-- Xây dựng **CI/CD Pipeline** mạnh mẽ sử dụng AWS CodePipeline và CodeBuild.
-- Đạt được **Continuous Deployment (Triển khai liên tục)**: Các thay đổi code đẩy lên repository tự động kích hoạt quá trình build, tạo image và cập nhật rolling update cho dịch vụ ECS mà không gây gián đoạn (zero downtime).
-- Tích hợp giám sát toàn diện sử dụng **CloudWatch Container Insights** để theo dõi mức sử dụng CPU/Memory của các task.
-- Tập trung hóa log của container sử dụng **FireLens** để dễ dàng gỡ lỗi và phân tích.
+## Tự động hóa DevOps & Đường ống CI/CD
+- Xây dựng hoàn chỉnh quy trình **CI/CD Pipeline** khép kín bằng AWS CodePipeline và CodeBuild.
+- Đạt được khả năng **Continuous Deployment**: mỗi thay đổi mã nguồn đẩy lên Git tự động kích hoạt build image mới và cập nhật dịch vụ ECS theo cơ chế rolling update không gián đoạn (zero downtime).
+- Giám sát chi tiết hiệu năng từng task/container thông qua **CloudWatch Container Insights**.
+- Chuẩn hóa luồng thu thập và tập trung log từ container bằng **FireLens** phục vụ việc truy vết và xử lý lỗi nhanh chóng.
 
-## Triển khai Lưu trữ Hybrid
-- Kết nối khoảng cách giữa các giao thức on-premises và lưu trữ đám mây.
-- Cấu hình **File Storage Gateway** cho phép các ứng dụng cũ (legacy) ghi dữ liệu vào S3 bằng giao thức NFS tiêu chuẩn.
-- Triển khai **Amazon FSx for Windows File Server**, cung cấp hệ thống tệp Windows native được quản lý hoàn toàn với khả năng tích hợp Active Directory.
+## Tích hợp Lưu trữ Lai (Hybrid Storage)
+- Kết nối liền mạch các giao thức lưu trữ truyền thống tại chỗ với kho lưu trữ đám mây AWS.
+- Triển khai **File Storage Gateway** giúp các ứng dụng hiện hữu lưu trữ dữ liệu trực tiếp lên Amazon S3 thông qua giao thức NFS quen thuộc.
+- Vận hành **Amazon FSx for Windows File Server**, cung cấp hệ thống chia sẻ tệp chuẩn Windows hỗ trợ giao thức SMB và tích hợp sẵn Active Directory.
 
-## Thiết kế Cơ sở dữ liệu Hiệu năng cao
-- Làm chủ các khái niệm NoSQL với **Amazon DynamoDB**.
-- Tối ưu hóa hiệu năng cơ sở dữ liệu bằng cách thiết kế Partition Key và Sort Key hiệu quả.
-- Triển khai **Global Secondary Indexes (GSI)** để hỗ trợ các mẫu truy cập đa dạng mà không cần nhân bản bảng dữ liệu.
-- Khám phá **DynamoDB Streams** cho kiến trúc hướng sự kiện (kích hoạt Lambda function khi dữ liệu thay đổi).
+## Thiết kế Cơ sở dữ liệu NoSQL Hiệu năng cao
+- Nắm vững tư duy thiết kế và vận hành cơ sở dữ liệu phi quan hệ trên **Amazon DynamoDB**.
+- Tối ưu hóa tốc độ truy vấn và phân bổ dữ liệu đồng đều nhờ lựa chọn **Partition Key** và **Sort Key** phù hợp.
+- Mở rộng khả năng truy vấn đa chiều bằng **Global Secondary Indexes (GSI)** mà không làm dư thừa dữ liệu gốc.
+- Ứng dụng **DynamoDB Streams** để xây dựng luồng xử lý hướng sự kiện (Event-Driven), tự động kích hoạt AWS Lambda ngay khi bản ghi có sự thay đổi.
