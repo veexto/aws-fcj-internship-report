@@ -1,26 +1,109 @@
 ---
-title: "Translated Blogs"
-date: 2025-01-01
+title: "Blog 3: Re-Running Last Week's Pipeline Gave Totally Different Numbers: Was It a Code Change or an Overwritten S3 File?"
+date: 2026-11-26
 weight: 3
 chapter: false
-pre: " <b> 3. </b> "
+pre: " <b> 3.3. </b> "
 ---
 
+# Overview: Achieving Data Reproducibility with Amazon S3 Versioning and SHA-256
 
-### [Blog 1 - AWS Named as a Leader in 2025 Gartner Magic Quadrant for Strategic Cloud Platform Services for 15 Years in a Row](3.1-Blog1/)
-This blog highlights AWS being recognized once again as a **Leader** in the **2025 Gartner Magic Quadrant for Strategic Cloud Platform Services**, marking the **15th consecutive year** of leadership. It explains why AWS earned this recognition: strong ability to execute, comprehensive strategic vision, and the broadest cloud services portfolio. The post also emphasizes AWS’s continued investment in innovation across AI/ML, data and analytics, security, and global infrastructure to empower customers—from startups and enterprises to public sector organizations—to build, run, and innovate on the cloud.
+When building data engineering pipelines or ML training workflows on AWS, most of us initially set up a deceptively clean storage pattern:
 
-### [Blog 2 - Qwen Models are Now Available in Amazon Bedrock](3.2-Blog2/)
-This blog announces that **Qwen models**, developed by **Alibaba Cloud**, are now available in **Amazon Bedrock**, enabling customers to build and scale generative AI applications with advanced NLP, multilingual support, strong reasoning capabilities, and seamless integration with AWS services—without the need to manage infrastructure.
+- A daily **ETL Ingestion** job overwrites the latest dataset at a single static S3 path, such as `s3://data-lake-bucket/clean/dataset.csv`
+- Downstream Lambda functions or EC2 workers read that fixed key to generate reports or train models
 
-### [Blog 3 - Centralized AWS Firewall Policy Management with AlgoSec](3.3-Blog3/)
-This blog introduces a solution from **AlgoSec** (available on AWS Marketplace) that integrates with **AWS Firewall Manager** to provide unified visibility and management across Hybrid Cloud environments. The solution combines **AlgoSec Horizon** (for visibility and application mapping) and **AlgoSec Cloud Enterprise (ACE)** (for security policy management and risk analysis). Key benefits include centralized firewall policy visibility across AWS and on-premise infrastructure, contextual business application mapping, detailed rule analysis for both Stateless and Stateful rule groups, and change simulation capabilities to prevent business disruption—giving security teams a "single pane of glass" for comprehensive firewall governance.
+Everything runs smoothly until you need to audit historical numbers: you check out last week's exact Git commit and re-run the pipeline against `s3://data-lake-bucket/clean/dataset.csv`, only to get completely different outputs from the submitted report. At that point, you have no way to tell whether a recent code refactor introduced a bug or whether yesterday's ETL job silently overwrote `dataset.csv`. Without pinning input data versions, debugging and compliance audits turn into pure guesswork.
 
-### [Blog 4 - Your Essential Guide to Cloud Governance at AWS re:Invent 2025](3.4-Blog4/)
-This blog provides an overview of the **Cloud Governance track** at **AWS re:Invent 2025**, highlighting how governance has evolved from a compliance obligation into a **strategic driver of business innovation**. It introduces the main focus areas, including generative AI and intelligent governance, operational efficiency and cost optimization, secure operations and automation, and multicloud and sovereign cloud requirements. The post also showcases key sessions on policy-as-code, AI-driven compliance automation, and global governance strategies, equipping organizations with the skills to modernize and scale their governance frameworks across complex cloud environments.
+**Original Post:** [View on Facebook](https://www.facebook.com/share/p/151HogtQqMT/)
 
-### [Blog 5 - Solution-Centric Procurement Strategy on AWS Marketplace](3.5-Blog5/)
-This blog announces AWS Marketplace's strategic shift to **solution-centric procurement**, introducing **Multi-product solutions** that allow Partners to bundle software, services, and data from multiple vendors into a single comprehensive solution package. This transformation helps enterprises purchase complete business outcomes (such as a full Security Operations Center solution) instead of acquiring individual tools separately. Key benefits include a single negotiation point, flexible component customization, centralized governance, and streamlined procurement processes. The feature supports ISVs, Channel Partners, and System Integrators to create bundled offerings, while enhanced Generative AI-powered search helps customers discover solutions based on use cases and industries rather than just product names.
+---
 
-### [Blog 6 - Top 10 AWS Cloud Operations Announcements at re:Invent 2025](3.6-Blog6/)
-This blog summarizes the **top 10 announcements for AWS Cloud Operations** at **re:Invent 2025**, focusing on applying **Generative AI** to enhance observability and troubleshooting while simplifying large-scale operational data management. Key highlights include Generative AI observability for AI applications on CloudWatch, automatic service discovery with Application Map, AI-powered root cause analysis using the "5 Whys" methodology, Model Context Protocol (MCP) server support, GitHub Actions integration for observability, enhanced log analytics on OpenSearch Service, Real User Monitoring (RUM) for mobile platforms (iOS/Android), CloudTrail Event Aggregation to reduce storage costs, and multi-account/multi-region centralization for both logs and database monitoring. These innovations help operators shift from reactive to proactive system control through AI automation and centralized visibility.
+## 1. Why You Should Not Rely on S3 `ETag` for File Integrity
+
+When looking for a quick way to verify whether an S3 object has changed, many developers (myself included) reach for the `ETag` field returned by S3 APIs. However, `ETag` is a classic trap:
+
+- **Only valid for Single-Part Uploads with SSE-S3:** S3 only sets `ETag` to the raw **MD5** digest of the file when uploaded in a single operation (*single-part upload*) using default `SSE-S3` encryption
+- **Breaks under Multipart Upload & SSE-KMS:** Once a file exceeds the SDK's multipart threshold (**Multipart Upload**) or the bucket uses **SSE-KMS** encryption, `ETag` is no longer the MD5 of the entire object (for multipart uploads, it becomes the MD5 of the concatenated part MD5s followed by the part count, e.g., `"...-5"`)
+
+Comparing a locally computed file hash against S3's `ETag` will falsely flag intact files as corrupted. Instead of relying on `ETag`, the reliable approach is pairing **SHA-256** checksums (via S3's native `ChecksumAlgorithm='SHA256'` or application-side hashing) with **S3 Versioning**.
+
+---
+
+## 2. Combining S3 Versioning with a DynamoDB SHA-256 Manifest
+
+To reproduce the exact input dataset for any historical pipeline run with 100% certainty, combine three building blocks:
+
+### 2.1. Enable S3 Versioning on the Data Bucket
+Every time the ETL job overwrites `clean/dataset.csv`, S3 preserves the previous object and assigns the new upload a unique `VersionId` (e.g., `v1`, `v2`). Older revisions become *Noncurrent Versions* and remain completely immutable—nobody can alter the bytes stored under an existing `VersionId`.
+
+### 2.2. Record a Run Manifest in Amazon DynamoDB
+Whenever a pipeline starts a new execution (`Run ID`), it persists a Manifest record capturing the `Bucket`, `Key`, exact `VersionId` consumed, and the object's `SHA-256` digest.
+
+### 2.3. Read by Pinned `VersionId` and Verify SHA-256 Before Processing
+When re-running an earlier job for auditing or backtesting, the pipeline ignores the unversioned key (which always resolves to the latest `v2`) and instead queries the DynamoDB Manifest, calls `GetObject` with `VersionId=v1`, computes the `SHA-256` hash of the downloaded byte stream, and compares it against the stored manifest. Only upon an exact match does processing proceed; any mismatch or missing version triggers an immediate **Fail Fast** abort rather than producing silent data corruption.
+
+---
+
+## 3. Pipeline Data Reproducibility Architecture
+
+![Pipeline Data Reproducibility Architecture with S3 Versioning and DynamoDB Manifest](/images/blog-3-architecture.png)
+
+- **ETL Ingestion:** Continuously overwrites the dataset key on Amazon S3. With Versioning enabled, `v1` remains preserved alongside `v2`
+- **Step 1 (Manifest DB):** The Pipeline Runner writes or reads the pinned object metadata (`VersionId` + `SHA-256` hash) in Amazon DynamoDB
+- **Step 2 (`GetObjectVersion`):** The Pipeline Runner retrieves the exact pinned object version (`v1`) rather than accidentally pulling the latest `v2`
+- **Step 3 (Integrity Check):** Compares the live `SHA-256` hash against the manifest—proceeding only on a match and failing fast on any discrepancy
+- **Automated Cleanup:** An S3 Lifecycle Rule periodically expires aged noncurrent versions (`NoncurrentVersionExpiration`) to keep storage costs bounded
+
+---
+
+## 4. Four Implementation Pitfalls to Watch Out For
+
+### 4.1. Granting `s3:GetObject` While Forgetting `s3:GetObjectVersion`
+In IAM policies, `s3:GetObject` only authorizes reading the current version of an object. The moment your pipeline passes a `VersionId` parameter to reproduce historical data, AWS denies the request with `AccessDenied` unless the IAM Role also includes `s3:GetObjectVersion`.
+
+### 4.2. Silent S3 Bill Growth from Unmanaged Noncurrent Versions
+In Singapore (`ap-southeast-1`), every noncurrent version on S3 Standard is billed at full storage rates (`$0.025/GB/month` for the first 50 TB). Overwriting a `10 GB` dataset daily for 30 days means paying for `300 GB` (`$7.50/month` instead of `$0.25/month`), even though the default S3 Console view (with *Show versions* toggled off) displays only a single file. Always configure an **S3 Lifecycle Rule** to transition older versions to cheaper storage tiers (`NoncurrentVersionTransition`) or expire them after a retention window (`NoncurrentVersionExpiration`).
+
+### 4.3. Standard `DeleteObject` Calls Do Not Free Storage
+On a versioned bucket, calling `DeleteObject` without specifying a `VersionId` does not delete any underlying bytes—it merely inserts a **Delete Marker** as the latest version. All prior versions remain stored and billed monthly until explicitly deleted by their `VersionId`.
+
+### 4.4. Trusting `ETag` Across Multipart Uploads or SSE-KMS
+As highlighted in Section 1, always store and validate **SHA-256** checksums (using S3's built-in `ChecksumSHA256` support or streaming hash calculation) rather than treating `ETag` as a cryptographic integrity signature.
+
+---
+
+## 5. How to Verify in 30 Seconds
+
+- **Verify on the S3 Console:** Open your bucket → toggle **"Show versions"** at the top of the object list → confirm each overwrite creates a distinct Version ID row without erasing prior revisions
+- **Test the Fail Fast Safeguard:** Manually alter a single character in the `SHA-256` string stored in your DynamoDB Manifest and re-trigger the pipeline → verify that the job immediately halts and raises an integrity validation error
+
+---
+
+## Conclusion
+
+Ensuring reproducible inputs for ETL and AI/ML pipelines on AWS comes down to three core practices:
+
+- **Never rely solely on unversioned S3 paths** when you need to reproduce historical pipeline runs
+- **Pin inputs with S3 Versioning + SHA-256 Manifests** (instead of `ETag`) to guarantee byte-for-byte reproducibility
+- **Pair IAM permissions with Lifecycle rules:** Include `s3:GetObjectVersion` in your execution role and configure **S3 Lifecycle Rules** to prevent noncurrent versions from inflating storage bills
+
+---
+
+**References:**  
+- Using Versioning in S3 Buckets: https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html  
+- Checking Object Integrity in Amazon S3 (SHA-256): https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html  
+- Managing Noncurrent Versions with S3 Lifecycle: https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-configuration-examples.html  
+- Amazon S3 Pricing (ap-southeast-1): https://aws.amazon.com/s3/pricing/
+
+---
+
+## Author
+
+<div style="display: flex; align-items: flex-start; margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+  <img src="/images/avatar.png" alt="Author" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px; border-radius: 5px;">
+  <div>
+    <h3 style="margin-top: 0;">AWS First Cloud Journey Intern</h3>
+    <p>Cloud engineering intern in the AWS First Cloud Journey (FCJ) program, passionate about distributed systems architecture, performance optimization, and sharing hands-on cloud implementation insights.</p>
+  </div>
+</div>
