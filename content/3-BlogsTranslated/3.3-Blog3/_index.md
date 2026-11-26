@@ -1,103 +1,109 @@
-﻿---
-title: "Blog 3: Centralized AWS Firewall Policy Management with AlgoSec"
-date: 2025-01-01
+---
+title: "Blog 3: Re-Running Last Week's Pipeline Gave Totally Different Numbers: Was It a Code Change or an Overwritten S3 File?"
+date: 2026-11-26
 weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-# Overview: Challenges of Hybrid Environments
+# Overview: Achieving Data Reproducibility with Amazon S3 Versioning and SHA-256
 
-As enterprises migrate workloads from on-premise to AWS, maintaining consistent security policies becomes a major challenge. **AWS Firewall Manager** helps centrally manage security rules in the cloud, but organizations often struggle to synchronize these rules with traditional on-premise firewall infrastructure.
+When building data engineering pipelines or ML training workflows on AWS, most of us initially set up a deceptively clean storage pattern:
 
-A new solution from **AlgoSec** (available on AWS Marketplace) integrates directly with AWS Firewall Manager, providing unified visibility and management across the entire Hybrid Cloud environment.
+- A daily **ETL Ingestion** job overwrites the latest dataset at a single static S3 path, such as `s3://data-lake-bucket/clean/dataset.csv`
+- Downstream Lambda functions or EC2 workers read that fixed key to generate reports or train models
 
----
+Everything runs smoothly until you need to audit historical numbers: you check out last week's exact Git commit and re-run the pipeline against `s3://data-lake-bucket/clean/dataset.csv`, only to get completely different outputs from the submitted report. At that point, you have no way to tell whether a recent code refactor introduced a bug or whether yesterday's ETL job silently overwrote `dataset.csv`. Without pinning input data versions, debugging and compliance audits turn into pure guesswork.
 
-## 1. Introduction to AlgoSec Horizon and ACE
-
-AlgoSec's solution consists of two integrated main components:
-1.  **AlgoSec Horizon:** Focuses on visibility, application mapping, and providing business context for network flows.
-2.  **AlgoSec Cloud Enterprise (ACE):** Manages security policies, risk analysis, and change automation.
-
-Benefits of deploying through AWS Marketplace:
-* **Simple procurement:** Direct integration into AWS billing (Unified billing).
-* **Fast deployment:** Streamlined onboarding for immediate time-to-value.
-* **Scalability:** Easy to extend policy control across all environments.
+**Original Post:** [View on Facebook](https://www.facebook.com/share/p/151HogtQqMT/)
 
 ---
 
-## 2. Unified Firewall Policy Visibility
+## 1. Why You Should Not Rely on S3 `ETag` for File Integrity
 
-After logging into the ACE console, the **AWS Firewall Policies** tab displays all deployed AWS firewalls along with their associated policies. Users can view detailed information for each firewall, including VPC, Availability Zones, and Subnets.
+When looking for a quick way to verify whether an S3 object has changed, many developers (myself included) reach for the `ETag` field returned by S3 APIs. However, `ETag` is a classic trap:
 
-![The main account page shows the firewalls, the policy sets, and the rules](/images/3-BlogsTranslated/3.3.1.png)
+- **Only valid for Single-Part Uploads with SSE-S3:** S3 only sets `ETag` to the raw **MD5** digest of the file when uploaded in a single operation (*single-part upload*) using default `SSE-S3` encryption
+- **Breaks under Multipart Upload & SSE-KMS:** Once a file exceeds the SDK's multipart threshold (**Multipart Upload**) or the bucket uses **SSE-KMS** encryption, `ETag` is no longer the MD5 of the entire object (for multipart uploads, it becomes the MD5 of the concatenated part MD5s followed by the part count, e.g., `"...-5"`)
 
-> [Figure 1] The main page displays the list of Firewalls, Policy Sets, and Rules.
-
-Contextual visibility is a key strength of the solution. When hovering over a firewall name, the system immediately displays VPC context and related applications.
-
-![VPC context shown while hovering over the firewall name test-firewall-2](/images/3-BlogsTranslated/3.3.2.png)
-
-> [Figure 2] VPC context displayed when hovering over the Firewall name, helping administrators immediately understand location and scope of impact.
+Comparing a locally computed file hash against S3's `ETag` will falsely flag intact files as corrupted. Instead of relying on `ETag`, the reliable approach is pairing **SHA-256** checksums (via S3's native `ChecksumAlgorithm='SHA256'` or application-side hashing) with **S3 Versioning**.
 
 ---
 
-## 3. Detailed Rule and Application Analysis
+## 2. Combining S3 Versioning with a DynamoDB SHA-256 Manifest
 
-AWS Firewall policies typically include two rule groups: **Stateless** and **Stateful**. AlgoSec allows you to expand and view details of each rule group.
+To reproduce the exact input dataset for any historical pipeline run with 100% certainty, combine three building blocks:
 
-![The expanded view of a policy set shows the existing rule groups](/images/3-BlogsTranslated/3.3.3.png)
+### 2.1. Enable S3 Versioning on the Data Bucket
+Every time the ETL job overwrites `clean/dataset.csv`, S3 preserves the previous object and assigns the new upload a unique `VersionId` (e.g., `v1`, `v2`). Older revisions become *Noncurrent Versions* and remain completely immutable—nobody can alter the bytes stored under an existing `VersionId`.
 
-> [Figure 3] The expanded view displays detailed Stateless and Stateful rule groups within a policy set.
+### 2.2. Record a Run Manifest in Amazon DynamoDB
+Whenever a pipeline starts a new execution (`Run ID`), it persists a Manifest record capturing the `Bucket`, `Key`, exact `VersionId` consumed, and the object's `SHA-256` digest.
 
-More importantly, AlgoSec Horizon links this technical information with **business context**. Users can view Application Diagrams, Application Owners, and connection status from on-premise to cloud.
+### 2.3. Read by Pinned `VersionId` and Verify SHA-256 Before Processing
+When re-running an earlier job for auditing or backtesting, the pipeline ignores the unversioned key (which always resolves to the latest `v2`) and instead queries the DynamoDB Manifest, calls `GetObject` with `VersionId=v1`, computes the `SHA-256` hash of the downloaded byte stream, and compares it against the stored manifest. Only upon an exact match does processing proceed; any mismatch or missing version triggers an immediate **Fail Fast** abort rather than producing silent data corruption.
 
-![Application details include status, contact details, and diagram](/images/3-BlogsTranslated/3.3.4.png)
+---
 
-> [Figure 4] Application View displays connection diagrams, contact information, and compliance status of business applications.
+## 3. Pipeline Data Reproducibility Architecture
+
+![Pipeline Data Reproducibility Architecture with S3 Versioning and DynamoDB Manifest](/images/blog-3-architecture.png)
+
+- **ETL Ingestion:** Continuously overwrites the dataset key on Amazon S3. With Versioning enabled, `v1` remains preserved alongside `v2`
+- **Step 1 (Manifest DB):** The Pipeline Runner writes or reads the pinned object metadata (`VersionId` + `SHA-256` hash) in Amazon DynamoDB
+- **Step 2 (`GetObjectVersion`):** The Pipeline Runner retrieves the exact pinned object version (`v1`) rather than accidentally pulling the latest `v2`
+- **Step 3 (Integrity Check):** Compares the live `SHA-256` hash against the manifest—proceeding only on a match and failing fast on any discrepancy
+- **Automated Cleanup:** An S3 Lifecycle Rule periodically expires aged noncurrent versions (`NoncurrentVersionExpiration`) to keep storage costs bounded
+
+---
+
+## 4. Four Implementation Pitfalls to Watch Out For
+
+### 4.1. Granting `s3:GetObject` While Forgetting `s3:GetObjectVersion`
+In IAM policies, `s3:GetObject` only authorizes reading the current version of an object. The moment your pipeline passes a `VersionId` parameter to reproduce historical data, AWS denies the request with `AccessDenied` unless the IAM Role also includes `s3:GetObjectVersion`.
+
+### 4.2. Silent S3 Bill Growth from Unmanaged Noncurrent Versions
+In Singapore (`ap-southeast-1`), every noncurrent version on S3 Standard is billed at full storage rates (`$0.025/GB/month` for the first 50 TB). Overwriting a `10 GB` dataset daily for 30 days means paying for `300 GB` (`$7.50/month` instead of `$0.25/month`), even though the default S3 Console view (with *Show versions* toggled off) displays only a single file. Always configure an **S3 Lifecycle Rule** to transition older versions to cheaper storage tiers (`NoncurrentVersionTransition`) or expire them after a retention window (`NoncurrentVersionExpiration`).
+
+### 4.3. Standard `DeleteObject` Calls Do Not Free Storage
+On a versioned bucket, calling `DeleteObject` without specifying a `VersionId` does not delete any underlying bytes—it merely inserts a **Delete Marker** as the latest version. All prior versions remain stored and billed monthly until explicitly deleted by their `VersionId`.
+
+### 4.4. Trusting `ETag` Across Multipart Uploads or SSE-KMS
+As highlighted in Section 1, always store and validate **SHA-256** checksums (using S3's built-in `ChecksumSHA256` support or streaming hash calculation) rather than treating `ETag` as a cryptographic integrity signature.
+
+---
+
+## 5. How to Verify in 30 Seconds
+
+- **Verify on the S3 Console:** Open your bucket → toggle **"Show versions"** at the top of the object list → confirm each overwrite creates a distinct Version ID row without erasing prior revisions
+- **Test the Fail Fast Safeguard:** Manually alter a single character in the `SHA-256` string stored in your DynamoDB Manifest and re-trigger the pipeline → verify that the job immediately halts and raises an integrity validation error
 
 ---
 
 ## Conclusion
 
-The combination of AWS Firewall Manager and AlgoSec provides a "single pane of glass" for security teams. Instead of fragmented management, they can now:
-* Analyze AWS configurations like traditional firewalls.
-* Perform change simulation before applying to avoid business disruption.
-* Ensure continuous compliance across the entire Hybrid environment.
+Ensuring reproducible inputs for ETL and AI/ML pipelines on AWS comes down to three core practices:
+
+- **Never rely solely on unversioned S3 paths** when you need to reproduce historical pipeline runs
+- **Pin inputs with S3 Versioning + SHA-256 Manifests** (instead of `ETag`) to guarantee byte-for-byte reproducibility
+- **Pair IAM permissions with Lifecycle rules:** Include `s3:GetObjectVersion` in your execution role and configure **S3 Lifecycle Rules** to prevent noncurrent versions from inflating storage bills
 
 ---
 
-## Authors
+**References:**  
+- Using Versioning in S3 Buckets: https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html  
+- Checking Object Integrity in Amazon S3 (SHA-256): https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html  
+- Managing Noncurrent Versions with S3 Lifecycle: https://docs.aws.amazon.com/AmazonS3/latest/userguide/lifecycle-configuration-examples.html  
+- Amazon S3 Pricing (ap-southeast-1): https://aws.amazon.com/s3/pricing/
+
+---
+
+## Author
 
 <div style="display: flex; align-items: flex-start; margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
-  <img src="/images/3-BlogsTranslated/JosephHallman.png" alt="Joseph Hallman" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px; border-radius: 5px;">
+  <img src="/images/avatar.png" alt="Author" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px; border-radius: 5px;">
   <div>
-    <h3 style="margin-top: 0;">Joseph Hallman</h3>
-    <p>Joseph is a Product Marketing Manager at AlgoSec with over 20 years of experience in networking and data center markets. He has worked at both startups and global enterprises, bringing expertise in sales, product management, and marketing strategy.</p>
-  </div>
-</div>
-
-<div style="display: flex; align-items: flex-start; margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
-  <img src="/images/3-BlogsTranslated/AmitGaur.png" alt="Amit Gaur" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px; border-radius: 5px;">
-  <div>
-    <h3 style="margin-top: 0;">Amit Gaur</h3>
-    <p>Amit is a Cloud Infrastructure Architect at AWS, specializing in network architecture design. He helps customers build highly scalable and resilient environments on AWS.</p>
-  </div>
-</div>
-
-<div style="display: flex; align-items: flex-start; margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
-  <img src="/images/3-BlogsTranslated/SrivalsanMannoorSudhagar.png" alt="Srivalsan Mannoor Sudhagar" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px; border-radius: 5px;">
-  <div>
-    <h3 style="margin-top: 0;">Srivalsan Mannoor Sudhagar</h3>
-    <p>Srivalsan is a Sr. Cloud Infrastructure Architect at Amazon Web Services, Professional Services who brings expertise in Cloud Infrastructure and MLOps platforms.</p>
-  </div>
-</div>
-
-<div style="display: flex; align-items: flex-start; margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
-  <img src="/images/3-BlogsTranslated/SaleemMuhammad.png" alt="Saleem Muhammad" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px; border-radius: 5px;">
-  <div>
-    <h3 style="margin-top: 0;">Saleem Muhammad</h3>
-    <p>Saleem is a Senior Manager of Product Management in AWS Network & Application Protection. He is passionate about building solutions that help customers to secure mission critical workloads.</p>
+    <h3 style="margin-top: 0;">AWS First Cloud Journey Intern</h3>
+    <p>Cloud engineering intern in the AWS First Cloud Journey (FCJ) program, passionate about distributed systems architecture, performance optimization, and sharing hands-on cloud implementation insights.</p>
   </div>
 </div>
