@@ -51,7 +51,7 @@ Cơ chế hoạt động dựa trên quy tắc ưu tiên tuyến đường cụ 
 
 ### 2.2. Kiến trúc định tuyến thực tế
 
-![Kiến trúc định tuyến VPC Gateway Endpoint cho S3 và DynamoDB](/images/blog-2-architecture.png)
+![Kiến trúc định tuyến VPC Gateway Endpoint cho S3 và DynamoDB](/images/blog2-architecture.png)
 
 - **Nhánh trên (Matched Prefix List):** Traffic từ EC2 tới S3 và DynamoDB cùng region được Private Route Table bẻ lái qua VPC Gateway Endpoint, đi trên mạng nội bộ AWS (`0 USD/GB`)
 - **Nhánh dưới (Default Route `0.0.0.0/0`):** Chỉ những traffic cần ra Internet hoặc gọi S3/DynamoDB ở region khác mới đi qua NAT Gateway ở Public Subnet (`0,059 USD/giờ + 0,059 USD/GB`). *(Lưu ý: Sơ đồ được vẽ giản lược nên không hiển thị biểu tượng Internet Gateway nằm giữa NAT Gateway và Internet.)*
