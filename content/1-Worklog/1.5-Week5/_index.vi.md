@@ -1,54 +1,52 @@
 ---
-title: "Nhật ký Tuần 5"
-date: 2025-10-06
+title: "Nhật ký công việc Tuần 5"
+date: 2026-10-12
 weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
 ### Mục tiêu Tuần 5:
 
-* **Xuất sắc Vận hành:** Tự động hóa các tác vụ vận hành (khởi động/dừng máy chủ) bằng **AWS Lambda** và tích hợp với các công cụ truyền thông (Slack).
-* **Giám sát & Quan sát:** Xây dựng bảng điều khiển nâng cao sử dụng **Grafana** tích hợp với **Amazon CloudWatch** để có cái nhìn sâu sắc về hệ thống.
-* **Quản trị & Gắn thẻ:** Triển khai các chiến lược tổ chức tài nguyên bằng cách sử dụng **Thẻ**, **Nhóm Tài nguyên** và thực thi Kiểm soát Truy cập Dựa trên Thuộc tính (ABAC) thông qua **IAM**.
-* **Quản lý Hệ thống (SSM):** Khám phá quản lý máy chủ mà không cần SSH bằng **Session Manager** và hiểu quy trình vá tự động (Patch Manager).
-* **Hạ tầng dưới dạng Mã (IaC):** Bắt đầu tự động hóa triển khai hạ tầng bằng **AWS CloudFormation**.
+- **Tối ưu Vận hành (Operational Excellence):** Tự động hóa các tác vụ vận hành định kỳ (bật/tắt máy chủ theo lịch) bằng **AWS Lambda** kết hợp thông báo qua công cụ cộng tác (Slack).
+- **Giám sát & Trực quan hóa:** Xây dựng hệ thống dashboard chuyên sâu bằng **Grafana** kết nối trực tiếp với nguồn dữ liệu **Amazon CloudWatch**.
+- **Quản trị & Phân loại Tài nguyên:** Chuẩn hóa chiến lược gắn nhãn (**Tagging**), tổ chức **Resource Groups** và áp dụng cơ chế kiểm soát truy cập dựa trên thuộc tính (**ABAC**) qua **AWS IAM**.
+- **Quản trị Hệ thống (Systems Manager):** Thực hành truy cập máy chủ không cần mở cổng SSH bằng **Session Manager**, chạy lệnh hàng loạt với **Run Command** và tìm hiểu quy trình vá lỗi tự động (**Patch Manager**).
+- **Hạ tầng dưới dạng Mã (IaC):** Bắt đầu tự động hóa việc khởi tạo tài nguyên đám mây thông qua **AWS CloudFormation**.
 
-### Nhiệm vụ cần thực hiện trong tuần này:
+### Kế hoạch công việc trong tuần:
 
-| Ngày | Nhiệm vụ | Ngày Bắt đầu | Ngày Hoàn thành | Tài liệu Tham khảo |
+| Ngày | Nội dung thực hiện | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
 | --- | --- | --- | --- | --- |
-| 2 | **Tối ưu Chi phí & Tự động hóa** <br> - Tạo **hàm Lambda** (Python boto3) để tự động Khởi động/Dừng các phiên bản EC2 dựa trên lịch trình. <br> - Tích hợp Lambda với **Slack Webhooks** để thông báo vận hành. <br> - Cấu hình trình kích hoạt **EventBridge** (CloudWatch Events). | 06/10/2025 | 06/10/2025 | https://000022.awsstudygroup.com/ |
-| 3 | **Giám sát Nâng cao (Grafana)** <br> - Khởi chạy EC2 để lưu trữ **Grafana** (Mã nguồn Mở). <br> - Kết nối Grafana với nguồn dữ liệu **Amazon CloudWatch**. <br> - Tạo bảng điều khiển tùy chỉnh trực quan hóa các chỉ số CPU, Mạng và Đĩa từ EC2. | 07/10/2025 | 07/10/2025 | https://000029.awsstudygroup.com/ |
-| 4 | **Quản trị & Bảo mật (Thẻ & IAM)** <br> - **Chiến lược Gắn thẻ:** Áp dụng các thẻ nhất quán cho tài nguyên (Env, Owner, CostCenter). <br> - Tạo **Nhóm Tài nguyên** để quản lý tài nguyên theo thẻ. <br> - **Triển khai ABAC:** Cấu hình Chính sách IAM để kiểm soát quyền truy cập EC2 dựa trên thẻ khớp giữa Người dùng và Tài nguyên. | 08/10/2025 | 08/10/2025 | https://000027.awsstudygroup.com/ <br><br> https://000028.awsstudygroup.com/ |
-| 5 | **Quản lý Hệ thống (SSM)** <br> - **Session Manager:** Kết nối với các phiên bản riêng tư/công khai mà không cần mở cổng SSH (Chuyển tiếp Cổng, Nhật ký Kiểm tra sang S3). <br> - **Run Command:** Thực thi lệnh từ xa trên nhiều phiên bản. <br> - *Lý thuyết/Xem xét:* Quy trình **Patch Manager** (quét & tuân thủ) do giới hạn quyền Free Tier/Lab tiềm ẩn. | 09/10/2025 | 09/10/2025 | https://000058.awsstudygroup.com/ <br><br> https://000031.awsstudygroup.com/ |
-| 6 | **Hạ tầng dưới dạng Mã (CloudFormation)** <br> - Viết **mẫu CloudFormation** cơ bản (YAML/JSON) để triển khai VPC và EC2. <br> - Hiểu về **Stack**, **Tham số**, **Ánh xạ** và **Đầu ra**. <br> - Khám phá **Phát hiện Lệch** để xác định các thay đổi thủ công đối với hạ tầng. | 10/10/2025 | 10/10/2025 | https://000037.awsstudygroup.com/ |
+| 2 | **Tối ưu Chi phí & Tự động hóa Vận hành** <br> - Viết hàm **AWS Lambda** (Python `boto3`) tự động khởi động/tắt các EC2 instance theo khung giờ quy định <br> - Tích hợp Lambda với **Slack Incoming Webhooks** để gửi cảnh báo trạng thái vận hành tức thì <br> - Thiết lập lịch kích hoạt tự động bằng **Amazon EventBridge** (CloudWatch Events) | 12/10/2026 | 12/10/2026 | https://000022.awsstudygroup.com/ |
+| 3 | **Giám sát Nâng cao với Grafana** <br> - Khởi chạy máy chủ EC2 để cài đặt và vận hành **Grafana** (Open Source) <br> - Kết nối Grafana với nguồn dữ liệu **Amazon CloudWatch** thông qua IAM Role <br> - Thiết kế dashboard trực quan hóa các chỉ số CPU, lưu lượng mạng và Disk I/O của EC2 | 13/10/2026 | 13/10/2026 | https://000029.awsstudygroup.com/ |
+| 4 | **Quản trị Tài nguyên & Bảo mật (Tagging & IAM ABAC)** <br> - **Chiến lược Tagging:** Chuẩn hóa bộ thẻ phân loại cho tài nguyên (`Env`, `Owner`, `CostCenter`) <br> - Khởi tạo **Resource Groups** để gom nhóm và quản lý tập trung các tài nguyên cùng thuộc tính <br> - **Triển khai ABAC:** Viết IAM Policy cho phép người dùng chỉ thao tác được trên các EC2 có cặp thẻ trùng khớp với thẻ của chính họ | 14/10/2026 | 14/10/2026 | https://000027.awsstudygroup.com/ <br><br> https://000028.awsstudygroup.com/ |
+| 5 | **Quản trị Hệ thống với AWS Systems Manager (SSM)** <br> - **Session Manager:** Truy cập an toàn vào EC2 (cả Public lẫn Private Subnet) mà không cần mở cổng SSH hay dùng Bastion Host; cấu hình Port Forwarding và lưu Session Logs lên S3 <br> - **Run Command:** Thực thi kịch bản quản trị từ xa đồng loạt trên nhiều máy chủ <br> - *Nghiên cứu lý thuyết:* Tìm hiểu quy trình rà soát và cập nhật bản vá tự động qua **Patch Manager** | 15/10/2026 | 15/10/2026 | https://000058.awsstudygroup.com/ <br><br> https://000031.awsstudygroup.com/ |
+| 6 | **Hạ tầng dưới dạng Mã (AWS CloudFormation)** <br> - Biên soạn **CloudFormation Template** (YAML/JSON) để triển khai tự động VPC và EC2 <br> - Nắm vững cấu trúc các thành phần cốt lõi: **Stacks, Parameters, Mappings và Outputs** <br> - Thực hành tính năng **Drift Detection** để phát hiện các thay đổi cấu hình thủ công ngoài template | 16/10/2026 | 16/10/2026 | https://000037.awsstudygroup.com/ |
 
-# Thành tựu Tuần 5
+# Kết quả đạt được trong Tuần 5
 
-## Tự động hóa & Quản lý Chi phí
-- Triển khai thành công **cơ chế tiết kiệm chi phí tự động** bằng cách lên lịch các phiên bản EC2 không sản xuất dừng lại trong giờ nghỉ bằng **AWS Lambda**.
-- Triển khai hệ thống thông báo nơi các sự kiện vận hành kích hoạt tin nhắn đến **kênh Slack**, cải thiện khả năng hiển thị của nhóm.
-- Giảm can thiệp thủ công bằng cách tận dụng **Quy tắc EventBridge** để kích hoạt quy trình tự động hóa.
+## Tự động hóa & Tối ưu Chi phí
+- Xây dựng thành công **cơ chế tiết kiệm chi phí tự động**, hẹn giờ tắt các máy chủ EC2 môi trường phát triển/kiểm thử ngoài giờ làm việc bằng **AWS Lambda**.
+- Tích hợp luồng thông báo thời gian thực tới **kênh Slack** mỗi khi hệ thống thực thi tác vụ bật/tắt máy chủ, giúp đội ngũ dễ dàng theo dõi.
+- Giảm thiểu thao tác thủ công lặp lại nhờ sử dụng **EventBridge Rules** làm bộ lập lịch kích hoạt tự động.
 
-## Trực quan hóa Giám sát
-- Triển khai phiên bản **Grafana** tự lưu trữ trên EC2.
-- Tích hợp thành công **Amazon CloudWatch** làm nguồn dữ liệu cho Grafana, cho phép trực quan hóa các chỉ số AWS trong giao diện thống nhất, có thể tùy chỉnh.
-- Tạo bảng điều khiển cụ thể để giám sát tình trạng EC2, vượt qua các giới hạn của chế độ xem CloudWatch mặc định.
+## Trực quan hóa Dữ liệu Giám sát
+- Triển khai và vận hành thành công máy chủ **Grafana** tự quản trị trên nền tảng EC2.
+- Tích hợp **Amazon CloudWatch** làm nguồn dữ liệu đầu vào, mở rộng khả năng biểu diễn chỉ số linh hoạt và trực quan hơn so với giao diện mặc định.
+- Hoàn thiện bộ dashboard theo dõi sức khỏe hệ thống EC2 phục vụ công tác phân tích hiệu năng.
 
-## Quản trị Tài nguyên & Bảo mật
-- Thành thạo **chiến lược Gắn thẻ** để tổ chức tài nguyên theo môi trường (Dev/Prod) và dự án.
-- Triển khai **Nhóm Tài nguyên** để quản lý hàng loạt tài nguyên chia sẻ các thẻ chung.
-- Tăng cường bảo mật bằng cách sử dụng **Kiểm soát Truy cập Dựa trên Thuộc tính (ABAC)**: Cấu hình các chính sách IAM cho phép người dùng chỉ quản lý các phiên bản EC2 khớp với thẻ phòng ban cụ thể của họ, cách ly hiệu quả các môi trường.
+## Quản trị Tài nguyên & Phân quyền theo Thuộc tính
+- Chuẩn hóa **quy tắc gắn thẻ (Tagging)** nhằm phân tách rõ ràng tài nguyên theo môi trường (`Dev`/`Prod`) và đơn vị sử dụng.
+- Sử dụng **Resource Groups** để truy vấn và quản lý hàng loạt tài nguyên theo từng nhóm dự án.
+- Nâng cao tính bảo mật nhờ mô hình **Attribute-Based Access Control (ABAC)**: thiết lập IAM Policy giới hạn quyền quản lý EC2 dựa trên sự trùng khớp thẻ giữa IAM User và tài nguyên, cô lập hiệu quả giữa các môi trường.
 
-## Vận hành Hệ thống (SysOps)
-- Loại bỏ nhu cầu về Bastion Host/khóa SSH bằng cách sử dụng **AWS Systems Manager Session Manager** để truy cập phiên bản an toàn.
-- Cấu hình **Ghi nhật ký Phiên** sang S3 cho mục đích kiểm tra và tuân thủ.
-- Nghiên cứu và mô phỏng quy trình **Patch Manager** để tự động hóa cập nhật hệ điều hành và duy trì tuân thủ trên toàn bộ các phiên bản.
-- Sử dụng **Run Command** để thực thi các tập lệnh quản trị trên nhiều máy chủ đồng thời mà không cần đăng nhập vào từng máy.
+## Vận hành Hệ thống Tập trung (SysOps)
+- Loại bỏ hoàn toàn rủi ro lộ cổng SSH và nhu cầu duy trì Bastion Host nhờ ứng dụng **SSM Session Manager**.
+- Cấu hình lưu trữ **Session Logs** tự động lên Amazon S3 phục vụ công tác kiểm toán (audit) và tuân thủ bảo mật.
+- Nắm vững quy trình vận hành **Patch Manager** để tự động hóa việc quét và cập nhật bản vá hệ điều hành định kỳ.
+- Thành thạo **Run Command** để triển khai cấu hình đồng thời trên nhiều máy chủ mà không cần đăng nhập thủ công từng node.
 
-## Hạ tầng dưới dạng Mã (IaC)
-- Chuyển đổi từ các thao tác thủ công trên console sang định nghĩa hạ tầng bằng mã sử dụng **AWS CloudFormation**.
-- Tạo và triển khai Stack để cung cấp VPC và các phiên bản EC2, đảm bảo triển khai nhất quán và có thể lặp lại.
-- Học cách phát hiện "Lệch Cấu hình" để xác định nơi trạng thái hạ tầng thực tế lệch khỏi các mẫu CloudFormation đã định nghĩa.
-
-
+## Hạ tầng dưới dạng Mã (Infrastructure as Code)
+- Bước đầu chuyển dịch từ việc tạo tài nguyên thủ công trên Console sang khai báo bằng mã nguồn với **AWS CloudFormation**.
+- Triển khai thành công CloudFormation Stack khởi tạo đồng bộ hạ tầng VPC và EC2 với tính nhất quán và khả năng tái sử dụng cao.
+- Sử dụng thành thạo **Drift Detection** để kiểm tra và phát hiện sai lệch giữa trạng thái hạ tầng thực tế với cấu hình chuẩn trong template.
