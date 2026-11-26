@@ -1,52 +1,52 @@
 ---
 title: "Week 5 Worklog"
-date: 2025-10-06
+date: 2026-10-12
 weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
 ### Week 5 Objectives:
 
-* **Operational Excellence:** Automate operational tasks (server start/stop) using **AWS Lambda** and integrate with communication tools (Slack).
-* **Monitoring & Observability:** Build advanced dashboards using **Grafana** integrated with **Amazon CloudWatch** for deep system insights.
-* **Governance & Tagging:** Implement resource organization strategies using **Tags**, **Resource Groups**, and enforce Attribute-Based Access Control (ABAC) via **IAM**.
-* **Systems Management (SSM):** Explore server management without SSH using **Session Manager** and understand automated patching workflows (Patch Manager).
-* **Infrastructure as Code (IaC):** Begin automating infrastructure deployment using **AWS CloudFormation**.
+- **Operational Excellence:** Automate recurring operational routines (scheduled instance start/stop) using **AWS Lambda** integrated with team communication tools (Slack).
+- **Monitoring & Observability:** Build advanced visual dashboards with **Grafana** connected to **Amazon CloudWatch** for deeper infrastructure telemetry.
+- **Governance & Resource Organization:** Establish consistent **Tagging** standards, organize **Resource Groups**, and enforce Attribute-Based Access Control (ABAC) via **AWS IAM**.
+- **Systems Management (SSM):** Practice SSH-free server administration with **Session Manager**, bulk execution via **Run Command**, and automated OS patching workflows (**Patch Manager**).
+- **Infrastructure as Code (IaC):** Begin codifying and automating cloud infrastructure deployments using **AWS CloudFormation**.
 
-### Tasks to be carried out this week:
+### Weekly Action Plan:
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| 2 | **Cost Optimization & Automation** <br> - Create **Lambda functions** (Python boto3) to automatically Start/Stop EC2 instances based on schedules. <br> - Integrate Lambda with **Slack Webhooks** for operational notifications. <br> - Configure **EventBridge** (CloudWatch Events) triggers. | 06/10/2025 | 06/10/2025 | https://000022.awsstudygroup.com/ |
-| 3 | **Advanced Monitoring (Grafana)** <br> - Launch EC2 to host **Grafana** (Open Source). <br> - Connect Grafana to **Amazon CloudWatch** data source. <br> - Create custom dashboards visualizing CPU, Network, and Disk metrics from EC2. | 07/10/2025 | 07/10/2025 | https://000029.awsstudygroup.com/ |
-| 4 | **Governance & Security (Tags & IAM)** <br> - **Tagging Strategy:** Apply consistent tags to resources (Env, Owner, CostCenter). <br> - Create **Resource Groups** to manage resources by tags. <br> - **ABAC Implementation:** Configure IAM Policies to control EC2 access based on matching tags between User and Resource. | 08/10/2025 | 08/10/2025 | https://000027.awsstudygroup.com/ <br><br> https://000028.awsstudygroup.com/ |
-| 5 | **Systems Management (SSM)** <br> - **Session Manager:** Connect to private/public instances without opening SSH ports (Port Forwarding, Audit Logs to S3). <br> - **Run Command:** Execute remote commands across multiple instances. <br> - *Theory/Review:* **Patch Manager** workflows (scanning & compliance) due to potential Free Tier/Lab permission limits. | 09/10/2025 | 09/10/2025 | https://000058.awsstudygroup.com/ <br><br> https://000031.awsstudygroup.com/ |
-| 6 | **Infrastructure as Code (CloudFormation)** <br> - Write basic **CloudFormation templates** (YAML/JSON) to deploy VPC and EC2. <br> - Understand **Stacks**, **Parameters**, **Mappings**, and **Outputs**. <br> - Explore **Drift Detection** to identify manual changes to infrastructure. | 10/10/2025 | 10/10/2025 | https://000037.awsstudygroup.com/ |
+| 2 | **Cost Optimization & Operational Automation** <br> - Author **AWS Lambda functions** (Python `boto3`) to automatically start and stop EC2 instances on a defined schedule <br> - Integrate Lambda with **Slack Incoming Webhooks** to dispatch real-time operational alerts <br> - Configure **Amazon EventBridge** (CloudWatch Events) rules as scheduled triggers | 12/10/2026 | 12/10/2026 | https://000022.awsstudygroup.com/ |
+| 3 | **Advanced Observability with Grafana** <br> - Provision an EC2 instance to host self-managed **Grafana** (Open Source) <br> - Connect Grafana to **Amazon CloudWatch** as a native data source via IAM roles <br> - Design custom dashboards tracking EC2 CPU, Network throughput, and Disk I/O metrics | 13/10/2026 | 13/10/2026 | https://000029.awsstudygroup.com/ |
+| 4 | **Resource Governance & Security (Tags & IAM ABAC)** <br> - **Tagging Strategy:** Enforce standardized metadata tags across resources (`Env`, `Owner`, `CostCenter`) <br> - Create **Resource Groups** to query and manage workloads sharing common tags <br> - **ABAC Implementation:** Author IAM Policies restricting EC2 actions to instances whose tags match the requesting user's principal tags | 14/10/2026 | 14/10/2026 | https://000027.awsstudygroup.com/ <br><br> https://000028.awsstudygroup.com/ |
+| 5 | **Systems Administration with AWS Systems Manager (SSM)** <br> - **Session Manager:** Connect securely to public and private instances without open SSH ports or Bastion Hosts (Port Forwarding and S3 Session Audit Logs) <br> - **Run Command:** Execute administrative scripts remotely across a fleet of instances <br> - *Conceptual Review:* Walk through **Patch Manager** scanning and compliance baselines | 15/10/2026 | 15/10/2026 | https://000058.awsstudygroup.com/ <br><br> https://000031.awsstudygroup.com/ |
+| 6 | **Infrastructure as Code (AWS CloudFormation)** <br> - Author foundational **CloudFormation templates** (YAML/JSON) to provision VPC and EC2 resources <br> - Master core template constructs: **Stacks**, **Parameters**, **Mappings**, and **Outputs** <br> - Run **Drift Detection** to uncover out-of-band manual configuration changes | 16/10/2026 | 16/10/2026 | https://000037.awsstudygroup.com/ |
 
-# Week 5 Achievements
+# Week 5 Key Takeaways & Achievements
 
-## Automation & Cost Management
-- Successfully implemented **automated cost-saving mechanisms** by scheduling non-production EC2 instances to stop during off-hours using **AWS Lambda**.
-- Deployed a notification system where operational events trigger messages to a **Slack channel**, improving team visibility.
-- Reduced manual intervention by leveraging **EventBridge Rules** to trigger automation workflows.
+## Automation & Cloud Cost Control
+- Implemented an **automated cost-saving workflow** using **AWS Lambda** to power down non-production EC2 instances outside working hours.
+- Built real-time operational visibility by routing Lambda execution notifications directly into a dedicated **Slack channel**.
+- Eliminated manual scheduling overhead by leveraging **EventBridge Rules** to trigger serverless automation reliably.
 
-## Monitoring Visualization
-- Deployed a self-hosted **Grafana** instance on EC2.
-- successfully integrated **Amazon CloudWatch** as a data source for Grafana, enabling the visualization of AWS metrics in a unified, customizable interface.
-- Created specific dashboards to monitor EC2 health, overcoming the limitations of default CloudWatch views.
+## Custom Monitoring & Visualization
+- Deployed and configured a self-hosted **Grafana** server running on Amazon EC2.
+- Integrated **Amazon CloudWatch** as a data source, enabling richer, customizable metric visualizations beyond standard console graphs.
+- Built tailored dashboards to track EC2 fleet health and resource utilization trends.
 
-## Resource Governance & Security
-- Mastered **Tagging strategies** to organize resources by environment (Dev/Prod) and project.
-- Implemented **Resource Groups** to bulk-manage resources sharing common tags.
-- Enhanced security using **Attribute-Based Access Control (ABAC)**: Configured IAM policies that strictly allow users to manage only the EC2 instances that match their specific department tags, effectively isolating environments.
+## Resource Governance & Attribute-Based Security
+- Established structured **Tagging conventions** to categorize cloud assets by environment (`Dev`/`Prod`), ownership, and cost center.
+- Leveraged **Resource Groups** to organize and manage related resources in bulk.
+- Strengthened access isolation through **Attribute-Based Access Control (ABAC)**: crafted IAM policies allowing engineers to manage only those EC2 instances matching their department tags.
 
-## Systems Operations (SysOps)
-- Eliminated the need for Bastion Hosts/SSH keys by using **AWS Systems Manager Session Manager** for secure instance access.
-- Configured **Session Logging** to S3 for auditing and compliance purposes.
-- Studied and simulated the **Patch Manager** process for automating OS updates and maintaining compliance across fleets of instances.
-- Utilized **Run Command** to execute administrative scripts across multiple servers simultaneously without logging into each one.
+## Modern Systems Operations (SysOps)
+- Eliminated exposed SSH ports, key pairs, and Bastion Hosts by adopting **AWS Systems Manager Session Manager** for encrypted shell access.
+- Configured automated **Session Logging** to Amazon S3 to satisfy security auditing and compliance requirements.
+- Studied end-to-end **Patch Manager** workflows for automating OS patch baselines and compliance reporting across instance fleets.
+- Used **Run Command** to broadcast configuration updates across multiple servers simultaneously without individual logins.
 
 ## Infrastructure as Code (IaC)
-- Transitioned from manual console clicks to defining infrastructure in code using **AWS CloudFormation**.
-- Created and deployed Stacks to provision VPCs and EC2 instances, ensuring consistent and repeatable deployments.
-- Learned to detect "Configuration Drift" to identify where actual infrastructure state deviates from the defined CloudFormation templates.
+- Shifted from manual console provisioning to declarative infrastructure definitions using **AWS CloudFormation**.
+- Deployed repeatable CloudFormation Stacks to stand up VPC networking and EC2 compute resources consistently.
+- Practiced **Drift Detection** to audit live environments and identify discrepancies against declared template states.
