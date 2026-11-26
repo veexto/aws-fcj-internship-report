@@ -1,46 +1,43 @@
 ---
-title: "Event 2"
-date: 2025-11-15
+title: "Fireside Chat with Dr. Werner Vogels: Navigating the Future of Cloud & AI in Vietnam"
+date: 2026-10-02
 weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-# Báo Cáo Sau Sự Kiện: AWS Cloud Mastery Series #1 — AI/ML/GenAI on AWS
+### Thông tin chung về sự kiện
+- **Tên sự kiện:** Fireside Chat with Dr. Werner: Navigating the Future of Cloud & AI in Vietnam
+- **Diễn giả khách mời:** Tiến sĩ Werner Vogels (Vice President & Chief Technology Officer tại Amazon)
+- **Thời gian:** Ngày 02/10/2026
+- **Đơn vị tổ chức:** AWS First Cloud Journey (FCJ), AWS Heroes & AWS Community Builders Việt Nam
 
-## Mục Tiêu Sự Kiện
+---
 
-- Cung cấp góc nhìn tổng quan về bối cảnh AI/ML tại Việt Nam.
-- Giới thiệu các dịch vụ AI/ML chủ đạo của AWS, đặc biệt là Amazon SageMaker.
-- Khám phá Generative AI thông qua Amazon Bedrock, bao gồm Foundation Models và các phương pháp triển khai hiện đại như RAG và Prompt Engineering.
+### Nội dung chính của buổi trò chuyện
 
-## Nội Dung Nổi Bật
+#### 1. Lịch sử kiến trúc phân tán tại Amazon & Sự ra đời của DynamoDB
+- **Từ bài toán thực tế đến dịch vụ đám mây cốt lõi:** Dr. Werner chia sẻ câu chuyện hơn 22 năm trước khi Amazon đối mặt với giới hạn của các hệ quản trị cơ sở dữ liệu quan hệ thương mại trong mùa cao điểm mua sắm. Qua quá trình phân tích tải thực tế, đội ngũ nhận ra phần lớn truy vấn (khoảng 70%) chỉ là thao tác **Key-Value** đơn giản — động lực trực tiếp dẫn đến việc tự xây dựng hệ thống **Dynamo** và sau này là **Amazon DynamoDB**.
+- **Văn hóa tối ưu độ tin cậy (Operational Excellence):**
+  - Tập trung đo lường và cải thiện độ trễ ở phân vị **p99.9** thay vì chỉ dựa vào giá trị trung bình.
+  - Thực hành diễn tập **Game Days** — chủ động ngắt kết nối toàn bộ một trung tâm dữ liệu (Availability Zone) để loại bỏ các điểm lỗi đơn (Single Points of Failure), tự động hóa quy trình failover và hoàn thiện cơ chế đồng bộ dữ liệu khi hạ tầng phục hồi.
+  - Thay đổi mô hình kinh tế ngành CNTT từ hợp đồng trả trước dài hạn sang **Pay-as-you-go**, trao quyền chủ động hoàn toàn cho khách hàng.
 
-### Buổi Sáng: Tổng Quan Dịch Vụ AI/ML của AWS
-- Trình bày bối cảnh AI/ML tại Việt Nam và mục tiêu của workshop.
-- Amazon SageMaker: nền tảng ML toàn diện của AWS.
-- Quy trình làm ML: chuẩn bị dữ liệu, gán nhãn, huấn luyện, tối ưu và triển khai mô hình.
-- Tích hợp MLOps sẵn có trong SageMaker.
-- Demo trực tiếp: hướng dẫn thao tác với SageMaker Studio.
+#### 2. Tư duy của "Renaissance Developer" trong kỷ nguyên AI
+- **5 trụ cột năng lực của kỹ sư hiện đại:**
+  1. **Curious (Học hỏi không ngừng):** Ngôn ngữ lập trình và công cụ luôn thay đổi (từ C/Java đến Rust, từ IDE truyền thống đến Kiro/Cursor); khả năng tự cập nhật tri thức là yếu tố sống còn.
+  2. **Systems Thinker (Tư duy hệ thống):** Nhìn nhận bức tranh tổng thể về cách các dịch vụ tương tác thay vì chỉ tập trung vào một module rời rạc.
+  3. **Communicative (Kỹ năng giao tiếp):** Là kỹ năng thường bị đánh giá thấp nhất nhưng lại quyết định hiệu quả công việc. Kỹ sư cần biết khai thác đúng bài toán nghiệp vụ của khách hàng và giải thích rõ sự đánh đổi chi phí (ví dụ: mức độ sẵn sàng 99,99% cho luồng thanh toán so với 99,9% cho tính năng gợi ý) thay vì lạm dụng GenAI cho mọi vấn đề.
+  4. **Owner (Tinh thần làm chủ):** Công cụ AI chỉ là trợ lý; kỹ sư phải chịu trách nhiệm hoàn toàn về chất lượng mã nguồn, lỗ hổng bảo mật và tính tuân thủ của hệ thống đưa lên production.
+  5. **Polymath (Kỹ sư chữ T):** Kết hợp chuyên môn sâu ở một lĩnh vực với kiến thức rộng ở các tầng liên quan (giao diện, nghiệp vụ, bảo mật/formal verification) trong mô hình nhóm nhỏ tinh gọn **Two-Pizza Teams** (10–12 người).
 
-### Buổi Chiều: Generative AI với Amazon Bedrock
-- Foundation Models: so sánh và định hướng lựa chọn giữa Claude, Llama, Titan và các mô hình khác.
-- Prompt Engineering:
-  - Kỹ thuật nâng cao như Chain-of-Thought và Few-shot Learning.
-- Retrieval-Augmented Generation (RAG):
-  - Kiến trúc RAG và cách tích hợp nguồn dữ liệu bên ngoài.
-- Bedrock Agents: xây dựng quy trình nhiều bước và tích hợp công cụ.
-- Guardrails: nguyên tắc kiểm soát an toàn và lọc nội dung.
-- Demo trực tiếp: xây dựng chatbot Generative AI bằng Bedrock.
+#### 3. Kết hợp AI Prototyping với quy trình "Working Backwards"
+- **Đổi mới nhanh nhưng có kiểm soát:** Phương pháp **Working Backwards** (xây dựng tài liệu PR/FAQ từ góc nhìn khách hàng trước khi phát triển) nay được bổ trợ bởi tốc độ dựng prototype cực nhanh nhờ AI. Tuy nhiên, kỹ sư cần phân loại mức độ rủi ro của từng phần mềm để phân bổ thời gian review code hợp lý, tránh phụ thuộc mù quáng vào mã nguồn do AI sinh ra.
+- **Khuếch đại giá trị con người:** Công nghệ suy cho cùng được tạo ra để phục vụ con người. Các công cụ AI nên được tận dụng để nâng cao những thế mạnh mà máy móc không thể thay thế: **khả năng phán đoán, tư duy sáng tạo, sự thấu cảm và niềm tự hào nghề nghiệp** đối với những hệ thống vận hành bền bỉ phía sau hậu trường.
 
-## Những Điều Rút Ra
+---
 
-- **SageMaker:** hiểu rõ vai trò như một nền tảng quản lý toàn bộ vòng đời ML (từ chuẩn bị dữ liệu → huấn luyện → triển khai).
-- **Bedrock & GenAI:** nắm được cách Bedrock quản lý Foundation Models, phương pháp so sánh mô hình và các kỹ thuật cốt lõi như Prompt Engineering và RAG.
-- **Ứng dụng vào dự án:** RAG và Bedrock Agents rất hữu ích trong việc nâng cấp tính năng chatbot của dự án Travel-Guided.
-- Các phần demo đem lại cái nhìn thực tế về quy trình triển khai và khả năng tạo prototype nhanh với Bedrock.
-
-## Trải Nghiệm Sự Kiện
-
-- Ấn tượng với các demo trực tiếp, đặc biệt là tốc độ xây dựng chatbot bằng Bedrock.
-- Sự kiện tạo cơ hội kết nối và trao đổi giá trị với các chuyên gia AI/ML tại Việt Nam.
+### Bài học & Giá trị thu nhận sau sự kiện
+1. **Chọn đúng công cụ cho đúng bài toán:** Không chạy theo trào lưu dùng mô hình AI lớn cho mọi tác vụ; luôn cân nhắc bài toán chi phí, độ trễ và độ tin cậy thực tế trước khi thiết kế kiến trúc.
+2. **Đề cao trách nhiệm kỹ thuật (Engineering Ownership):** Khi ứng dụng các công cụ lập trình AI trong quá trình phát triển dự án, luôn chủ động kiểm thử, rà soát bảo mật và hiểu rõ từng dòng code triển khai.
+3. **Rèn luyện kỹ năng giao tiếp kỹ thuật & tư duy hệ thống:** Biết cách trình bày giải pháp kiến trúc gắn liền với giá trị kinh doanh và chủ động kết nối, chia sẻ kiến thức cùng cộng đồng AWS First Cloud Journey.
