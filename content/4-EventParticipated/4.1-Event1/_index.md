@@ -1,89 +1,46 @@
 ---
-title: "Event 1"
-date: 2025-09-06
-weight: 1
+title: "AWS Cloud and AI Day 2026 (Watch Party - Ho Chi Minh City)"
+date: 2026-09-29
+weight: 3
 chapter: false
-pre: " <b> 4.1. </b> "
+pre: " <b> 4.3. </b> "
 ---
 
-# Event Report: “The First Cloud Journey (FCJ) Program Kick-off”
+### Event Overview
+- **Event Name:** AWS Cloud and AI Day Hanoi 2026 – Ho Chi Minh City Watch Party Hub
+- **Date:** September 29, 2026
+- **Attendance Format:** In-person attendance at the **Ho Chi Minh City Watch Party** (livestreaming Keynotes & Developer Chats from the Hanoi venue alongside the AWS First Cloud Journey community)
+- **Organizers:** AWS Vietnam, AWS Community Builders & AWS First Cloud Journey (FCJ)
+---
 
-## Event Objectives
+### Key Highlights Followed from the Event
 
-- **Officially introduce** the 12-week First Cloud Journey (FCJ) program.
-- **Foster connections** between participants, Mentors, and the Organizing Committee (OC).
-- **Provide a high-level overview** of the organization, learning outcomes, and project roadmap.
-- **Explain the team workflow** and begin the process of forming project teams.
+#### 1. Shifting from "Technology Adoption" to "Operational Maturity"
+- The focus of Vietnam's Cloud and AI ecosystem in 2026 has moved beyond Proof-of-Concept (PoC) experiments toward **Operational Maturity**—running production systems reliably and securely at scale.
+- Production-grade workloads demand clear ownership, well-defined access boundaries, comprehensive observability, high resilience, and repeatable cost governance models.
 
-## Speaker List
+#### 2. Agentic AI and the Foundational Role of Platform Engineering
+- **Agentic AI** stood out as a central theme: AI agents are evolving from passive content generators into autonomous actors capable of invoking APIs, querying internal data, modifying code, and triggering deployment workflows.
+- As development velocity and agent autonomy accelerate, **Platform Engineering** becomes essential for establishing strong engineering guardrails—standardizing deployment patterns, enforcing secure defaults, governing software supply chains, and setting approval boundaries for agent actions.
 
-- **Organizing Committee Representative** – Presented the program’s mission and direction.
-- **Mentors** – Shared career paths and practical experiences in the Cloud industry.
-- **Alumni** – Offered insights and lessons learned from previous cohorts.
+#### 3. Identity Governance for Workloads & AI Agents (Workload Identity on AWS)
+- Followed the **Developer Chats** session by **Kha Van** (Cloud Security Engineer / AWS Community Builder) centered on a critical architectural question: *"When a workload calls an AWS API, what identity is actually making that request?"*
+- In modern cloud architectures, **non-human identities**—such as Kubernetes Pods, CI/CD pipelines, serverless functions, and AI agents—far outnumber human user accounts.
+- **Practical Solutions on AWS:** Adopting **Amazon EKS Pod Identity**, short-lived temporary credentials, fine-grained workload-level authorization instead of overly broad inherited EC2 node permissions, strict IAM trust policies, and runtime verification.
 
-## Key Highlights
+#### 4. AWS Infrastructure Expansion in Vietnam & Hybrid Architecture Decisions
+- Highlighted the expansion of AWS local infrastructure in Vietnam with **AWS Direct Connect in Hanoi** and the **Hanoi AWS Local Zone**, giving organizations greater flexibility for private connectivity, low-latency workloads, and data locality compliance.
+- This enables architects to make more nuanced trade-offs across latency, resilience, compliance, security, and cost between on-premises environments and the cloud.
 
-### Program Framework and 12-Week Roadmap
+#### 5. Real-World Transformation Stories & Vietnam’s Growing Builder Ecosystem
+- **TCBS Customer Story:** Demonstrated that meaningful AI transformation happens when it reshapes how engineering teams write, review, test, and deliver software—backed by measurable operational outcomes rather than simply adding another tool to the stack.
+- **Vietnam Cloud & AI Ecosystem Scale:** Keynote figures highlighted over **157,000** individuals trained in cloud and AI, more than **54,000** members in the **AWS Study Group**, and over **15,000** participants in the **First Cloud and AI Journey (FCJ)** ecosystem.
 
-- Introduced the complete **12-week learning plan**, covering foundational AWS knowledge (VPC, EC2) to building a full Serverless application.
-- Clarified **learning goals** and expectations for the Minimum Viable Product (MVP).
+---
 
-### Working Rules and Organizational Culture
-
-- **Participation and discipline guidelines:** Emphasized responsibility and consistency throughout the program.
-- **Community-oriented culture:** Highlighted the supportive and collaborative environment.
-
-### Team Formation and Project Orientation
-
-- Explained steps for **effective team formation**, including role delegation and communication channels.
-- Provided initial directions for **team projects** and research topics.
-
-### AWS Account Security
-
-- Guided participants on enabling **Two-Factor Authentication (2FA)** and setting up **cost monitoring (Budget)** from the beginning.
-
-## Key Takeaways
-
-### Mindset and Commitment
-
-- **Discipline is crucial:** Understood the level of dedication required to keep up with the program.
-- **Community matters:** Recognized the value of mentor support and peer collaboration.
-
-### Organizational Understanding
-
-- Gained clarity on the program’s **overall objectives** and expected outcomes.
-- Understood the full **12-week learning path** and major focus areas.
-
-### Initial Practical Skills
-
-- **Completed team formation** and coordinated with new members.
-- Learned essential **security practices** for AWS accounts, including 2FA and cost controls.
-
-## Application to Work
-
-- **Formed the project team** and assigned initial tasks.
-- Started researching **organizational information** and foundational AWS concepts.
-- Performed **essential operations** on the AWS account—2FA configuration and Budget setup (as recorded in Week 1 Worklog).
-
-## Event Experience
-
-Participating in the **Kick-off** provided both motivation and a clear starting direction for the journey ahead.
-
-### Connection and Atmosphere
-
-- **Warm welcome:** Engaged with fellow FCJ members, creating a supportive learning environment.
-- **Sense of seriousness:** The OC’s message made the expectations and commitment level very clear.
-
-### Roadmap and Goals
-
-- **Clear visibility:** Saw the entire **12-week roadmap** outlined, helping me proactively plan my study schedule.
-- Understood that the final objective is not only to learn but also to **build a real Cloud product**.
-
-### Initial Practical Insights
-
-- **Security and cost management:** Gained important early knowledge on 2FA and budget management when using AWS.
-- **Teamwork:** Quickly formed a team and initiated discussions on workflow and collaboration.
-
-### Conclusion
-
-The Kick-off was not just an orientation—it served as a complete preparation session that equipped me with the mindset, information, and confidence needed to begin the **12-week Cloud learning journey**.
+### Ho Chi Minh City Watch Party Experience & Key Takeaways
+- **Community Connection at the HCMC Hub:** Although the main event took place in Hanoi, joining the Ho Chi Minh City Watch Party provided an energetic space to watch the sessions live with fellow FCJ interns and mentors, discuss real-world architectural trade-offs on the spot, and strengthen local community ties.
+- **Three Core Lessons Applied to My Internship:**
+  1. **Production-First Mindset:** Always design AWS projects with logging, observability, and cost controls from day one rather than stopping at a working demo.
+  2. **Identity-Centric Security:** Avoid granting broad permissions to workloads or AI agents; prioritize temporary credentials and the principle of least privilege.
+  3. **Leveraging Community Knowledge:** Actively learn from practitioners and AWS Community Builders, and document/share insights back with the community to solidify architectural understanding.
