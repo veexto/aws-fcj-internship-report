@@ -54,3 +54,16 @@ Chương trình quy tụ đông đảo sinh viên công nghệ và các kỹ sư
 1. **Không dừng lại ở bản Demo:** Xây dựng AI Agent cho doanh nghiệp đòi hỏi phải thiết kế bài bản ngay từ đầu các lớp xác thực danh tính (Gateway/Identity), quản lý bộ nhớ dài hạn và cơ chế giám sát hành vi của mô hình.
 2. **Tư duy kiến trúc tổng thể:** Hiểu rõ cách kết hợp **Amazon Bedrock AgentCore** với hạ tầng mạng VPC Multi-AZ của AWS để đảm bảo tính sẵn sàng cao và khả năng mở rộng cho hàng nghìn công cụ/tác vụ.
 3. **Chủ động học hỏi từ cộng đồng:** Tích cực tham gia các buổi chia sẻ chuyên đề tại văn phòng AWS giúp cập nhật nhanh các dịch vụ mới nhất và mở rộng góc nhìn thực tế từ các anh/chị đi trước.
+
+
+![Ảnh tham gia](awsmeetup1.jpg)
+![Ảnh tham gia](awsmeetup2.jpg)
+![Ảnh tham gia](awsmeetup3.jpg)
+![Ảnh tham gia](awsmeetup4.jpg)
+![Ảnh tham gia](awsmeetup5.jpg)
+![Ảnh tham gia](awsmeetup6.jpg)
+![Ảnh tham gia](awsmeetup7.jpg)
+![Ảnh tham gia](awsmeetup8.jpg)
+![Ảnh tham gia](awsmeetup9.jpg)
+
+
