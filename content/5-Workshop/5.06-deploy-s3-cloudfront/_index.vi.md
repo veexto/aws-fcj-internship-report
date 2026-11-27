@@ -25,3 +25,17 @@ pre: "<b>5.6. </b>"
     }
   ]
 }
+```
+3.Bật Static website hosting với Index document là template.html, sau đó upload file template.html lên thư mục gốc của bucket.
+
+#### 2. Cấu hình Amazon CloudFront
+Truy cập CloudFront → Create distribution, chọn Origin domain trỏ tới bucket S3 của bạn (để trống ô Origin path).
+
+Tại Viewer protocol policy, chọn Redirect HTTP to HTTPS.
+
+Tại Web Application Firewall (WAF), chọn Do not enable security protections để tối ưu chi phí.
+
+Tại Settings, nhập Default root object là template.html và bấm Create distribution.
+
+Khi trạng thái chuyển sang Deployed, truy cập ứng dụng qua tên miền https://<id>.cloudfront.net.
+
