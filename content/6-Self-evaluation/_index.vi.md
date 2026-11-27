@@ -1,55 +1,44 @@
 ---
-title: "Tự Đánh Giá"
-date: 2025-01-01
+title: "Self-Assessment"
+date: 2026-11-27
 weight: 6
 chapter: false
 pre: " <b> 6. </b> "
 ---
 
-Trong thời gian thực tập tại **Amazon Web Services Vietnam Co., Ltd.** từ **08/09/2025** đến **09/12/2025**, tôi đã có cơ hội làm việc trong một môi trường chuyên nghiệp, đề cao tính kỷ luật, trách nhiệm và sự phát triển bản thân. Quãng thời gian này giúp tôi hiểu rõ hơn các tiêu chuẩn làm việc, rèn luyện tư duy nghề nghiệp, đồng thời hình thành một phong cách làm việc có tổ chức và khoa học hơn khi thực hiện nhiệm vụ được giao.
+During my On-the-Job Training (OJT) internship at **Amazon Web Services Vietnam Co., Ltd.** from **September 2026** to **December 2026** under the **AWS First Cloud Journey (FCJ)** program, I had the opportunity to immerse myself in a dynamic, disciplined, and cloud-first engineering environment. Moving beyond university coursework, this internship helped me build practical cloud architecture skills, adopt a production-oriented mindset, and develop stronger professional work habits.
 
-Trong kỳ thực tập, tôi tham gia vào dự án **Everyonecook**, đảm nhận các công việc liên quan đến quy trình phát triển và vận hành của nhóm. Nhờ đó, tôi có thêm kinh nghiệm thực tế về cách phối hợp trong nhóm, cũng như cách áp dụng các quy trình phát triển trên nền tảng điện toán đám mây vào dự án thực tế.
+Throughout the program, I contributed to the **[Your Project Name]** project, where I worked on designing, deploying, and optimizing cloud-based workflows on AWS. Alongside project development, translating technical articles, preparing hands-on workshop guides, and participating in AWS community sessions deepened my understanding of real-world system reliability, security best practices, and cost optimization.
 
-Xuyên suốt thời gian thực tập, tôi luôn giữ thái độ nghiêm túc, tuân thủ quy trình làm việc và phối hợp tốt với đồng nghiệp để hoàn thành mục tiêu chung. Tôi luôn ưu tiên chất lượng sản phẩm đầu ra và đảm bảo hoàn thành đúng thời hạn.
+Across all assigned tasks, I maintained a proactive learning attitude, followed team workflows and reporting schedules consistently, and collaborated closely with mentors and fellow interns to deliver quality outcomes on time.
 
-Dưới đây là bảng tự đánh giá của tôi dựa trên các tiêu chí chính:
+### Key Strengths & Areas for Further Growth
 
-| STT | Tiêu chí                            | Mô tả                                                                                         | Tốt | Khá | TB |
-| --- | ----------------------------------- | ---------------------------------------------------------------------------------------------- | ---- | ---- | ---- |
-| 1   | **Kiến thức & kỹ năng chuyên môn**  | Khả năng áp dụng kiến thức, sử dụng công cụ, tạo ra kết quả chất lượng                        | ☐    | ✅    | ☐   |
-| 2   | **Khả năng học hỏi**                | Tiếp thu kiến thức mới và thích ứng với nhiệm vụ                                              | ☐    | ✅    | ☐   |
-| 3   | **Tính chủ động**                   | Tinh thần tự giác và tham gia hỗ trợ quy trình làm việc                                       | ☐    | ✅    | ☐   |
-| 4   | **Trách nhiệm**                     | Hoàn thành nhiệm vụ đúng hạn và đảm bảo chất lượng                                            | ☐    | ✅    | ☐   |
-| 5   | **Kỷ luật**                         | Tuân thủ quy trình, thời gian biểu và nội quy công ty                                         | ☐    | ✅    | ☐   |
-| 6   | **Cải thiện liên tục**              | Sẵn sàng tiếp nhận phản hồi và chủ động hoàn thiện bản thân                                    | ☐    | ✅    | ☐   |
-| 7   | **Giao tiếp**                       | Trình bày ý tưởng rõ ràng trong thảo luận và báo cáo                                           | ☐    | ✅    | ☐   |
-| 8   | **Làm việc nhóm**                   | Hợp tác hiệu quả và hỗ trợ đồng đội                                                            | ☐    | ✅    | ☐   |
-| 9   | **Tác phong chuyên nghiệp**         | Thái độ nghiêm túc, tôn trọng và hành xử phù hợp nơi làm việc                                  | ☐    | ✅    | ☐   |
-| 10  | **Giải quyết vấn đề**               | Nhận diện vấn đề và đưa ra giải pháp thực tế                                                  | ☐    | ✅    | ☐   |
-| 11  | **Mức độ đóng góp**                 | Hiệu quả và giá trị mang lại cho dự án/nhóm                                                    | ☐    | ✅    | ☐   |
-| 12  | **Tổng quan**                       | Đánh giá chung toàn bộ quá trình thực tập                                                     | ☐    | ✅    | ☐   |
-
-### Các điểm cần cải thiện
-
-- Cải thiện tính nhất quán và kỷ luật trong thói quen làm việc hằng ngày  
-- Tăng cường tư duy logic và cách tiếp cận có hệ thống khi giải quyết vấn đề  
-- Nâng cao kỹ năng giao tiếp, đặc biệt là diễn đạt ý tưởng và xử lý tình huống chuyên nghiệp
+- **Key Strengths:**
+  - Rapidly picking up core and emerging AWS services through hands-on experimentation and structured documentation.
+  - Maintaining consistent weekly progress tracking, technical writing, and active participation in FCJ community events.
+  - Collaborating effectively with teammates and incorporating mentor feedback into iterative improvements.
+- **Areas for Further Growth:**
+  - Deepening production-scale troubleshooting, security hardening, and cost-modeling skills for complex multi-service architectures.
+  - Strengthening real-time technical presentation and English communication confidence during architectural reviews and Q&A sessions.
+  - Refining time estimation when balancing research exploration with strict implementation deadlines.
 
 ---
 
-## Kết Quả Đánh Giá OJT Chính Thức
+## Official OJT Evaluation Results
 
-Ngày **26/12/2025**, tôi nhận được kết quả đánh giá điểm OJT cuối kỳ chính thức từ **Phòng Quan hệ Doanh nghiệp (QHDN) - Trường Đại học FPT**. Kết quả đánh giá từ **Công ty TNHH Amazon Web Services Việt Nam** như sau:
+*(To be updated upon receiving the official Fall 2026 OJT evaluation report from the **FPT University Corporate Relations Department (QHDN)** and **Amazon Web Services Vietnam Co., Ltd.**)*
 
-| Tiêu chí | Điểm |
-| --- | --- |
-| **Kiến thức, kỹ năng ngành** | 8.1 |
-| **Kỹ năng mềm** | 9.0 |
-| **Thái độ** | 9.2 |
-| **Điểm tổng** | **8.7** |
+| Evaluation Category | Score |
+| --- | :---: |
+| **Professional Knowledge & Skills** | `[Pending]` |
+| **Soft Skills** | `[Pending]` |
+| **Attitude & Discipline** | `[Pending]` |
+| **Overall Score** | **`[Pending]`** |
 
-### Kết quả: ✅ **PASS**
+### Final Result: ⏳ **IN PROGRESS / PENDING**
 
-Kết quả này phản ánh sự nỗ lực và cống hiến của tôi trong suốt thời gian thực tập. Tôi rất biết ơn sự hướng dẫn từ các mentor tại AWS và sự hỗ trợ từ Trường Đại học FPT.
+I am sincerely grateful to the mentors and engineers at **AWS Vietnam** for their dedicated technical guidance, as well as **FPT University** for facilitating this valuable industry experience.
 
-![Thông báo điểm OJT cuối kỳ](/images/6-Self-evaluation/ojt-final-score.png)
+<!-- Uncomment the line below once you upload your official Fall 2026 score screenshot to static/images/6-Self-evaluation/ -->
+<!-- ![OJT Final Score Notification](/images/6-Self-evaluation/ojt-final-score.png) -->
