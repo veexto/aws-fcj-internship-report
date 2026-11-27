@@ -16,7 +16,7 @@ pre: " <b> 4.1. </b> "
 ### Nội dung các phiên chia sẻ chuyên sâu
 
 #### 1. Xây dựng hệ thống Voice AI Agent & Phỏng vấn tự động
-- **Diễn giả:** Anh Kiệt Trần (Engineer tại ReAI – AWS Partner)
+- **Diễn giả:** Anh Kiệt Trần (Engineer tại Revve AI – AWS Partner)
 - **Nội dung chính:**
   - Phân tích bài toán độ trễ trong giao tiếp giọng nói tự nhiên (~200ms) và so sánh 3 kiến trúc xây dựng Voice AI: **Cascaded** (ASR → LLM → TTS), **Speech-to-Speech** và **Full Speech-to-Speech** kết hợp mô hình suy luận chạy ngầm.
   - Tìm hiểu luồng xử lý cuộc gọi thực tế qua SIP Server, Media Server (WebRTC/UDP), lọc nhiễu (Noise Canceller) và nhận diện điểm ngắt câu (VAD) giúp đạt tổng độ trễ phản hồi ~1,8 giây trên hạ tầng GPU Multi-AZ kết nối qua AWS PrivateLink.
