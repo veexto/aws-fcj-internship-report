@@ -1,6 +1,6 @@
 ---
 title: "Blog 2: S3 and EC2 Are in the Same Region—Why Does the NAT Gateway Bill Keep Climbing Every Month?"
-date: 2026-11-19
+date: 2026-11-23
 weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
