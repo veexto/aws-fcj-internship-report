@@ -47,7 +47,7 @@ When re-running an earlier job for auditing or backtesting, the pipeline ignores
 
 ## 3. Pipeline Data Reproducibility Architecture
 
-![Pipeline Data Reproducibility Architecture with S3 Versioning and DynamoDB Manifest](/images/blog3-architecture.png)
+![Pipeline Data Reproducibility Architecture with S3 Versioning and DynamoDB Manifest](blog3-architecture.png)
 
 - **ETL Ingestion:** Continuously overwrites the dataset key on Amazon S3. With Versioning enabled, `v1` remains preserved alongside `v2`
 - **Step 1 (Manifest DB):** The Pipeline Runner writes or reads the pinned object metadata (`VersionId` + `SHA-256` hash) in Amazon DynamoDB
