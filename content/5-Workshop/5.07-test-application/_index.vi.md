@@ -20,7 +20,7 @@ Và kiểm tra 4 chức năng:
 
 2. **Chatbot Đầu bếp AI (Amazon Bedrock):** Mở khung chat góc dưới bên phải, chọn gợi ý nhanh theo thời tiết/tâm trạng; AI phản hồi kèm nút mở thẳng hướng dẫn nấu món ăn phù hợp.
 
-![AI](chatbot.png)
+![AI](chatbot2.png)
 
 3. **Định vị GPS qua HTTPS:** Bấm nút định vị trên thanh điều hướng để trình duyệt lấy tọa độ GPS thực tế.(Ví dụ: Tòa thị chính Bitexco).
 
