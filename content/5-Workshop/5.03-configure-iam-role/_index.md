@@ -13,7 +13,7 @@ The Lambda function requires permissions to read data from DynamoDB, invoke conv
 1. Navigate to **IAM → Roles → Create role**.
 2. Select **AWS service** → **Lambda** → click **Next**.
 3. Name the role `RecipesLambdaRole` and click **Create role**.
-5. Open `RecipesLambdaRole`, select **Add permissions → Create inline policy → name it RecipesLambdaPolicy**, and paste the following JSON policy:
+4. Open `RecipesLambdaRole`, select **Add permissions → Create inline policy → name it RecipesLambdaPolicy**, and paste the following JSON policy:
 
 ```json
 {
@@ -60,3 +60,23 @@ The Lambda function requires permissions to read data from DynamoDB, invoke conv
 		}
 	]
 }
+```
+5.Reopen RecipesLambdaRole, select Add permissions → Create inline policy → name it AmazonLocationGeoPlacesAccess, and paste the following JSON policy:
+
+```JSON
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"geo-places:SearchNearby",
+				"geo-places:SearchText",
+				"geo-places:Geocode",
+				"geo-places:ReverseGeocode"
+			],
+			"Resource": "*"
+		}
+	]
+}
+```
