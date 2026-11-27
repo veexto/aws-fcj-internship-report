@@ -41,3 +41,7 @@ pre: " <b> 4.2. </b> "
 1. **Choose the Right Tool for the Problem:** Avoid chasing GenAI hype for every workload; always weigh cost, latency, and operational reliability trade-offs first.
 2. **Uphold Engineering Ownership:** When adopting AI coding tools in project development, proactively test, audit for security, and understand every line of code deployed.
 3. **Strengthen Technical Communication & Systems Thinking:** Practice framing architectural decisions around business impact and actively share learnings across the AWS First Cloud Journey community.
+
+![participate image](AWSevent2(1).jpg)
+![participate image](AWSevent2(2).jpg)
+
