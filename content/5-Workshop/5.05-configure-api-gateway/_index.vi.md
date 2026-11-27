@@ -10,13 +10,21 @@ pre: "<b>5.5. </b>"
 
 1. Truy cập **API Gateway → Create API → HTTP API → Build**.
 2. Bấm **Add integration** → chọn **Lambda** → trỏ đến `RecipeSearchFunction` và đặt tên API là `BepThongMinhAPI`.
+![lambda](lambda.png)
+
 3. Khai báo 3 **Routes** cùng trỏ về `RecipeSearchFunction`:
    * `GET /search`
    * `GET /nearby-stores`
    * `POST /chat`
+![routes](routes.png)
+
 4. Đặt tên Stage là `prod` và hoàn tất khởi tạo.
+![prod](prod.png)
+
 5. Vào mục **CORS** của API, cấu hình:
    * **Access-Control-Allow-Origin:** `*`
    * **Access-Control-Allow-Methods:** `GET, POST, OPTIONS`
    * **Access-Control-Allow-Headers:** `Content-Type, Authorization`
-6. Lưu lại **Invoke URL** (ví dụ: `https://<api-id>.execute-api.ap-southeast-1.amazonaws.com/prod`) để gắn vào biến `API_BASE` trong Frontend.
+![cors](cors.png)
+
+6. Lưu lại **Invoke URL** (`https://1f10tq33a6.execute-api.ap-southeast-1.amazonaws.com/prod`) để gắn vào biến `API_BASE` trong Frontend.
