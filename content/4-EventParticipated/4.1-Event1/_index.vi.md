@@ -1,89 +1,48 @@
 ---
-title: "Event 1"
-date: 2025-09-06
-weight: 1
+title: "AWS Cloud and AI Day 2026 (Watch Party - TP. Hồ Chí Minh)"
+date: 2026-09-29
+weight: 3
 chapter: false
-pre: " <b> 4.1. </b> "
+pre: " <b> 4.3. </b> "
 ---
 
-# Báo Cáo Sau Sự Kiện: The First Cloud Journey (FCJ) Program Kick-off
+### Thông tin chung về sự kiện
+- **Tên sự kiện:** AWS Cloud and AI Day Hanoi 2026 – Điểm cầu Watch Party TP. Hồ Chí Minh
+- **Thời gian:** Ngày 29/09/2026
+- **Hình thức tham gia:** Tham gia trực tiếp tại điểm cầu **Watch Party TP. Hồ Chí Minh** (theo dõi trực tuyến các phiên Keynote & Developer Chats từ đầu cầu Hà Nội cùng cộng đồng AWS First Cloud Journey)
+- **Đơn vị tổ chức:** AWS Việt Nam, AWS Community Builders & AWS First Cloud Journey (FCJ)
+- **Bài viết tổng hợp tham khảo:** [AWS Cloud and AI Day Hanoi 2026: Building for the Next Phase of Cloud and AI (AWS Builder Center)](https://builder.aws.com/content/3KMpKxUhRFeSlclpmwu5ZxBQBYL/aws-cloud-and-ai-day-hanoi-2026-building-for-the-next-phase-of-cloud-and-ai)
 
-## Mục Tiêu Sự Kiện
+---
 
-- **Khởi động chính thức** chương trình The First Cloud Journey (FCJ) kéo dài 12 tuần.
-- **Kết nối thành viên**, Mentor và Ban Tổ Chức (BTC).
-- **Giới thiệu tổng quan** về tổ chức, mục tiêu học tập và lộ trình triển khai dự án.
-- **Hướng dẫn cách làm việc nhóm** và tiến hành **thành lập các đội dự án**.
+### Nội dung chính theo dõi từ sự kiện
 
-## Danh Sách Diễn Giả
+#### 1. Chuyển dịch từ "Chấp nhận công nghệ" sang "Trưởng thành trong vận hành"
+- Trọng tâm của cộng đồng Cloud và AI tại Việt Nam năm 2026 không còn dừng ở việc thử nghiệm Proof of Concept (PoC), mà đã bước sang giai đoạn **Operational Maturity** (đưa hệ thống lên môi trường production ổn định và an toàn).
+- Một hệ thống production thực thụ đòi hỏi quyền sở hữu (ownership) rõ ràng, ranh giới truy cập chặt chẽ, khả năng giám sát toàn diện (observability), tính chịu lỗi cao (resilience) và mô hình quản trị chi phí có thể lặp lại ở quy mô lớn.
 
-- **Đại diện BTC** – Trình bày về tầm nhìn và định hướng của chương trình.
-- **Các Mentor** – Chia sẻ kinh nghiệm thực tế và hành trình sự nghiệp trong lĩnh vực Cloud.
-- **Cựu thành viên (Alumni)** – Truyền đạt những bài học quan trọng từ các khóa trước.
+#### 2. Agentic AI và vai trò nền tảng của Platform Engineering
+- **Agentic AI** là chủ đề xuyên suốt tại sự kiện: các AI Agent không chỉ dừng ở việc sinh văn bản mà đã trực tiếp gọi API, truy xuất dữ liệu nội bộ, chỉnh sửa mã nguồn và kích hoạt quy trình triển khai (deployment).
+- Khi tốc độ phát triển và mức độ tự chủ của AI tăng lên, **Platform Engineering** đóng vai trò thiết yếu để thiết lập "lan can an toàn" (engineering guardrails): chuẩn hóa mẫu triển khai, thiết lập cấu hình bảo mật mặc định, kiểm soát chuỗi cung ứng phần mềm và quy trình phê duyệt hành động của Agent.
 
-## Nội Dung Chính
+#### 3. Quản trị danh tính cho Workload & AI Agent (Workload Identity on AWS)
+- Theo dõi phiên **Developer Chats** của diễn giả **Kha Văn** (Cloud Security Engineer / AWS Community Builder) xoay quanh câu hỏi cốt lõi: *"Khi một workload gọi AWS API, danh tính thực sự đang thực hiện yêu cầu đó là ai?"*
+- Trong các hệ thống hiện đại, số lượng **danh tính phi con người (non-human identities)** như Kubernetes Pods, CI/CD pipelines, hàm Serverless và AI Agents vượt xa số lượng tài khoản người dùng thật.
+- **Giải pháp thực tiễn trên AWS:** Áp dụng **Amazon EKS Pod Identity**, sử dụng thông tin xác thực tạm thời (temporary credentials), phân quyền chi tiết ở cấp độ từng workload thay vì kế thừa quyền rộng từ EC2 Node, kết hợp thiết kế Trust Policy chặt chẽ và xác minh tại thời điểm chạy (runtime verification).
 
-### Cấu Trúc Chương Trình và Lộ Trình 12 Tuần
+#### 4. Mở rộng hạ tầng AWS tại Việt Nam & Bài toán kiến trúc Hybrid
+- Sự kiện nhấn mạnh bước tiến hạ tầng của AWS tại Việt Nam với **AWS Direct Connect tại Hà Nội** và **AWS Local Zone tại Hà Nội**, mang lại thêm lựa chọn kết nối mạng riêng tư, độ trễ thấp (low-latency) và đáp ứng yêu cầu lưu trữ/xử lý dữ liệu tại chỗ (data locality).
+- Điều này giúp các kiến trúc sư giải pháp linh hoạt hơn khi cân đối các yếu tố về độ trễ, tính tuân thủ, khả năng phục hồi và chi phí giữa hạ tầng tại chỗ (on-premises) với đám mây.
 
-- Giới thiệu chi tiết **lộ trình 12 tuần**, từ kiến thức nền tảng AWS (VPC, EC2) đến xây dựng hoàn chỉnh một ứng dụng Serverless.
-- Làm rõ **mục tiêu học tập** và yêu cầu về sản phẩm tối thiểu (MVP).
+#### 5. Câu chuyện chuyển đổi thực tế & Sức mạnh cộng đồng Builder Việt Nam
+- **Case study từ TCBS:** Cho thấy việc ứng dụng AI chỉ thực sự tạo ra bước ngoặt khi thay đổi cách đội ngũ kỹ sư viết, review, kiểm thử và bàn giao phần mềm, gắn liền với các chỉ số đo lường hiệu quả vận hành cụ thể.
+- **Quy mô hệ sinh thái AWS tại Việt Nam:** Tính đến thời điểm diễn ra sự kiện, cộng đồng đã ghi nhận hơn **157.000** nhân sự được đào tạo về Cloud và AI, hơn **54.000** thành viên trên **AWS Study Group** và hơn **15.000** người tham gia hệ sinh thái **First Cloud and AI Journey (FCJ)**.
 
-### Quy Tắc Làm Việc và Văn Hóa Tổ Chức
+---
 
-- **Quy định về kỷ luật và tham gia:** Nhấn mạnh sự cam kết và tinh thần trách nhiệm của từng thành viên.
-- **Văn hóa chia sẻ – hỗ trợ:** Tạo môi trường học tập tích cực giữa các thành viên.
-
-### Thành Lập Đội Dự Án và Định Hướng Ban Đầu
-
-- Hướng dẫn quy trình **xây dựng đội nhóm hiệu quả**, phân chia vai trò và sử dụng công cụ giao tiếp.
-- Định hướng ban đầu cho **các dự án Cloud**, hỗ trợ nhóm bắt đầu nghiên cứu.
-
-### Bảo Mật Tài Khoản AWS
-
-- Hướng dẫn thiết lập **xác thực hai lớp (2FA)** và tạo **ngân sách giám sát chi phí (Budget)** ngay từ đầu.
-
-## Những Điều Rút Ra
-
-### Tư Duy và Mức Độ Cam Kết
-
-- **Tính kỷ luật rất quan trọng:** Nhận thức rõ sự nghiêm túc cần thiết để hoàn thành chương trình.
-- **Giá trị của cộng đồng:** Thấy được tầm quan trọng của sự hỗ trợ từ Mentor và các thành viên khác.
-
-### Hiểu Biết Về Tổ Chức
-
-- Nắm rõ **mục tiêu của chương trình** và những kỹ năng Cloud sẽ được trang bị.
-- Hiểu được **lộ trình học tập 12 tuần** với các mốc kiến thức quan trọng.
-
-### Kỹ Năng Thực Hành Ban Đầu
-
-- **Hoàn thành việc thành lập đội nhóm**, bắt đầu phân công vai trò.
-- Học được các bước **thiết lập bảo mật và quản lý chi phí** cơ bản cho tài khoản AWS.
-
-## Ứng Dụng Vào Công Việc
-
-- **Thành lập đội dự án** và giao nhiệm vụ ban đầu.
-- Bắt đầu tìm hiểu **kiến thức nền tảng về Cloud** và thông tin của tổ chức.
-- Thực hiện các thao tác cơ bản trên AWS như kích hoạt **2FA** và thiết lập **Budget** (theo Worklog Tuần 1).
-
-## Trải Nghiệm Sự Kiện
-
-Sự kiện **Kick-off** mang lại nguồn năng lượng tích cực và giúp tôi định hình rõ ràng hướng đi cho hành trình sắp tới.
-
-### Kết Nối Và Không Khí Chung
-
-- **Được chào đón nồng nhiệt:** Làm quen các thành viên FCJ, tạo nên môi trường học tập thân thiện.
-- **Tính nghiêm túc:** Những chia sẻ từ BTC giúp tôi hiểu rõ kỳ vọng và mức độ cam kết cần thiết.
-
-### Lộ Trình Và Mục Tiêu
-
-- **Tầm nhìn rõ ràng:** Lần đầu thấy trực quan **lộ trình 12 tuần**, giúp tôi chủ động lên kế hoạch học tập.
-- Hiểu rằng mục tiêu cuối cùng không chỉ là học mà còn **xây dựng một sản phẩm Cloud thực tế**.
-
-### Bài Học Thực Tế Ban Đầu
-
-- **Quản lý chi phí và bảo mật:** Hiểu được tầm quan trọng của 2FA và Budget ngay từ ngày đầu sử dụng AWS.
-- **Tinh thần làm việc nhóm:** Nhanh chóng phối hợp với đội để xác định cách làm việc chung.
-
-### Kết Luận
-
-Buổi Kick-off không đơn thuần là buổi giới thiệu chương trình; đây là một phiên định hướng toàn diện giúp tôi có đủ thông tin, động lực và sự tự tin để bước vào **hành trình 12 tuần chinh phục Cloud**.
+### Trải nghiệm tại Watch Party TP. Hồ Chí Minh & Bài học thu nhận
+- **Không khí kết nối tại điểm cầu TP.HCM:** Dù sự kiện chính diễn ra tại Hà Nội, việc tham gia buổi Watch Party tại TP. Hồ Chí Minh giúp mình cùng các bạn thực tập sinh FCJ và mentor có không gian theo dõi trực tiếp, trao đổi ngay tại chỗ về các tình huống triển khai thực tế và mở rộng kết nối trong cộng đồng.
+- **Ba bài học cốt lõi rút ra cho quá trình thực tập:**
+  1. **Tư duy Production-First:** Khi xây dựng dự án trên AWS, luôn thiết kế đi kèm logging, giám sát và kiểm soát chi phí ngay từ đầu thay vì chỉ làm cho hệ thống chạy được ở mức demo.
+  2. **Siết chặt bảo mật danh tính (Identity-Centric Security):** Tránh cấp quyền quá rộng cho dịch vụ hoặc AI Agent; ưu tiên cơ chế xác thực tạm thời và nguyên tắc đặc quyền tối thiểu (Least Privilege).
+  3. **Tận dụng sức mạnh cộng đồng:** Chủ động học hỏi qua các buổi chia sẻ thực chiến của AWS Community Builders và chia sẻ lại kiến thức để củng cố tư duy kiến trúc hệ thống.
