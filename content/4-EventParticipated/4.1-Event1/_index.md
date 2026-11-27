@@ -44,3 +44,6 @@ pre: " <b> 4.1. </b> "
   1. **Production-First Mindset:** Always design AWS projects with logging, observability, and cost controls from day one rather than stopping at a working demo.
   2. **Identity-Centric Security:** Avoid granting broad permissions to workloads or AI agents; prioritize temporary credentials and the principle of least privilege.
   3. **Leveraging Community Knowledge:** Actively learn from practitioners and AWS Community Builders, and document/share insights back with the community to solidify architectural understanding.
+
+
+![participateimage](watchparty.jpg)
