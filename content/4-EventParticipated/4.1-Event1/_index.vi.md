@@ -45,3 +45,6 @@ pre: " <b> 4.1. </b> "
   1. **Tư duy Production-First:** Khi xây dựng dự án trên AWS, luôn thiết kế đi kèm logging, giám sát và kiểm soát chi phí ngay từ đầu thay vì chỉ làm cho hệ thống chạy được ở mức demo.
   2. **Siết chặt bảo mật danh tính (Identity-Centric Security):** Tránh cấp quyền quá rộng cho dịch vụ hoặc AI Agent; ưu tiên cơ chế xác thực tạm thời và nguyên tắc đặc quyền tối thiểu (Least Privilege).
   3. **Tận dụng sức mạnh cộng đồng:** Chủ động học hỏi qua các buổi chia sẻ thực chiến của AWS Community Builders và chia sẻ lại kiến thức để củng cố tư duy kiến trúc hệ thống.
+
+
+  ![Ảnh tham gia](watchparty.png)
