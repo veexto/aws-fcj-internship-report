@@ -47,4 +47,4 @@ pre: " <b> 4.1. </b> "
   3. **Tận dụng sức mạnh cộng đồng:** Chủ động học hỏi qua các buổi chia sẻ thực chiến của AWS Community Builders và chia sẻ lại kiến thức để củng cố tư duy kiến trúc hệ thống.
 
 
-  ![Ảnh tham gia](watchparty.png)
+  ![Ảnh tham gia](watchparty.jpg)
