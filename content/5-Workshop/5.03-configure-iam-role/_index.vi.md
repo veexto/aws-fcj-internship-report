@@ -12,39 +12,54 @@ Hàm Lambda cần được cấp quyền đọc dữ liệu từ DynamoDB, gọi
 
 1. Truy cập **IAM → Roles → Create role**.
 2. Chọn **AWS service** → **Lambda** → bấm **Next**.
-3. Tìm và gắn policy `AWSLambdaBasicExecutionRole` để ghi log ra Amazon CloudWatch.
-4. Đặt tên Role là `RecipesLambdaRole` và bấm **Create role**.
-5. Mở lại `RecipesLambdaRole`, chọn **Add permissions → Create inline policy (JSON)** và dán nội dung sau:
+3. Đặt tên Role là `RecipesLambdaRole` và bấm **Create role**.
+5. Mở lại `RecipesLambdaRole`, chọn **Add permissions → Create inline policy → đặt tên là RecipesLambdaPolicy** và dán nội dung JSON:
 
 ```json
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "dynamodb:Scan",
-        "dynamodb:GetItem",
-        "dynamodb:Query"
-      ],
-      "Resource": "arn:aws:dynamodb:ap-southeast-1:*:table/RecipesTable"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "bedrock:InvokeModel"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "geo-places:Geocode",
-        "geo-places:SearchText",
-        "geo-places:SearchNearby",
-        "geo-places:ReverseGeocode"
-      ],
-      "Resource": "*"
-    }
-  ]
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "ReadMealRecipesTable",
+			"Effect": "Allow",
+			"Action": [
+				"dynamodb:Scan",
+				"dynamodb:Query",
+				"dynamodb:GetItem"
+			],
+			"Resource": "arn:aws:dynamodb:ap-southeast-1:*:table/RecipesTable"
+		},
+		{
+			"Sid": "SearchNearbyStoresV2",
+			"Effect": "Allow",
+			"Action": [
+				"geo-places:SearchText"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "InvokeBedrockChefAI",
+			"Effect": "Allow",
+			"Action": [
+				"bedrock:InvokeModel"
+			],
+			"Resource": [
+				"arn:aws:bedrock:ap-southeast-1:*:inference-profile/apac.amazon.nova-micro-v1:0",
+				"arn:aws:bedrock:*::foundation-model/amazon.nova-micro-v1:0"
+			]
+		},
+		{
+			"Sid": "WriteCloudWatchLogs",
+			"Effect": "Allow",
+			"Action": [
+				"logs:CreateLogGroup",
+				"logs:CreateLogStream",
+				"logs:PutLogEvents"
+			],
+			"Resource": "arn:aws:logs:ap-southeast-1:*:log-group:/aws/lambda/RecipeSearchFunction:*"
+		}
+	]
 }
+
+
+
