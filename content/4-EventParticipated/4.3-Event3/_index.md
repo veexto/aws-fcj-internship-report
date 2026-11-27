@@ -16,7 +16,7 @@ pre: " <b> 4.1. </b> "
 ### Technical Session Highlights
 
 #### 1. Building Enterprise Voice AI Agents & Automated Screening Interviews
-- **Speaker:** Kiet Tran (Engineer at ReAI – AWS Partner)
+- **Speaker:** Kiet Tran (Engineer at Revve AI – AWS Partner)
 - **Key Topics:**
   - Analyzed the ~200ms conversational latency benchmark and compared three Voice AI architectures: **Cascaded** (ASR → LLM → TTS), **Speech-to-Speech**, and **Full Speech-to-Speech** paired with background reasoning models.
   - Walked through the real-time call processing pipeline—spanning SIP Server, Media Server (WebRTC over UDP), Noise Canceller, and Voice Activity Detection (VAD)—achieving ~1.8s end-to-end response latency on Multi-AZ GPU infrastructure connected via AWS PrivateLink.
