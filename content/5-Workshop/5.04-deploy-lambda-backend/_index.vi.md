@@ -25,7 +25,46 @@ pre: "<b>5.4. </b>"
 Mã nguồn `lambda_function.py` được chia thành **6 khối chức năng chính**, đảm nhiệm toàn bộ luồng từ tiếp nhận HTTP request, xác thực dữ liệu, kết nối 3 dịch vụ lõi của AWS (**DynamoDB**, **Amazon Location Service**, **Amazon Bedrock**) đến trả phản hồi chuẩn JSON về giao diện.
 
 ### 2.1. Khởi tạo cấu hình & AWS SDK Clients
-* **Vị trí code:** Từ `import base64` đến hết `CORS_HEADERS`.
+```python
+import base64
+import json
+import logging
+import math
+import os
+import random
+import unicodedata
+import urllib.error
+import urllib.request
+from decimal import Decimal
+from urllib.parse import parse_qs, quote
+
+import boto3
+from botocore.exceptions import ClientError
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+REGION = os.environ.get("AWS_REGION", "ap-southeast-1")
+BEDROCK_REGION = os.environ.get("BEDROCK_REGION", REGION).strip()
+TABLE_NAME = os.environ.get("DYNAMODB_TABLE", "RecipesTable").strip()
+BEDROCK_MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "apac.amazon.nova-micro-v1:0").strip()
+BEDROCK_API_KEY = os.environ.get("BEDROCK_API_KEY", "").strip()
+
+MAX_INPUT_LENGTH = 200
+MAX_KEYWORDS = 10
+
+dynamodb = boto3.resource("dynamodb", region_name=REGION)
+table = dynamodb.Table(TABLE_NAME)
+geo_places_client = boto3.client("geo-places", region_name=REGION)
+bedrock_client = boto3.client("bedrock-runtime", region_name=BEDROCK_REGION)
+
+CORS_HEADERS = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type,Authorization",
+    "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+    "Content-Type": "application/json; charset=utf-8",
+}
+```
 * **Chức năng chính:**
   * Đọc các biến môi trường (`AWS_REGION`, `BEDROCK_REGION`, `DYNAMODB_TABLE`, `BEDROCK_MODEL_ID`, `BEDROCK_API_KEY`) để tách biệt cấu hình khỏi mã nguồn, dễ thay đổi mà không cần sửa code.
   * Khởi tạo sẵn các kết nối (`boto3.resource` / `boto3.client`) ở phạm vi toàn cục (global scope) gồm: `table` (DynamoDB), `geo_places_client` (Location Service Places v2) và `bedrock_client` (Bedrock Runtime). Việc đặt ngoài `lambda_handler` giúp tái sử dụng kết nối qua các lần gọi **Warm Start**, giảm độ trễ phản hồi.
