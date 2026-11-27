@@ -1,6 +1,6 @@
 ---
 title: "Blog 2: S3 và EC2 nằm cùng Region, sao hóa đơn NAT Gateway vẫn nhảy tiền mỗi tháng?"
-date: 2026-11-19
+date: 2026-11-23
 weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
