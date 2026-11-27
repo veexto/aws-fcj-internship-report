@@ -485,6 +485,46 @@ def handle_nearby_stores(params):
 ```python
 def find_recipes_by_mood_weather(msg, items):
     norm_msg = normalize(msg)
+
+    # 1. Ưu tiên cao nhất: Khớp trực tiếp tên món ăn (chính xác hoặc gần đúng)
+    exact_name_matches = []
+    partial_name_matches = []
+    for r in items:
+        r_name = normalize(r.get("Name", ""))
+        if not r_name:
+            continue
+        if r_name == norm_msg or r_name in norm_msg:
+            exact_name_matches.append(r)
+        elif len(norm_msg) >= 4 and norm_msg in r_name:
+            partial_name_matches.append(r)
+
+    if exact_name_matches:
+        # Ưu tiên tên món dài hơn (khớp chi tiết hơn) lên đầu, không shuffle
+        exact_name_matches.sort(key=lambda r: len(normalize(r.get("Name", ""))), reverse=True)
+        return exact_name_matches, True
+
+    if partial_name_matches:
+        partial_name_matches.sort(key=lambda r: len(normalize(r.get("Name", ""))))
+        return partial_name_matches, True
+
+    # 2. Ưu tiên thứ hai: Khớp theo nguyên liệu xuất hiện trong câu nhắn (xếp theo số nguyên liệu khớp)
+    ing_scored = []
+    for r in items:
+        ings = [normalize(ing) for ing in (r.get("Ingredients") or []) if normalize(ing)]
+        matched_ings = [ing for ing in ings if ing in norm_msg]
+        if matched_ings:
+            # Ưu tiên món khớp nhiều nguyên liệu hơn
+            ing_scored.append((len(matched_ings), r))
+
+    if ing_scored:
+        ing_scored.sort(key=lambda x: x[0], reverse=True)
+        top_count = ing_scored[0][0]
+        top_ing_recipes = [r for cnt, r in ing_scored if cnt == top_count]
+        random.shuffle(top_ing_recipes)
+        rest_ing_recipes = [r for cnt, r in ing_scored if cnt < top_count]
+        return top_ing_recipes + rest_ing_recipes, False
+
+    # 3. Ưu tiên thứ ba: Khớp theo tâm trạng / thời tiết / chế độ ăn
     target_moods = []
     target_cats = []
 
@@ -497,15 +537,6 @@ def find_recipes_by_mood_weather(msg, items):
     if any(k in norm_msg for k in ["met", "duoi", "ue oai", "can nang luong", "doi", "tap gym", "vui"]):
         target_moods.append("energizing")
         target_cats.append("main")
-
-    direct = [
-        r for r in items
-        if normalize(r.get("Name", "")) in norm_msg
-        or any(normalize(ing) in norm_msg for ing in (r.get("Ingredients") or []))
-    ]
-    if direct:
-        random.shuffle(direct)
-        return direct
 
     scored = []
     for r in items:
@@ -522,13 +553,13 @@ def find_recipes_by_mood_weather(msg, items):
 
     scored.sort(key=lambda x: x[0], reverse=True)
     if not scored:
-        return []
+        return [], False
 
     top_score = scored[0][0]
     top_group = [r for score, r in scored if score >= max(1, top_score - 1)]
     random.shuffle(top_group)
     rest_group = [r for score, r in scored if score < max(1, top_score - 1)]
-    return top_group + rest_group
+    return top_group + rest_group, False
 
 ```
 
@@ -549,9 +580,12 @@ def handle_chat(event):
 
     exclude_ids = set(payload.get("excludeIds") or [])
 
-    matched_recipes = find_recipes_by_mood_weather(user_message, items)
-    fresh_matches = [r for r in matched_recipes if r.get("RecipeID") not in exclude_ids]
-    candidate_recipes = fresh_matches if fresh_matches else matched_recipes
+    matched_recipes, is_explicit_dish = find_recipes_by_mood_weather(user_message, items)
+    if is_explicit_dish:
+        candidate_recipes = matched_recipes
+    else:
+        fresh_matches = [r for r in matched_recipes if r.get("RecipeID") not in exclude_ids]
+        candidate_recipes = fresh_matches if fresh_matches else matched_recipes
 
     suggested_id = candidate_recipes[0].get("RecipeID") if candidate_recipes else None
     suggested_name = candidate_recipes[0].get("Name") if candidate_recipes else None
