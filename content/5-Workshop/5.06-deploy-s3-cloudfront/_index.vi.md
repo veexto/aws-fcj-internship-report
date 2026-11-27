@@ -39,3 +39,5 @@ Truy cập CloudFront → Create distribution, chọn Origin domain trỏ tới 
 
   . Khi trạng thái chuyển sang Deployed, truy cập ứng dụng qua tên miền https://<id>.cloudfront.net.
 
+
+![cloudfront](cloud.png)
