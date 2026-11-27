@@ -13,7 +13,7 @@ Hàm Lambda cần được cấp quyền đọc dữ liệu từ DynamoDB, gọi
 1. Truy cập **IAM → Roles → Create role**.
 2. Chọn **AWS service** → **Lambda** → bấm **Next**.
 3. Đặt tên Role là `RecipesLambdaRole` và bấm **Create role**.
-5. Mở lại `RecipesLambdaRole`, chọn **Add permissions → Create inline policy → đặt tên là RecipesLambdaPolicy** và dán nội dung JSON:
+5. Vào `RecipesLambdaRole`, chọn **Add permissions → Create inline policy → đặt tên là RecipesLambdaPolicy** và dán nội dung JSON:
 
 ```json
 {
@@ -60,6 +60,24 @@ Hàm Lambda cần được cấp quyền đọc dữ liệu từ DynamoDB, gọi
 		}
 	]
 }
+```
 
+6. Mở lại `RecipesLambdaRole`, chọn **Add permissions → Create inline policy → đặt tên là AmazonLocationGeoPlacesAccess** và dán nội dung JSON:
 
-
+```json
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"geo-places:SearchNearby",
+				"geo-places:SearchText",
+				"geo-places:Geocode",
+				"geo-places:ReverseGeocode"
+			],
+			"Resource": "*"
+		}
+	]
+}
+```
