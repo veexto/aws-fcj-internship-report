@@ -97,13 +97,3 @@ Ensuring reproducible inputs for ETL and AI/ML pipelines on AWS comes down to th
 - Amazon S3 Pricing (ap-southeast-1): https://aws.amazon.com/s3/pricing/
 
 ---
-
-## Author
-
-<div style="display: flex; align-items: flex-start; margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
-  <img src="/images/avatar.png" alt="Author" style="width: 150px; height: 150px; object-fit: cover; margin-right: 20px; border-radius: 5px;">
-  <div>
-    <h3 style="margin-top: 0;">AWS First Cloud Journey Intern</h3>
-    <p>Cloud engineering intern in the AWS First Cloud Journey (FCJ) program, passionate about distributed systems architecture, performance optimization, and sharing hands-on cloud implementation insights.</p>
-  </div>
-</div>
