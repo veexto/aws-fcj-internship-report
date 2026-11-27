@@ -19,7 +19,7 @@ pre: " <b> 4.4. </b> "
 
 Trong khuôn khổ chuỗi hoạt động nâng cao năng lực thực hành của cộng đồng **AWS First Cloud Journey (FCJ)**, buổi chuyên đề **AWS Cloud Mastery** tổ chức ngày 14/11/2026 tập trung giải quyết một bài toán thực tiễn của kỹ thuật AI hiện đại: thu hẹp khoảng cách từ giai đoạn thử nghiệm ý tưởng (*Prototype*) đến vận hành chính thức ở quy mô doanh nghiệp (*Production*).
 
-Dưới sự dẫn dắt của diễn giả **Khang Duong** (thành viên FCJ), chương trình quy tụ đông đảo sinh viên công nghệ và các kỹ sư trẻ tại TP. Hồ Chí Minh đến trực tiếp không gian làm việc của AWS Việt Nam để cùng mổ xẻ kiến trúc **Amazon Bedrock AgentCore**. Thay vì dừng lại ở việc xây dựng các luồng hội thoại AI cơ bản, nội dung buổi học đi thẳng vào ba tiêu chuẩn bắt buộc của hệ thống thực tế: **Bảo mật (Secure), Độ tin cậy (Reliable) và Khả năng mở rộng (Scalable)**.
+Chương trình quy tụ đông đảo sinh viên công nghệ và các kỹ sư trẻ tại TP. Hồ Chí Minh đến trực tiếp không gian làm việc của AWS Việt Nam để cùng mổ xẻ kiến trúc **Amazon Bedrock AgentCore**. Thay vì dừng lại ở việc xây dựng các luồng hội thoại AI cơ bản, nội dung buổi học đi thẳng vào ba tiêu chuẩn bắt buộc của hệ thống thực tế: **Bảo mật (Secure), Độ tin cậy (Reliable) và Khả năng mở rộng (Scalable)**.
 
 ---
 
