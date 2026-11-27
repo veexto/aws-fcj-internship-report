@@ -19,7 +19,7 @@ pre: " <b> 4.4. </b> "
 
 As part of the ongoing hands-on enablement series hosted by the **AWS First Cloud Journey (FCJ)** community, the **AWS Cloud Mastery** session on November 14, 2026 addressed a critical challenge in modern AI engineering: bridging the gap between initial proof-of-concept experiments (*Prototype*) and enterprise-grade production deployments (*Production*).
 
-Led by speaker **Khang Duong** (FCJ Member), the session brought together technology students and young engineers across Ho Chi Minh City at the AWS Vietnam office to dissect the architecture of **Amazon Bedrock AgentCore**. Rather than stopping at basic conversational AI flows, the discussion focused directly on the three non-negotiable pillars of real-world systems: **Security, Reliability, and Scalability**.
+The session brought together technology students and young engineers across Ho Chi Minh City at the AWS Vietnam office to dissect the architecture of **Amazon Bedrock AgentCore**. Rather than stopping at basic conversational AI flows, the discussion focused directly on the three non-negotiable pillars of real-world systems: **Security, Reliability, and Scalability**.
 
 ---
 
