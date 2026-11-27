@@ -55,3 +55,12 @@ pre: " <b> 4.3. </b> "
 1. **Tư duy kiến trúc thực chiến:** Hiểu rõ sự đánh đổi giữa độ trễ, độ chính xác ngôn ngữ và chi phí khi thiết kế các hệ thống GenAI/Voice AI và hạ tầng Multi-Account trên AWS.
 2. **Nâng cao nhận thức về DevSecOps:** Biết cách áp dụng kiểm thử bảo mật tự động ngay từ giai đoạn thiết kế hạ tầng (IaC) và Pull Request thay vì đợi đến khi triển khai xong mới rà soát.
 3. **Cập nhật công cụ Agentic mới nhất của AWS:** Nắm bắt cách vận hành AI Agent ở quy mô production với Amazon Bedrock AgentCore và ứng dụng Kiro để tăng tốc độ phát triển phần mềm trong dự án thực tập.
+
+
+![Ảnh tham gia](AWSevent3(1).jpg)
+![Ảnh tham gia](AWSevent3(2).jpg)
+![Ảnh tham gia](AWSevent3(3).jpg)
+![Ảnh tham gia](AWSevent3(4).jpg)
+![Ảnh tham gia](AWSevent3(5).jpg)
+![Ảnh tham gia](AWSevent3(6).jpg)
+
