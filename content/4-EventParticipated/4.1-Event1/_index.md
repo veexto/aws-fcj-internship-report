@@ -1,9 +1,9 @@
 ---
 title: "AWS Cloud and AI Day 2026 (Watch Party - Ho Chi Minh City)"
 date: 2026-09-29
-weight: 3
+weight: 1
 chapter: false
-pre: " <b> 4.3. </b> "
+pre: " <b> 4.1. </b> "
 ---
 
 ### Event Overview
