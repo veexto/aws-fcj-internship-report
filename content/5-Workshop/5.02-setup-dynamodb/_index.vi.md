@@ -15,3 +15,7 @@ pre: "<b>5.2. </b>"
    * **Table settings:** Chọn **Default settings** (chế độ On-demand).
 3. Bấm **Create table** và chờ trạng thái chuyển sang **Active**.
 4. Mở bảng `RecipesTable` → **Explore table items** → **Create item** để nạp dữ liệu mẫu gồm các thuộc tính: `RecipeID`, `Name`, `Category`, `Ingredients`, `EstimatedCostVND`, `CookingTimeMinutes`, `MoodTags`, `DietTags`, `CookingSteps`.
+
+![anh2](anh2.png)
+
+![anh3](anh3.png)
