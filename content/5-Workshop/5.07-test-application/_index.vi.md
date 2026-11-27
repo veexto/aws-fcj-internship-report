@@ -6,7 +6,7 @@ chapter: false
 pre: "<b>5.7. </b>"
 ---
 
-Truy cập đường dẫn HTTPS của CloudFront (`d18x1ou8x7botm.cloudfront.net`) và kiểm tra 4 kịch bản nghiệp vụ:
+Truy cập đường dẫn HTTPS của CloudFront (`https://d18x1ou8x7botm.cloudfront.net/`) và kiểm tra 4 kịch bản nghiệp vụ:
 
 1. **Tìm kiếm & Lọc công thức:** Nhập nguyên liệu vào thanh tìm kiếm hoặc kéo thanh trượt ngân sách; danh sách món ăn tải từ DynamoDB hiển thị kèm định lượng và bộ đếm giờ từng bước nấu.
 2. **Chatbot Đầu bếp AI (Amazon Bedrock):** Mở khung chat góc dưới bên phải, chọn gợi ý nhanh theo thời tiết/tâm trạng; AI phản hồi kèm nút mở thẳng hướng dẫn nấu món ăn phù hợp.
