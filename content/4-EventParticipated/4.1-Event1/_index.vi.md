@@ -11,7 +11,6 @@ pre: " <b> 4.3. </b> "
 - **Thời gian:** Ngày 29/09/2026
 - **Hình thức tham gia:** Tham gia trực tiếp tại điểm cầu **Watch Party TP. Hồ Chí Minh** (theo dõi trực tuyến các phiên Keynote & Developer Chats từ đầu cầu Hà Nội cùng cộng đồng AWS First Cloud Journey)
 - **Đơn vị tổ chức:** AWS Việt Nam, AWS Community Builders & AWS First Cloud Journey (FCJ)
-- **Bài viết tổng hợp tham khảo:** [AWS Cloud and AI Day Hanoi 2026: Building for the Next Phase of Cloud and AI (AWS Builder Center)](https://builder.aws.com/content/3KMpKxUhRFeSlclpmwu5ZxBQBYL/aws-cloud-and-ai-day-hanoi-2026-building-for-the-next-phase-of-cloud-and-ai)
 
 ---
 
