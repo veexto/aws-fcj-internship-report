@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-Trong suốt kỳ thực tập (OJT) tại **Công ty TNHH Amazon Web Services Việt Nam** từ **tháng 09/2026** đến **tháng 12/2026** trong khuôn khổ chương trình **AWS First Cloud Journey (FCJ)**, tôi đã có cơ hội được rèn luyện trong một môi trường kỹ thuật chuyên nghiệp, kỷ luật và lấy công nghệ đám mây làm trọng tâm. Vượt ra ngoài những kiến thức nền tảng trên giảng đường, kỳ thực tập này đã giúp tôi xây dựng kỹ năng thiết kế kiến trúc Cloud thực tiễn, hình thành tư duy hướng tới môi trường vận hành thực tế (*production-oriented*) và rèn luyện tác phong làm việc chuyên nghiệp hơn.
+Trong suốt kỳ thực tập (OJT) tại **Amazon Web Services Việt Nam** từ **tháng 09/2026** đến **tháng 12/2026** trong khuôn khổ chương trình **AWS First Cloud Journey (FCJ)**, tôi đã có cơ hội được rèn luyện trong một môi trường kỹ thuật chuyên nghiệp, kỷ luật và lấy công nghệ đám mây làm trọng tâm. Vượt ra ngoài những kiến thức nền tảng trên giảng đường, kỳ thực tập này đã giúp tôi xây dựng kỹ năng thiết kế kiến trúc Cloud thực tiễn, hình thành tư duy hướng tới môi trường vận hành thực tế (*production-oriented*) và rèn luyện tác phong làm việc chuyên nghiệp hơn.
 
 Trong chương trình, tôi đã tham gia đóng góp vào dự án **[Tên dự án của bạn]**, đảm nhận các công việc liên quan đến thiết kế, triển khai và tối ưu hóa các luồng xử lý trên nền tảng AWS. Song song với việc phát triển dự án, quá trình dịch thuật các bài viết kỹ thuật, biên soạn tài liệu hướng dẫn thực hành (workshop) và tham gia các buổi chia sẻ cộng đồng của AWS đã giúp tôi hiểu sâu hơn về độ tin cậy của hệ thống thực tế, các nguyên tắc bảo mật tốt nhất và bài toán tối ưu chi phí.
 
