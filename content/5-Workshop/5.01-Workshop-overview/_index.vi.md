@@ -29,4 +29,4 @@ pre: "<b>5.1. </b>"
 2. Chọn thống nhất Region triển khai là **Asia Pacific (Singapore) — `ap-southeast-1`**.
 3. Kích hoạt quyền truy cập mô hình **Amazon Nova Micro** (`apac.amazon.nova-micro-v1:0`) trong **Amazon Bedrock → Model access**.
 
-![ảnh](anh1.jpg)
+![ảnh](anh1.png)
