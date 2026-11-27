@@ -14,9 +14,11 @@ pre: "<b>5.4. </b>"
    * **Runtime:** `Python 3.12`
    * **Execution role:** Chọn **Use an existing role** → `RecipesLambdaRole`.
 3. Vào **Configuration → General configuration → Edit**, tăng **Timeout** lên `15 seconds`.
-4. Vào **Configuration → Environment variables**, thêm 2 biến môi trường:
+4. Vào **Configuration → Environment variables**, thêm 4 biến môi trường:
    * `DYNAMODB_TABLE`: `RecipesTable`
    * `BEDROCK_MODEL_ID`: `apac.amazon.nova-micro-v1:0`
+   * `BEDROCK_API_KEY`: `nhập API key của bạn`
+   * `BEDROCK_REGION`: `ap-southeast-1`
 
 #### Luồng xử lý chính trong `lambda_function.py`
 
