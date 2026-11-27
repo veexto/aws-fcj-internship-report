@@ -20,6 +20,10 @@ pre: "<b>5.1. </b>"
 | Generative AI | Amazon Bedrock | Tư vấn món ăn theo tâm trạng và thời tiết (`apac.amazon.nova-micro-v1:0`) |
 | Geospatial | Amazon Location Service | Geocode địa chỉ nhập tay và tìm điểm bán nguyên liệu (`geo-places` v2) |
 
+#### Sơ đồ dự án:
+![sơ đồ dự án](DemoFinalWorkShop.drawio.png)
+
+
 #### Yêu cầu chuẩn bị
 1. Tài khoản AWS có quyền thao tác với **IAM, DynamoDB, Lambda, API Gateway, S3, CloudFront, Bedrock** và **Location Service**.
 2. Chọn thống nhất Region triển khai là **Asia Pacific (Singapore) — `ap-southeast-1`**.
