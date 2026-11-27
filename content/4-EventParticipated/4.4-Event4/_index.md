@@ -54,3 +54,15 @@ The session brought together technology students and young engineers across Ho C
 1. **Moving Beyond the Demo:** Building enterprise AI agents requires designing robust identity and access controls (Gateway/Identity), long-term memory pipelines, and behavioral observability from day one.
 2. **End-to-End Architectural Thinking:** Gained a clear blueprint for pairing **Amazon Bedrock AgentCore** with Multi-AZ VPC networking on AWS to ensure high availability and scalability across thousands of tools and tasks.
 3. **Proactive Community Learning:** Participating in focused technical sessions at the AWS office accelerates hands-on familiarity with newly released services and provides practical architectural insights from experienced practitioners.
+
+
+![participate](awsmeetup1.jpg)
+![participate](awsmeetup2.jpg)
+![participate](awsmeetup3.jpg)
+![participate](awsmeetup4.jpg)
+![participate](awsmeetup5.jpg)
+![participate](awsmeetup6.jpg)
+![participate](awsmeetup7.jpg)
+![participate](awsmeetup8.jpg)
+![participate](awsmeetup9.jpg)
+
