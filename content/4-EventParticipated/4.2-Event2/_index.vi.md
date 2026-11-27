@@ -41,3 +41,8 @@ pre: " <b> 4.2. </b> "
 1. **Chọn đúng công cụ cho đúng bài toán:** Không chạy theo trào lưu dùng mô hình AI lớn cho mọi tác vụ; luôn cân nhắc bài toán chi phí, độ trễ và độ tin cậy thực tế trước khi thiết kế kiến trúc.
 2. **Đề cao trách nhiệm kỹ thuật (Engineering Ownership):** Khi ứng dụng các công cụ lập trình AI trong quá trình phát triển dự án, luôn chủ động kiểm thử, rà soát bảo mật và hiểu rõ từng dòng code triển khai.
 3. **Rèn luyện kỹ năng giao tiếp kỹ thuật & tư duy hệ thống:** Biết cách trình bày giải pháp kiến trúc gắn liền với giá trị kinh doanh và chủ động kết nối, chia sẻ kiến thức cùng cộng đồng AWS First Cloud Journey.
+
+
+![ảnh tham gia](AWSevent2(1).jpg)
+![ảnh tham gia](AWSevent2(2).jpg)
+
