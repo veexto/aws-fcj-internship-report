@@ -15,6 +15,14 @@ pre: " <b> 4.4. </b> "
 
 ---
 
+### Tổng quan buổi chia sẻ
+
+Trong khuôn khổ chuỗi hoạt động nâng cao năng lực thực hành của cộng đồng **AWS First Cloud Journey (FCJ)**, buổi chuyên đề **AWS Cloud Mastery** tổ chức ngày 14/11/2026 tập trung giải quyết một bài toán thực tiễn của kỹ thuật AI hiện đại: thu hẹp khoảng cách từ giai đoạn thử nghiệm ý tưởng (*Prototype*) đến vận hành chính thức ở quy mô doanh nghiệp (*Production*).
+
+Dưới sự dẫn dắt của diễn giả **Khang Duong** (thành viên FCJ), chương trình quy tụ đông đảo sinh viên công nghệ và các kỹ sư trẻ tại TP. Hồ Chí Minh đến trực tiếp không gian làm việc của AWS Việt Nam để cùng mổ xẻ kiến trúc **Amazon Bedrock AgentCore**. Thay vì dừng lại ở việc xây dựng các luồng hội thoại AI cơ bản, nội dung buổi học đi thẳng vào ba tiêu chuẩn bắt buộc của hệ thống thực tế: **Bảo mật (Secure), Độ tin cậy (Reliable) và Khả năng mở rộng (Scalable)**.
+
+---
+
 ### Nội dung chuyên môn chính
 
 #### 1. Thách thức khi đưa AI Agent từ Prototype lên Production
@@ -34,9 +42,11 @@ pre: " <b> 4.4. </b> "
 
 ---
 
-### Không khí sự kiện & Trải nghiệm tham gia
-- **Phiên Q&A "không có hồi kết":** Sự kiện thu hút đông đảo các bạn sinh viên yêu thích Cloud và AI từ khắp các trường đại học tại TP. Hồ Chí Minh. Phần trao đổi hỏi đáp diễn ra cực kỳ sôi nổi với hàng loạt câu hỏi thực tế xoay quanh kinh nghiệm triển khai Bedrock Agent, bảo mật hệ thống cũng như lộ trình phát triển sự nghiệp Cloud Engineer.
-- **Mini-game Quiz & Kết nối cộng đồng:** Không khí hội trường càng thêm hào hứng với phần trò chơi Quiz củng cố kiến thức cuối buổi. Ngoài ra, ban tổ chức cũng hé lộ thông tin về sự kiện lớn sắp diễn ra dành cho cộng đồng sinh viên: **AWS Student Community Day Vietnam 2026**.
+### Không khí trao đổi & Kết nối cộng đồng
+
+- **Thảo luận chuyên sâu cùng người tham dự:** Phần tương tác trực tiếp tại hội trường diễn ra sôi nổi và kéo dài đến cuối chương trình với nhiều câu hỏi thực tế từ cộng đồng sinh viên công nghệ tại TP. Hồ Chí Minh. Các vấn đề được quan tâm xoay quanh cách kiểm soát phạm vi hành động của AI Agent khi tích hợp hệ thống nghiệp vụ thật, tối ưu chi phí vận hành và định hướng lộ trình theo đuổi mảng Cloud & AI.
+- **Hệ thống hóa kiến thức qua trò chơi tương tác:** Khép lại phần trình bày kỹ thuật là hoạt động Quiz giúp củng cố nhanh các khái niệm cốt lõi về phân quyền Gateway, quản lý bộ nhớ ngắn/dài hạn và kiến trúc triển khai Multi-AZ trên AWS.
+- **Mở rộng cơ hội tham gia cộng đồng:** Cuối buổi, ban tổ chức cũng chia sẻ thông tin về sự kiện quy mô lớn sắp tới dành cho giới sinh viên công nghệ — **AWS Student Community Day Vietnam 2026**, tạo thêm điểm hẹn học tập và kết nối cho các thành viên FCJ.
 
 ---
 
