@@ -1,55 +1,60 @@
 ---
 title: "Self-Assessment"
-date: 2025-01-01
+date: 2026-11-27
 weight: 6
 chapter: false
 pre: " <b> 6. </b> "
 ---
 
-During my internship at **Amazon Web Services Vietnam Co., Ltd.** from **September 8, 2025** to **December 9, 2025**, I embraced the opportunity to work in a highly professional, disciplined, and growth-oriented environment. This experience not only sharpened my understanding of workplace standards but also helped me develop a stronger professional mindset and a more structured approach to fulfilling assigned responsibilities.
+During my On-the-Job Training (OJT) internship at **Amazon Web Services Vietnam Co., Ltd.** from **September 2026** to **December 2026** under the **AWS First Cloud Journey (FCJ)** program, I had the opportunity to immerse myself in a dynamic, disciplined, and cloud-first engineering environment. Moving beyond university coursework, this internship helped me build practical cloud architecture skills, adopt a production-oriented mindset, and develop stronger professional work habits.
 
-Throughout the program, I contributed to the **Everyonecook** project, where I engaged with tasks that aligned with the team’s development and operational activities. This involvement allowed me to gain practical experience with collaborative workflows and cloud-based development practices within a real project setting.
+Throughout the program, I contributed to the **[Your Project Name]** project, where I worked on designing, deploying, and optimizing cloud-based workflows on AWS. Alongside project development, translating technical articles, preparing hands-on workshop guides, and participating in AWS community sessions deepened my understanding of real-world system reliability, security best practices, and cost optimization.
 
-During the internship, I consistently demonstrated a responsible attitude, adhered closely to organizational processes, and coordinated effectively with colleagues to support shared objectives. I focused on delivering high-quality outcomes while ensuring timely completion of assigned work.
+Across all assigned tasks, I maintained a proactive learning attitude, followed team workflows and reporting schedules consistently, and collaborated closely with mentors and fellow interns to deliver quality outcomes on time.
 
-Below is my self-evaluation based on key performance criteria:
+### Self-Evaluation Summary
 
-| No. | Criteria                            | Description                                                                                  | Good | Fair | Average |
-| --- | ----------------------------------- | -------------------------------------------------------------------------------------------- | ---- | ---- | ------- |
-| 1   | **Professional knowledge & skills** | Ability to apply technical knowledge, use tools effectively, and deliver quality results     | ☐    | ✅    | ☐       |
-| 2   | **Ability to learn**                | Speed of absorbing new concepts, adaptability to new tasks                                  | ☐    | ✅    | ☐       |
-| 3   | **Proactiveness**                   | Taking initiative and actively contributing to workflows                                    | ☐    | ✅    | ☐       |
-| 4   | **Responsibility**                  | Completing tasks with expected quality and within deadlines                                  | ☐    | ✅    | ☐       |
-| 5   | **Discipline**                      | Following work procedures, schedules, and company policies                                   | ☐    | ✅    | ☐       |
-| 6   | **Continuous improvement**          | Willingness to accept feedback and continuously improve                                      | ☐    | ✅    | ☐       |
-| 7   | **Communication**                   | Ability to convey ideas clearly in meetings and written reports                              | ☐    | ✅    | ☐       |
-| 8   | **Teamwork**                        | Collaborating effectively and supporting teammates                                            | ☐    | ✅    | ☐       |
-| 9   | **Professional conduct**            | Maintaining respectful and appropriate behavior in the workplace                              | ☐    | ✅    | ☐       |
-| 10  | **Problem-solving skills**          | Identifying issues and proposing practical solutions                                         | ☐    | ✅    | ☐       |
-| 11  | **Contribution to project/team**    | Efficiency, effort, and impact on assigned project tasks                                      | ☐    | ✅    | ☐       |
-| 12  | **Overall**                         | Overall assessment of performance throughout the internship                                   | ☐    | ✅    | ☐       |
+| No. | Evaluation Criteria | Assessment Scope | Good | Fair | Average |
+| --- | --- | --- | :---: | :---: | :---: |
+| 1 | **Technical Knowledge & Cloud Skills** | Applying AWS services, architectural patterns, and tooling effectively in practical tasks | ☐ | ✅ | ☐ |
+| 2 | **Learning Agility** | Speed of researching new cloud technologies and adapting to unfamiliar requirements | ✅ | ☐ | ☐ |
+| 3 | **Initiative & Proactiveness** | Actively proposing ideas, testing solutions, and contributing beyond minimum expectations | ✅ | ☐ | ☐ |
+| 4 | **Work Ownership & Responsibility** | Accountability for task quality, documentation accuracy, and meeting weekly milestones | ✅ | ☐ | ☐ |
+| 5 | **Workplace Discipline** | Adhering to schedules, office etiquette, security guidelines, and reporting processes | ✅ | ☐ | ☐ |
+| 6 | **Receptiveness to Feedback** | Listening to mentor reviews and iterating on architectures or reports constructively | ✅ | ☐ | ☐ |
+| 7 | **Technical Communication** | Articulating ideas clearly in discussions, technical blogs, and structured documentation | ☐ | ✅ | ☐ |
+| 8 | **Team Collaboration** | Coordinating smoothly, sharing knowledge, and supporting teammates during sprints | ✅ | ☐ | ☐ |
+| 9 | **Professional Conduct** | Demonstrating integrity, respect, and a positive attitude in all interactions | ✅ | ☐ | ☐ |
+| 10 | **Analytical & Troubleshooting Skills** | Diagnosing root causes of configuration or deployment issues systematically | ☐ | ✅ | ☐ |
+| 11 | **Overall Project Contribution** | Practical impact and consistency of deliverables across the internship lifecycle | ☐ | ✅ | ☐ |
+| 12 | **Overall Self-Rating** | Holistic reflection on personal and professional growth during the OJT term | ☐ | ✅ | ☐ |
 
-### Areas for Improvement
+### Key Strengths & Areas for Further Growth
 
-- Strengthen consistency and discipline in daily work routines  
-- Improve logical reasoning and structured problem-solving approaches  
-- Enhance communication skills, especially in expressing ideas and handling professional situations
+- **Key Strengths:**
+  - Rapidly picking up core and emerging AWS services through hands-on experimentation and documentation.
+  - Maintaining structured weekly progress tracking, technical writing, and consistent attendance at FCJ community events.
+- **Areas for Further Growth:**
+  - Deepening production-scale troubleshooting, security hardening, and cost-modeling skills for complex multi-service architectures.
+  - Strengthening real-time technical presentation and English communication confidence during architectural reviews and Q&A sessions.
+  - Refining time estimation when balancing research exploration with strict implementation deadlines.
 
 ---
 
 ## Official OJT Evaluation Results
 
-On **December 26, 2025**, I received the official OJT final evaluation results from the **FPT University Corporate Relations Department (QHDN)**. The evaluation was conducted by **Amazon Web Services Vietnam Co., Ltd.** with the following scores:
+*(To be updated upon receiving the official Fall 2026 OJT evaluation report from the **FPT University Corporate Relations Department (QHDN)** and **Amazon Web Services Vietnam Co., Ltd.**)*
 
-| Criteria | Score |
-| --- | --- |
-| **Professional Knowledge & Skills** | 8.1 |
-| **Soft Skills** | 9.0 |
-| **Attitude** | 9.2 |
-| **Overall Score** | **8.7** |
+| Evaluation Category | Score |
+| --- | :---: |
+| **Professional Knowledge & Skills** | `[Pending]` |
+| **Soft Skills** | `[Pending]` |
+| **Attitude & Discipline** | `[Pending]` |
+| **Overall Score** | **`[Pending]`** |
 
-### Final Result: ✅ **PASS**
+### Final Result: ⏳ **IN PROGRESS / PENDING**
 
-This result reflects my dedication and effort throughout the internship period. I am grateful for the guidance from my mentors at AWS and the support from FPT University.
+I am sincerely grateful to the mentors and engineers at **AWS Vietnam** for their dedicated technical guidance, as well as **FPT University** for facilitating this valuable industry experience.
 
-![OJT Final Score Notification](/images/6-Self-evaluation/ojt-final-score.png)
+<!-- Uncomment the line below once you upload your official Fall 2026 score screenshot to static/images/6-Self-evaluation/ -->
+<!-- ![OJT Final Score Notification](/images/6-Self-evaluation/ojt-final-score.png) -->
