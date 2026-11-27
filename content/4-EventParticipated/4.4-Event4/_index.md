@@ -10,7 +10,7 @@ pre: " <b> 4.4. </b> "
 - **Event Name:** AWS Cloud Mastery – Amazon Bedrock Agent: From Prototype to Production
 - **Date:** Saturday Morning, November 14, 2026
 - **Location:** AWS Vietnam Office (Ho Chi Minh City)
-- **Speaker:** Khang Duong (AWS First Cloud Journey – FCJ Member)
+- **Speaker:** Nguyễn Lâm Anh, Trần Phương Huyền, Phúc Khang, Huỳnh An Khương, Nguyễn Quốc Bảo (AWS First Cloud Journey – FCJ Member)
 - **Organizers:** AWS First Cloud Journey (FCJ) & AWS Study Group
 
 ---
