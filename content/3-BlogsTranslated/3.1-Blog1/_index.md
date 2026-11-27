@@ -1,6 +1,6 @@
 ---
 title: "Blog 1: Auto Scaling Worked Great, So Why Did 10,000 Users Still Leave the Site Spinning?"
-date: 2026-11-12
+date: 2026-11-23
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
