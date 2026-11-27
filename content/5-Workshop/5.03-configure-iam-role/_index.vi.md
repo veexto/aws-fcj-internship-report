@@ -62,7 +62,7 @@ Hàm Lambda cần được cấp quyền đọc dữ liệu từ DynamoDB, gọi
 }
 ```
 
-6. Mở lại `RecipesLambdaRole`, chọn **Add permissions → Create inline policy → đặt tên là AmazonLocationGeoPlacesAccess** và dán nội dung JSON:
+5. Mở lại `RecipesLambdaRole`, chọn **Add permissions → Create inline policy → đặt tên là AmazonLocationGeoPlacesAccess** và dán nội dung JSON:
 
 ```json
 {
