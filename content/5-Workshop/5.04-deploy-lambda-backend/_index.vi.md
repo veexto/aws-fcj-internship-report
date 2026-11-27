@@ -1,8 +1,4 @@
 ---
-
-#### File `5-Workshop/5.04-deploy-lambda-backend/_index.md`
-```markdown
----
 title: "Triển khai Backend AWS Lambda"
 date: 2026-11-27
 weight: 4
