@@ -57,7 +57,7 @@ For complex read queries (search filters, aggregations, reporting) that cannot b
 
 **Important Note:** For standard RDS for MySQL/PostgreSQL, each Read Replica exposes its own individual endpoint rather than a built-in load-balanced "reader endpoint." When running multiple replicas, your application must distribute traffic across endpoints (or use Route 53 weighted records). A unified reader endpoint is natively provided only by **Amazon Aurora** (and RDS Multi-AZ DB clusters).
 
-![Read-Optimized Architecture with ElastiCache Redis and RDS Read Replicas](/images/blog1-architecture.png)
+![Read-Optimized Architecture with ElastiCache Redis and RDS Read Replicas](blog1-architecture.png)
 
 ---
 
