@@ -55,3 +55,13 @@ pre: " <b> 4.3. </b> "
 1. **Practical Architectural Trade-Offs:** Gained a clearer understanding of balancing latency, Vietnamese language accuracy, and infrastructure cost across GenAI/Voice AI pipelines and Multi-Account AWS setups.
 2. **Shift-Left DevSecOps Mindset:** Learned how to embed automated security validation directly into IaC templates and Pull Request workflows rather than deferring security checks until post-deployment.
 3. **Production-Ready Agentic Tooling:** Discovered how Amazon Bedrock AgentCore and Kiro streamline state management, session isolation, and automated development workflows on AWS.
+
+
+
+![participate image](AWSevent3(1).jpg)
+![participate image](AWSevent3(2).jpg)
+![participate image](AWSevent3(3).jpg)
+![participate image](AWSevent3(4).jpg)
+![participate image](AWSevent3(5).jpg)
+![participate image](AWSevent3(6).jpg)
+
