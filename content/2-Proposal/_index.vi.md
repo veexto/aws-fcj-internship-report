@@ -266,13 +266,3 @@ Bếp Thông Minh hướng đến việc cung cấp một nền tảng hỗ tr�
 Bản đề xuất này xác định bối cảnh, mục tiêu, kiến trúc, phạm vi, yêu cầu bảo mật, kế hoạch triển khai, chi phí và các rủi ro chính của dự án. Các minh chứng chi tiết về quá trình tích hợp, mã nguồn và kết quả kiểm thử được trình bày trong phần Thực hành/Minh chứng triển khai.
 
 ---
-
-## Thông tin dự án
-
-| Thông tin | Chi tiết |
-|---|---|
-| Dự án | Bếp Thông Minh – Smart Kitchen Platform |
-| Kho mã nguồn | https://github.com/veexto/AWS-Final-Project-Cooking/tree/main |
-| Website đã triển khai | https://d18x1ou8x7botm.cloudfront.net/ |
-| Khu vực AWS | ap-southeast-1 (Singapore) |
-| Ngày lập | Tháng 11/2026 |
