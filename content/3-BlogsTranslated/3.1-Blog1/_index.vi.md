@@ -88,3 +88,11 @@ Sau khi nâng cấp kiến trúc từ mô hình Web Scale cơ bản lên **Read-
 - **Luôn dọn dẹp tài nguyên sau khi làm lab:** Xóa Read Replica và cụm ElastiCache ngay sau khi đo xong để giữ tài khoản Free Tier / Credit luôn an toàn *(và cân nhắc connection pooling hoặc Amazon RDS Proxy nếu số kết nối đồng thời từ EC2 tăng quá cao)*
 
 ---
+**References:**  
+- Amazon RDS Read Replicas Overview: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html  
+- Amazon ElastiCache Caching Strategies (Cache-Aside): https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Strategies.html  
+- Amazon RDS Multi-AZ vs. Read Replicas: https://aws.amazon.com/rds/features/read-replicas/  
+- Amazon ElastiCache Pricing (ap-southeast-1): https://aws.amazon.com/elasticache/pricing/  
+- Best Practices for Amazon RDS: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_BestPractices.html
+
+---
