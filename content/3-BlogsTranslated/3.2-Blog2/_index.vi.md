@@ -90,3 +90,10 @@ Qua bài toán tối ưu lưu lượng mạng nội bộ trong Private Subnet, c
 - **Kiểm tra cấu hình & bảo mật:** Nhớ tích chọn đúng Route Table khi tạo, đặt bucket cùng region và chừa ngoại lệ `aws:PrincipalArn` nếu siết Bucket Policy bằng `aws:SourceVpce`
 
 ---
+
+**Tài liệu tham khảo:**  
+- Gateway VPC Endpoints: https://docs.aws.amazon.com/vpc/latest/privatelink/vpce-gateway.html  
+- Gateway Endpoints for Amazon S3: https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html  
+- Amazon VPC & NAT Gateway Pricing: https://aws.amazon.com/vpc/pricing/  
+- AWS PrivateLink Pricing: https://aws.amazon.com/privatelink/pricing/  
+- AWS Managed Prefix Lists: https://docs.aws.amazon.com/vpc/latest/userguide/managed-prefix-lists.html
